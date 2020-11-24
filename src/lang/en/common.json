@@ -1,0 +1,31 @@
+{
+  "exception": {
+    "404": "Xin lỗi, trang bạn truy cập không tồn tại",
+    "backHome": "Quay lại trang chủ"
+  },
+  "action": {
+    "search": "Tìm kiếm",
+    "add": "Thêm",
+    "edit": "Sửa",
+    "remove": "Xóa",
+    "view": "Xem",
+    "save": "Lưu",
+    "cancel": "Đóng"
+  },
+  "notification": {
+    "success": "Thành công",
+    "error": "Lỗi",
+    "warning": "Cảnh báo",
+    "info": "Thông tin",
+    "deleteSuccess": "Xóa bản ghi thành công!",
+    "deleteError": "Xóa bản ghi thất bại!!",
+    "addSucc": "Thêm mới dữ liệu thành công!",
+    "addError": "Thêm mới dữ liệu thất bại!",
+    "updateSucc": "Cập nhật dữ liệu thành công!",
+    "updateError": "Cập nhật dữ liệu thất bại!",
+    "registerSucc": "Đăng ký thành công!",
+    "registerError": "Đăng ký thất bại!",
+    "loading": "Đang tải",
+    "loadingError": "Có lỗi xảy ra trong quá trình tải dữ liệu!"
+  }
+}
