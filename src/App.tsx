@@ -1,12 +1,12 @@
 import { ConnectedRouter } from 'connected-react-router';
 import { ErrorContextProvider } from 'containers/contexts/ErrorContext';
 import { ToastContextProvider } from 'containers/contexts/ToastContext';
-import { default as RouterConfig } from 'containers/layout';
 import React, { Suspense } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { Provider } from 'react-redux';
 import { Switch } from 'react-router';
 import { PersistGate } from 'redux-persist/integration/react';
+import RouterConfig from 'routes';
 import configureStore from './boot/configureStore';
 
 const store = configureStore.setup();
@@ -31,7 +31,9 @@ export default function App() {
                   />
                 }
               >
-                <Switch>{RouterConfig}</Switch>
+                <Switch>
+                  <RouterConfig />
+                </Switch>
               </Suspense>
             </ToastContextProvider>
           </ErrorContextProvider>
