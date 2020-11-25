@@ -19,6 +19,10 @@ html {
     }
     .wrapper-right {
       flex: 1;
+      .content {
+        margin: 0 20px;
+        max-width: 1370px;
+      }
     }
   }
 }

@@ -66,7 +66,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
                   ${activeSidebar === el.active ? ' active' : ''}`}
                 >
                   <span className="sidebar-icon">
-                    <img src={`${urlImg}/icons/${el.icon}`} />
+                    <img src={`${urlImg}/icons/${el.icon}`} alt="icon-sidebar" />
                   </span>
                   {el.name}
                 </Link>

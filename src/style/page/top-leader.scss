@@ -1,0 +1,102 @@
+.top-leader {
+  .top-leader__header {
+    display: flex;
+    justify-content: space-between;
+    .title-wrapper {
+      .title {
+        font-size: 36px;
+        line-height: 36px;
+        font-weight: 300;
+        color: white;
+      }
+    }
+    .search-wrapper {
+      .search {
+        position: relative;
+        img {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 18.35px;
+        }
+        input {
+          width: 397px;
+          height: 50px;
+          background-color: $darkBlueColor;
+          outline: 0;
+          border: 0;
+          border-radius: 3px;
+          font-size: 14px;
+          padding-left: 48px;
+          &::placeholder {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  .top-leader__content {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.leader-card {
+  background-color: $darkBlueColor;
+  border-radius: 10px;
+  width: 446px;
+  padding: 24px 26px;
+  p {
+    margin-bottom: 0;
+  }
+  .info-wrapper {
+    display: flex;
+    padding-bottom: 17px;
+    border-bottom: 1px solid $leaderBorderColor;
+    .wrapper-left {
+      .avatar {
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        background-color: #9792e0;
+      }
+    }
+    .wrapper-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 18px;
+      .name {
+        color: $lightBlueColor-2;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 24px;
+        margin-bottom: 4px;
+      }
+      .sub {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: $lightBlueColor-2;
+        .expert {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: yellow;
+          font-size: 12px;
+          border-radius: 3px;
+          height: 20px;
+          width: 48px;
+          color: $blackColor-1;
+          margin-right: 9px;
+        }
+        .percent {
+          font-size: 14px;
+          font-weight: 700;
+          color: $darkGreenColor;
+        }
+      }
+    }
+  }
+}
