@@ -3,13 +3,13 @@ import { Translation } from 'react-i18next';
 import { Route } from 'react-router-dom';
 import CustomerLayout from './CustomerLayout';
 
-const CustomerLayoutRoute = ({ component: Component, ...rest }) => (
+const CustomerLayoutRoute = ({ component: Component, activeSidebar = '', ...rest }) => (
   <Route
     {...rest}
     render={(matchProps) => (
       <Translation>
         {(t, { i18n }) => (
-          <CustomerLayout {...matchProps}>
+          <CustomerLayout {...matchProps} activeSidebar={activeSidebar}>
             <Component {...matchProps} t={t} i18n={i18n} />
           </CustomerLayout>
         )}

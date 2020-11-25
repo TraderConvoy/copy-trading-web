@@ -1,6 +1,8 @@
 import { ConnectedRouter } from 'connected-react-router';
+import { DocumentWidthContextProvider } from 'containers/contexts/DocumentWidthContext';
 import { ErrorContextProvider } from 'containers/contexts/ErrorContext';
 import { ToastContextProvider } from 'containers/contexts/ToastContext';
+import { UrlImagesContextProvider } from 'containers/contexts/UrlImagesContext';
 import React, { Suspense } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { Provider } from 'react-redux';
@@ -22,19 +24,23 @@ export default function App() {
         <ConnectedRouter history={configureStore.history}>
           <ErrorContextProvider>
             <ToastContextProvider>
-              <Suspense
-                fallback={
-                  <Spinner
-                    animation="border"
-                    variant="dark"
-                    style={{ position: 'absolute', top: '50%', left: '50%' }}
-                  />
-                }
-              >
-                <Switch>
-                  <RouterConfig />
-                </Switch>
-              </Suspense>
+              <UrlImagesContextProvider>
+                <DocumentWidthContextProvider>
+                  <Suspense
+                    fallback={
+                      <Spinner
+                        animation="border"
+                        variant="dark"
+                        style={{ position: 'absolute', top: '50%', left: '50%' }}
+                      />
+                    }
+                  >
+                    <Switch>
+                      <RouterConfig />
+                    </Switch>
+                  </Suspense>
+                </DocumentWidthContextProvider>
+              </UrlImagesContextProvider>
             </ToastContextProvider>
           </ErrorContextProvider>
         </ConnectedRouter>

@@ -1,0 +1,60 @@
+#sidebar {
+  height: 100%;
+  background-color: $darkBlueColor;
+  width: 330px;
+  border-top-right-radius: 10px;
+  p {
+    margin-bottom: 0;
+  }
+  .sidebar-wrapper {
+    padding: 26px 39px;
+    .user-wrapper {
+      display: flex;
+      align-items: center;
+      .avatar {
+        height: 40px;
+        width: 40px;
+        background-color: $yellowTextColor;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+      .username {
+        p {
+          font-size: 14px;
+          font-weight: 700;
+          color: $lightBlueColor-1;
+        }
+      }
+    }
+    .sidebar-list {
+      .sidebar-content {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        .sidebar-item {
+          .sidebar-link {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: $lightBlueColor-0 !important;
+            &.active {
+              font-weight: 700;
+              color: $lightBlueColor-3 !important;
+            }
+            &:first-child {
+              margin-top: 25px;
+            }
+            .sidebar-icon {
+              width: 40px;
+              margin-right: 8px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
