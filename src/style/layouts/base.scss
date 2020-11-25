@@ -26,3 +26,10 @@ html {
     }
   }
 }
+
+.modal-backdrop {
+  background: rgba(19, 24, 61, 1);
+  &.show {
+    opacity: 0.8;
+  }
+}

@@ -1,12 +1,14 @@
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
 import React, { useContext } from 'react';
 import Leader from './components/Leader';
+import ModalStartCopy from './components/ModalStartCopy';
 
 const TopLeader = () => {
   const urlImg = useContext(UrlImagesContext);
 
   return (
     <div className="top-leader">
+      <ModalStartCopy />
       <div className="top-leader__header">
         <div className="title-wrapper">
           <p className="title">Top performing</p>
@@ -19,6 +21,12 @@ const TopLeader = () => {
         </div>
       </div>
       <div className="top-leader__content">
+        <Leader />
+        <Leader />
+        <Leader />
+        <Leader />
+        <Leader />
+        <Leader />
         <Leader />
         <Leader />
         <Leader />
