@@ -8,6 +8,7 @@ const NotFound = lazy(() => import('containers/exception/404'));
 
 const Home = lazy(() => import('screens/home'));
 const TopLeader = lazy(() => import('screens/topLeader'));
+const BecomeAnExpert = lazy(() => import('screens/becomeAnExpert'));
 
 const RouterConfig = () => {
   return (
@@ -21,6 +22,12 @@ const RouterConfig = () => {
         path="/copy-trading/top-leader"
         activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER}
         component={TopLeader}
+      />
+      <CustomerLayoutRoute
+        exact={true}
+        path="/copy-trading/become-an-expert"
+        activeSidebar={ACTIVE_SIDEBAR.BECOME_AN_EXPERT}
+        component={BecomeAnExpert}
       />
       <Route component={NotFound} />
     </Switch>

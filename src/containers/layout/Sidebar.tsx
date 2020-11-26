@@ -33,7 +33,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
       },
       {
         name: 'Become an Expert',
-        href: '/become-an-expert',
+        href: '/copy-trading/become-an-expert',
         icon: 'achievement.svg',
         active: ACTIVE_SIDEBAR.BECOME_AN_EXPERT,
       },

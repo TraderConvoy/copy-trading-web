@@ -1,7 +1,7 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 
-const Leader = () => {
+const Leader = ({ startCopy }) => {
   const options = {
     legend: {
       display: false,
@@ -77,7 +77,9 @@ const Leader = () => {
         </div>
       </div>
       <div className="button-wrapper">
-        <button className="start-copy-button">Start copy</button>
+        <button className="start-copy-button" onClick={startCopy}>
+          Start copy
+        </button>
       </div>
     </div>
   );

@@ -1,21 +1,38 @@
-import React from 'react';
+import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
+import { Toggle } from 'containers/layout/CustomComponent';
+import React, { useContext, useState } from 'react';
 import { Modal } from 'react-bootstrap';
 
-const ModalStartCopy = () => {
+const ModalStartCopy = ({ isOpen, closeModal }) => {
+  const [haveMaximum, setHaveHaximum] = useState(false);
+  const [haveStopLoss, setHaveStopLoss] = useState(false);
+  const [haveTakeProfit, setHaveTakeProfit] = useState(false);
+
+  const urlImg = useContext(UrlImagesContext);
+
   return (
-    <Modal show={true} onHide={() => {}} className="start-copy-modal" size="lg">
+    <Modal show={isOpen} onHide={() => closeModal()} className="start-copy-modal" size="lg">
       <Modal.Header>
-        <div className="info-wrapper">
-          <div className="avatar-wrapper">
-            <div className="avatar" />
+        <div className="wrapper-left">
+          <div className="info-wrapper">
+            <div className="avatar-wrapper">
+              <div className="avatar" />
+            </div>
+            <div className="name-wrapper">
+              <p className="name">ACGInvest</p>
+              <p className="sub">
+                <span className="expert">Expert</span>
+                <span className="percent">5%</span>
+                Profit sharing
+              </p>
+            </div>
           </div>
-          <div className="name-wrapper">
-            <p className="name">ACGInvest</p>
-            <p className="sub">
-              <span className="expert">Expert</span>
-              <span className="percent">5%</span>
-              Profit sharing
-            </p>
+        </div>
+        <div className="wrapper-right">
+          <div className="close-wrapper">
+            <button onClick={() => closeModal()}>
+              <img src={`${urlImg}icons/close.svg`} alt="close" />
+            </button>
           </div>
         </div>
       </Modal.Header>
@@ -48,14 +65,16 @@ const ModalStartCopy = () => {
           <div className="input-wrapper maxinum">
             <div className="__header">
               <p>Maximum</p>
+              <Toggle active={haveMaximum} onClick={(value: boolean) => setHaveHaximum(value)} />
             </div>
             <div className="__input">
               <input />
             </div>
           </div>
-          <div className="input-wrapper stop-lost">
+          <div className="input-wrapper stop-loss">
             <div className="__header">
-              <p>Maximum</p>
+              <p>Stop loss</p>
+              <Toggle active={haveStopLoss} onClick={(value: boolean) => setHaveStopLoss(value)} />
             </div>
             <div className="__input">
               <input />
@@ -63,7 +82,8 @@ const ModalStartCopy = () => {
           </div>
           <div className="input-wrapper take-profit">
             <div className="__header">
-              <p>Maximum</p>
+              <p>Take profit</p>
+              <Toggle active={haveTakeProfit} onClick={(value: boolean) => setHaveTakeProfit(value)} />
             </div>
             <div className="__input">
               <input />

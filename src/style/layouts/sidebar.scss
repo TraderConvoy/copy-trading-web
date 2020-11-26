@@ -41,6 +41,9 @@
             &.active {
               font-weight: 700;
               color: $lightBlueColor-3 !important;
+              .sidebar-icon {
+                opacity: 1;
+              }
             }
             &:first-child {
               margin-top: 25px;
@@ -51,6 +54,7 @@
               display: flex;
               align-items: center;
               justify-content: center;
+              opacity: 0.3;
             }
           }
         }
