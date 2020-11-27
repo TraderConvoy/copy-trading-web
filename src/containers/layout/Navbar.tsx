@@ -32,7 +32,7 @@ const Navbar = () => {
             </div>
             <div className="wrapper-right">
               <button className="dropdown">
-                <img src={`${urlImg}/icons/dropdown-icon.svg`} />
+                <img src={`${urlImg}/icons/dropdown-icon.svg`} alt="icon-header" />
               </button>
             </div>
           </div>

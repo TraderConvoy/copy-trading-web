@@ -9,7 +9,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
     () => [
       {
         name: 'Top leader',
-        href: '/top-leader',
+        href: '/copy-trading/top-leader',
         icon: 'flag.svg',
         active: ACTIVE_SIDEBAR.TOP_LEADER,
       },
@@ -21,7 +21,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
       },
       {
         name: 'Investment History',
-        href: '/investment-history',
+        href: '/copy-trading/investment-history',
         icon: 'graph.svg',
         active: ACTIVE_SIDEBAR.INVESTMENT_HISTORY,
       },
@@ -33,7 +33,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
       },
       {
         name: 'Become an Expert',
-        href: '/become-an-expert',
+        href: '/copy-trading/become-an-expert',
         icon: 'achievement.svg',
         active: ACTIVE_SIDEBAR.BECOME_AN_EXPERT,
       },
@@ -66,7 +66,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
                   ${activeSidebar === el.active ? ' active' : ''}`}
                 >
                   <span className="sidebar-icon">
-                    <img src={`${urlImg}/icons/${el.icon}`} />
+                    <img src={`${urlImg}/icons/${el.icon}`} alt="icon-sidebar" />
                   </span>
                   {el.name}
                 </Link>

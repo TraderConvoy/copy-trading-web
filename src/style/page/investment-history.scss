@@ -1,0 +1,126 @@
+.investment-history {
+  p {
+    margin-bottom: 0;
+  }
+  .investment-history__header {
+    margin-bottom: 40px;
+    .title-wrapper {
+      .title {
+        font-size: 36px;
+        font-weight: 300;
+        color: white;
+        line-height: 36px;
+      }
+    }
+  }
+  .investment-history__content {
+    .history-wrapper {
+    }
+  }
+}
+
+.investment-history-item {
+  background-color: $modalBackground;
+  border-radius: 5px;
+  display: flex;
+  padding: 40px 30px;
+  margin-bottom: 20px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  .info-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    width: 370px;
+    min-width: 370px;
+    .wrapper-left {
+      .avatar {
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        background-color: #9792e0;
+      }
+    }
+    .wrapper-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 18px;
+      .name {
+        color: $lightBlueColor-2;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 24px;
+        margin-bottom: 4px;
+      }
+      .sub {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: $lightBlueColor-2;
+        .expert {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: yellow;
+          font-size: 12px;
+          border-radius: 3px;
+          height: 20px;
+          width: 48px;
+          color: $blackColor-1;
+          margin-right: 9px;
+        }
+        .percent {
+          font-size: 14px;
+          font-weight: 700;
+          color: $darkGreenColor;
+        }
+      }
+    }
+  }
+  .detail-wrapper {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    .detail-item {
+      margin-left: 58px;
+      .name {
+        font-size: 16px;
+        color: $lightBlueColor-2;
+        font-weight: 400;
+        line-height: 16px;
+        margin-bottom: 5px;
+      }
+      .value {
+        font-size: 24px;
+        line-height: 24px;
+        color: $greenColor;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+    }
+  }
+  .button-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    .button-wrapper__button {
+      display: flex;
+      button {
+        &:last-child {
+          margin-left: 18px;
+        }
+      }
+    }
+    .button-wrapper__sub {
+      font-size: 14px;
+      line-height: 14px;
+      font-weight: 400;
+      color: $lightBlueColor-2;
+      margin-top: 10px;
+    }
+  }
+}
