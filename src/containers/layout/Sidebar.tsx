@@ -9,7 +9,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
     () => [
       {
         name: 'Top leader',
-        href: '/copy-trading/top-leader',
+        href: '/copy-trading',
         icon: 'flag.svg',
         active: ACTIVE_SIDEBAR.TOP_LEADER,
       },

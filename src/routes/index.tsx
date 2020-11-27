@@ -13,6 +13,7 @@ const InvestmentHistory = lazy(() => import('screens/investmentHistory'));
 const YourHistory = lazy(() => import('screens/yourHistory'));
 const ExpertManagement = lazy(() => import('screens/expertManagement'));
 const InvestmentCalculator = lazy(() => import('screens/investmentCalculator'));
+const LeaderDetail = lazy(() => import('screens/leaderDetail'));
 
 const RouterConfig = () => {
   return (
@@ -26,6 +27,12 @@ const RouterConfig = () => {
         path="/copy-trading"
         activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER}
         component={Dashboard}
+      />
+      <CustomerLayoutRoute
+        exact={true}
+        path="/copy-trading/leader-detail/:leaderID?"
+        activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER}
+        component={LeaderDetail}
       />
       <CustomerLayoutRoute
         exact={true}

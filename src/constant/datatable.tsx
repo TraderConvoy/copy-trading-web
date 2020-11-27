@@ -88,7 +88,7 @@ export const TABLE_TRADING_HISTORY = () => [
     selector: 'investment',
   },
   {
-    name: 'profit',
+    name: 'Profit',
     selector: 'profit',
     right: true,
     cell: (row: any) => {
