@@ -10,6 +10,10 @@ const NotFound = lazy(() => import('containers/exception/404'));
 const Dashboard = lazy(() => import('screens/dashboard'));
 const BecomeAnExpert = lazy(() => import('screens/becomeAnExpert'));
 const InvestmentHistory = lazy(() => import('screens/investmentHistory'));
+const YourHistory = lazy(() => import('screens/yourHistory'));
+const ExpertManagement = lazy(() => import('screens/expertManagement'));
+const InvestmentCalculator = lazy(() => import('screens/investmentCalculator'));
+const LeaderDetail = lazy(() => import('screens/leaderDetail'));
 
 const RouterConfig = () => {
   return (
@@ -26,15 +30,39 @@ const RouterConfig = () => {
       />
       <CustomerLayoutRoute
         exact={true}
+        path="/copy-trading/leader-detail/:leaderID?"
+        activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER}
+        component={LeaderDetail}
+      />
+      <CustomerLayoutRoute
+        exact={true}
+        path="/copy-trading/your-history"
+        activeSidebar={ACTIVE_SIDEBAR.YOUR_HISTORY}
+        component={YourHistory}
+      />
+      <CustomerLayoutRoute
+        exact={true}
         path="/copy-trading/become-an-expert"
         activeSidebar={ACTIVE_SIDEBAR.BECOME_AN_EXPERT}
         component={BecomeAnExpert}
       />
       <CustomerLayoutRoute
         exact={true}
+        path="/copy-trading/investment-calculator"
+        activeSidebar={ACTIVE_SIDEBAR.INVESTMENT_CALCULATOR}
+        component={InvestmentCalculator}
+      />
+      <CustomerLayoutRoute
+        exact={true}
         path="/copy-trading/investment-history"
         activeSidebar={ACTIVE_SIDEBAR.INVESTMENT_HISTORY}
         component={InvestmentHistory}
+      />
+      <CustomerLayoutRoute
+        exact={true}
+        path="/copy-trading/expert-management"
+        activeSidebar={ACTIVE_SIDEBAR.EXPERT_MANAGEMENT}
+        component={ExpertManagement}
       />
       <Route component={NotFound} />
     </Switch>

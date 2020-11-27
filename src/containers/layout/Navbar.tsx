@@ -1,15 +1,17 @@
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Navbar = () => {
   const urlImg = useContext(UrlImagesContext);
+  const history = useHistory();
 
   return (
     <div className="header-nav">
       <div className="nav-wrapper">
         <div className="nav-left">
           <div className="logo">
-            <p>
+            <p onClick={() => history.push('/')}>
               FAST <span>MONEY</span>
             </p>
           </div>

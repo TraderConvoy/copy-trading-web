@@ -41,6 +41,9 @@
             &.active {
               font-weight: 700;
               color: $lightBlueColor-3 !important;
+              svg {
+                fill: red;
+              }
               .sidebar-icon {
                 opacity: 1;
               }

@@ -9,13 +9,13 @@ const Sidebar = ({ activeSidebar = '' }) => {
     () => [
       {
         name: 'Top leader',
-        href: '/copy-trading/top-leader',
+        href: '/copy-trading',
         icon: 'flag.svg',
         active: ACTIVE_SIDEBAR.TOP_LEADER,
       },
       {
         name: 'Your History',
-        href: '/your-history',
+        href: '/copy-trading/your-history',
         icon: 'history.svg',
         active: ACTIVE_SIDEBAR.YOUR_HISTORY,
       },
@@ -27,7 +27,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
       },
       {
         name: 'Investment Calculator',
-        href: '/investment-calculator',
+        href: '/copy-trading/investment-calculator',
         icon: 'calculator.svg',
         active: ACTIVE_SIDEBAR.INVESTMENT_CALCULATOR,
       },
@@ -39,7 +39,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
       },
       {
         name: 'Expert management',
-        href: '/export-management',
+        href: '/copy-trading/expert-management',
         icon: 'settings.svg',
         active: ACTIVE_SIDEBAR.EXPERT_MANAGEMENT,
       },
