@@ -11,6 +11,7 @@ const Dashboard = lazy(() => import('screens/dashboard'));
 const BecomeAnExpert = lazy(() => import('screens/becomeAnExpert'));
 const InvestmentHistory = lazy(() => import('screens/investmentHistory'));
 const YourHistory = lazy(() => import('screens/yourHistory'));
+const ExpertManagement = lazy(() => import('screens/expertManagement'));
 
 const RouterConfig = () => {
   return (
@@ -42,6 +43,12 @@ const RouterConfig = () => {
         path="/copy-trading/investment-history"
         activeSidebar={ACTIVE_SIDEBAR.INVESTMENT_HISTORY}
         component={InvestmentHistory}
+      />
+      <CustomerLayoutRoute
+        exact={true}
+        path="/copy-trading/expert-management"
+        activeSidebar={ACTIVE_SIDEBAR.EXPERT_MANAGEMENT}
+        component={ExpertManagement}
       />
       <Route component={NotFound} />
     </Switch>

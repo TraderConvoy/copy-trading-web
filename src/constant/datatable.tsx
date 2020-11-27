@@ -57,3 +57,85 @@ export const TABLE_YOUR_HISTORY = () => [
     },
   },
 ];
+
+export const TABLE_TRADING_HISTORY = () => [
+  {
+    name: 'Time',
+    selector: 'time',
+    minWidth: '190px',
+  },
+  {
+    name: 'Type',
+    selector: 'type',
+  },
+  {
+    name: 'Order',
+    selector: 'order',
+    cell: (row: any) => {
+      return <p className={`order ${row.order}`}>{row.order}</p>;
+    },
+  },
+  {
+    name: 'Open',
+    selector: 'open',
+  },
+  {
+    name: 'Close',
+    selector: 'close',
+  },
+  {
+    name: 'Investment',
+    selector: 'investment',
+  },
+  {
+    name: 'profit',
+    selector: 'profit',
+    right: true,
+    cell: (row: any) => {
+      return <p className="profit">{row.profit}</p>;
+    },
+  },
+];
+
+export const TABLE_PROFIT_SHARING_HISTORY = () => [
+  {
+    name: 'Time',
+    selector: 'time',
+    minWidth: '190px',
+  },
+  {
+    name: 'Type',
+    selector: 'type',
+  },
+  {
+    name: 'Order',
+    selector: 'order',
+    cell: (row: any) => {
+      return <p className={`order ${row.order}`}>{row.order}</p>;
+    },
+  },
+  {
+    name: 'Open',
+    selector: 'open',
+  },
+  {
+    name: 'Close',
+    selector: 'close',
+  },
+  {
+    name: 'Investment',
+    selector: 'investment',
+  },
+  {
+    name: '5% Profit sharing',
+    selector: 'profit_sharing',
+    cell: (row: any) => {
+      return <p className="profit-sharing">{row.profit_sharing}</p>;
+    },
+  },
+  {
+    name: 'User name',
+    selector: 'username',
+    right: true,
+  },
+];

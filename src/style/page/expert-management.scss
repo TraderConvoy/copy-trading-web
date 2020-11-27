@@ -1,0 +1,180 @@
+.expert-management {
+  p {
+    margin-bottom: 0;
+  }
+  .expert-management__header {
+    margin-bottom: 24px;
+    .title-wrapper {
+      .title {
+        font-size: 36px;
+        font-weight: 300;
+        line-height: 36px;
+        color: white;
+      }
+    }
+  }
+  .expert-management__content {
+    .first-section {
+      display: flex;
+      .start-copy-trade {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        padding: 24px 30px;
+        border-radius: 5px;
+        background-image: linear-gradient(to bottom, #4325c0, #162488);
+        width: 600px;
+        height: 250px;
+        position: relative;
+        margin-right: 20px;
+        img {
+          position: absolute;
+          left: 207px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        p {
+          font-size: 24px;
+          font-weight: 400;
+          color: white;
+          width: 315px;
+          margin-bottom: 35px;
+          z-index: 1;
+        }
+        button {
+          outline: 0;
+          border: 0;
+          display: flex;
+          align-items: center;
+          background-color: #3fc66d;
+          border-radius: 5px;
+          color: white;
+          font-weight: 700;
+          font-size: 16px;
+          text-transform: uppercase;
+          height: 50px;
+          padding: 0 25px;
+          border-radius: 5px;
+          z-index: 1;
+        }
+      }
+      .withdrawal {
+        padding: 24px 27px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        background-image: linear-gradient(to bottom, #4325c0, #162488);
+        border-radius: 5px;
+        width: 445px;
+        height: 250px;
+        position: relative;
+        img {
+          position: absolute;
+          right: 28px;
+          top: 63px;
+        }
+        .detail {
+          z-index: 1;
+          p {
+            font-size: 20px;
+            line-height: 20px;
+            color: white;
+            font-weight: 400;
+          }
+          .total {
+            margin-top: 11px;
+            font-size: 48px;
+            line-height: 48px;
+            font-weight: 700;
+            color: white;
+          }
+        }
+        button {
+          margin-top: 30px;
+          outline: 0;
+          border: 0;
+          display: flex;
+          align-items: center;
+          background-color: #3fc66d;
+          border-radius: 5px;
+          color: white;
+          font-weight: 700;
+          font-size: 16px;
+          text-transform: uppercase;
+          height: 50px;
+          padding: 0 28px;
+          border-radius: 5px;
+          z-index: 1;
+        }
+      }
+    }
+    .second-section {
+      margin-top: 87px;
+      .tab-wrapper {
+        .tab__name {
+          margin-bottom: 35px;
+          display: flex;
+          .name {
+            font-size: 24px;
+            color: #5a6895;
+            margin-right: 62px;
+            cursor: pointer;
+            &.active {
+              color: white;
+            }
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+        .tab__content {
+        }
+      }
+    }
+  }
+}
+
+.table-trading-history {
+  p {
+    margin-bottom: 0;
+  }
+  .order {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 16px;
+    text-transform: capitalize;
+    &.buy {
+      color: #32ac5c;
+    }
+    &.sell {
+      color: #e63735;
+    }
+  }
+  .profit {
+    font-size: 16px;
+    font-weight: 700;
+    color: #31a051;
+  }
+}
+
+.table-profit-sharing-history {
+  .order {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 16px;
+    text-transform: capitalize;
+    &.buy {
+      color: #40da6c;
+    }
+    &.sell {
+      color: #e63735;
+    }
+  }
+  .profit-sharing {
+    font-size: 16px;
+    color: #40da6c;
+    font-weight: 700;
+  }
+}

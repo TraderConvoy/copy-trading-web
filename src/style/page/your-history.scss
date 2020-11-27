@@ -14,14 +14,12 @@
       }
     }
   }
-  .your-history__content {
-    .pagination {
-      padding-top: 25px;
-    }
-  }
 }
 
 .table-your-history {
+  .pagination {
+    padding-top: 25px;
+  }
   .rdt_TableRow {
     padding: 17px 0 !important;
   }

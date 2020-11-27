@@ -1,5 +1,4 @@
-import Pagination, { itemWithPage } from 'containers/components/Pagination';
-import React, { useState } from 'react';
+import React from 'react';
 import TableYourHistory from './components/TableYourHistory';
 
 const fakeData = {
@@ -16,7 +15,6 @@ const fakeData = {
 };
 
 const YourHistory = () => {
-  const [page, setPage] = useState(1);
   const data = Array(220).fill(fakeData);
   return (
     <div className="your-history">
@@ -26,8 +24,7 @@ const YourHistory = () => {
         </div>
       </div>
       <div className="your-history__content">
-        <TableYourHistory data={itemWithPage(page, 9, data)} />
-        <Pagination page={page} perPage={9} data={data} pageChange={(page: number) => setPage(page)} />
+        <TableYourHistory data={data} />
       </div>
     </div>
   );

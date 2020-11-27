@@ -1,23 +1,23 @@
-import { TABLE_YOUR_HISTORY } from 'constant/datatable';
+import { TABLE_PROFIT_SHARING_HISTORY } from 'constant/datatable';
 import Pagination, { itemWithPage } from 'containers/components/Pagination';
 import React, { useState } from 'react';
 import Datatable from 'react-data-table-component';
 
-const TableYourHistory = ({ data }) => {
+const TableProfitSharingHistory = ({ data }) => {
   const [page, setPage] = useState(1);
-  const pageItems = itemWithPage(page, 9, data);
+  const pageData = itemWithPage(page, 9, data);
+
   return (
-    <div className="table-your-history">
+    <div className="table-profit-sharing-history">
       <Datatable
         className="copy-trade-table"
+        columns={TABLE_PROFIT_SHARING_HISTORY()}
+        data={pageData}
         noHeader={true}
-        columns={TABLE_YOUR_HISTORY()}
-        data={pageItems}
-        paginationPerPage={10}
       />
       <Pagination page={page} perPage={9} data={data} pageChange={(page: number) => setPage(page)} />
     </div>
   );
 };
 
-export default TableYourHistory;
+export default TableProfitSharingHistory;

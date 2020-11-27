@@ -39,7 +39,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
       },
       {
         name: 'Expert management',
-        href: '/export-management',
+        href: '/copy-trading/expert-management',
         icon: 'settings.svg',
         active: ACTIVE_SIDEBAR.EXPERT_MANAGEMENT,
       },
