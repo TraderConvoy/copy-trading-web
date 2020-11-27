@@ -1,0 +1,61 @@
+.your-history {
+  p {
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .your-history__header {
+    margin-bottom: 32px;
+    .title-wrapper {
+      .title {
+        font-size: 36px;
+        color: white;
+        font-weight: 300;
+      }
+    }
+  }
+  .your-history__content {
+    .pagination {
+      padding-top: 25px;
+    }
+  }
+}
+
+.table-your-history {
+  .rdt_TableRow {
+    padding: 17px 0 !important;
+  }
+  .order {
+    text-transform: capitalize;
+    &.buy {
+      color: #32ac5c;
+    }
+    &.cell {
+      color: #e63735;
+    }
+  }
+  .profit,
+  .profit-sharing {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+  }
+  .profit {
+    color: #31a051;
+  }
+  .profit-sharing {
+    color: #e63735;
+  }
+  .total-profit {
+    background-color: #ffe343 !important;
+    border-radius: 3px;
+    color: #3c4e41;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 99px;
+    height: 33px;
+  }
+}

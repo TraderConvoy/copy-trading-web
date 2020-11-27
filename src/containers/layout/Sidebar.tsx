@@ -15,7 +15,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
       },
       {
         name: 'Your History',
-        href: '/your-history',
+        href: '/copy-trading/your-history',
         icon: 'history.svg',
         active: ACTIVE_SIDEBAR.YOUR_HISTORY,
       },

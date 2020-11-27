@@ -10,6 +10,7 @@ const NotFound = lazy(() => import('containers/exception/404'));
 const Dashboard = lazy(() => import('screens/dashboard'));
 const BecomeAnExpert = lazy(() => import('screens/becomeAnExpert'));
 const InvestmentHistory = lazy(() => import('screens/investmentHistory'));
+const YourHistory = lazy(() => import('screens/yourHistory'));
 
 const RouterConfig = () => {
   return (
@@ -23,6 +24,12 @@ const RouterConfig = () => {
         path="/copy-trading"
         activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER}
         component={Dashboard}
+      />
+      <CustomerLayoutRoute
+        exact={true}
+        path="/copy-trading/your-history"
+        activeSidebar={ACTIVE_SIDEBAR.YOUR_HISTORY}
+        component={YourHistory}
       />
       <CustomerLayoutRoute
         exact={true}

@@ -116,3 +116,57 @@ button {
 .button-stop {
   background-color: #d83a39;
 }
+
+.copy-trade-table {
+  .rdt_Table {
+    background-color: transparent;
+    .rdt_TableHead {
+      margin-bottom: 3px;
+      border-radius: 5px;
+      overflow: hidden;
+      .rdt_TableHeadRow {
+        background-color: #20284f;
+        padding: 15px 25px;
+        min-height: unset;
+        .rdt_TableCol {
+          padding-right: 25px;
+          &:last-child {
+            padding-right: 0;
+          }
+        }
+        div {
+          font-size: 14px;
+          color: #d4ddfe;
+          font-weight: 700;
+          line-height: 14px;
+          padding: 0;
+          height: 14px;
+          margin: 0;
+        }
+      }
+    }
+    .rdt_TableBody {
+      border-radius: 5px;
+      background-color: #20284f;
+      padding: 0 25px;
+      div {
+        background-color: unset;
+      }
+      .rdt_TableRow {
+        min-height: unset;
+        padding: 26px 0;
+        border-bottom: 1px solid #343a63;
+        .rdt_TableCell {
+          padding: 0;
+          color: #d4ddfe;
+          padding-right: 25px;
+          font-size: 16px;
+          line-height: 16px;
+          &:last-child {
+            padding-right: 0;
+          }
+        }
+      }
+    }
+  }
+}
