@@ -21,7 +21,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
       },
       {
         name: 'Investment History',
-        href: 'copy-trading/investment-history',
+        href: '/copy-trading/investment-history',
         icon: 'graph.svg',
         active: ACTIVE_SIDEBAR.INVESTMENT_HISTORY,
       },

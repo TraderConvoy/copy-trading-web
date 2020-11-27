@@ -1,5 +1,5 @@
+import Pagination, { itemWithPage } from 'containers/components/Pagination';
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
-import Pagination, { itemWithPage } from 'containers/layout/Pagination';
 import React, { useContext, useState } from 'react';
 import Leader from './components/Leader';
 import ModalStartCopy from './components/ModalStartCopy';

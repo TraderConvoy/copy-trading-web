@@ -85,3 +85,34 @@ button {
     }
   }
 }
+
+.button-start,
+.button-pause,
+.button-stop {
+  height: 50px;
+  width: 143px;
+  border-radius: 5px;
+  outline: 0 !important;
+  border: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  img {
+    margin-right: 5px;
+  }
+}
+
+.button-start {
+  background-color: #3fc66d;
+}
+.button-pause {
+  background-color: #2845ae;
+}
+.button-stop {
+  background-color: #d83a39;
+}

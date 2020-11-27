@@ -1,5 +1,5 @@
+import Toggle from 'containers/components/Toggle';
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
-import { Toggle } from 'containers/layout/CustomComponent';
 import React, { useContext, useState } from 'react';
 import { Modal } from 'react-bootstrap';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Toggle = ({ active, onClick }) => {
+const Toggle = ({ active, onClick }) => {
   return (
     <div className="toggle-wrapper">
       <div className={`toggle ${active ? 'active' : ''}`}>
@@ -10,3 +10,5 @@ export const Toggle = ({ active, onClick }) => {
     </div>
   );
 };
+
+export default Toggle;
