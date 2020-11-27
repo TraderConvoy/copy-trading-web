@@ -1,5 +1,5 @@
-.top-leader {
-  .top-leader__header {
+.dashboard {
+  .dashboard__header {
     display: flex;
     justify-content: space-between;
     .title-wrapper {
@@ -36,7 +36,7 @@
       }
     }
   }
-  .top-leader__content {
+  .dashboard__content {
     margin-top: 30px;
     display: flex;
     justify-content: space-between;
@@ -162,7 +162,7 @@
       border-radius: 10px;
       width: 100%;
       height: 50px;
-      background-color: $greenColor;
+      background-color: $greenButton;
       color: white;
       font-size: 16px;
       font-weight: 700;
@@ -387,7 +387,7 @@
           border: 0;
           height: 50px;
           width: 143px;
-          background-color: $greenColor;
+          background-color: $greenButton;
           color: white;
           font-size: 16px;
           font-weight: 700;

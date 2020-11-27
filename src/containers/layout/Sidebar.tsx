@@ -9,7 +9,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
     () => [
       {
         name: 'Top leader',
-        href: '/top-leader',
+        href: '/copy-trading/top-leader',
         icon: 'flag.svg',
         active: ACTIVE_SIDEBAR.TOP_LEADER,
       },
@@ -21,7 +21,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
       },
       {
         name: 'Investment History',
-        href: '/investment-history',
+        href: 'copy-trading/investment-history',
         icon: 'graph.svg',
         active: ACTIVE_SIDEBAR.INVESTMENT_HISTORY,
       },

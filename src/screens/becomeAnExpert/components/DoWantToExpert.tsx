@@ -1,7 +1,11 @@
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
 import React, { useContext } from 'react';
 
-const DoWantToExpert = () => {
+type DoWantToExpert = {
+  onBecome: () => void;
+};
+
+const DoWantToExpert = (props: DoWantToExpert) => {
   const urlImg = useContext(UrlImagesContext);
 
   return (
@@ -36,7 +40,7 @@ const DoWantToExpert = () => {
       </div>
 
       <div className="button-wrapper">
-        <button>BECOME AN EXPERT</button>
+        <button onClick={() => props.onBecome()}>BECOME AN EXPERT</button>
         <p className="text-danger mt-2">You do not have permission</p>
       </div>
     </div>

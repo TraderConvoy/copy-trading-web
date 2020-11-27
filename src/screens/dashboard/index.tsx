@@ -4,7 +4,7 @@ import React, { useContext, useState } from 'react';
 import Leader from './components/Leader';
 import ModalStartCopy from './components/ModalStartCopy';
 
-const TopLeader = () => {
+const Dashboard = () => {
   const [showModalSC, setShowModalStartSC] = useState(false);
   const [page, setPage] = useState(1);
   const urlImg = useContext(UrlImagesContext);
@@ -26,9 +26,9 @@ const TopLeader = () => {
     .map((_, i) => i + 1);
 
   return (
-    <div className="top-leader">
+    <div className="dashboard">
       <ModalStartCopy isOpen={showModalSC} closeModal={closeModalSC} />
-      <div className="top-leader__header">
+      <div className="dashboard__header">
         <div className="title-wrapper">
           <p className="title">Top performing</p>
         </div>
@@ -39,7 +39,7 @@ const TopLeader = () => {
           </div>
         </div>
       </div>
-      <div className="top-leader__content">
+      <div className="dashboard__content">
         {itemWithPage(page, 9, data).map((item) => {
           return <Leader key={item} startCopy={() => openModalSC()} />;
         })}
@@ -49,4 +49,4 @@ const TopLeader = () => {
   );
 };
 
-export default React.memo(TopLeader);
+export default React.memo(Dashboard);

@@ -6,9 +6,10 @@ import { Redirect, Route, Switch } from 'react-router';
 /** not found */
 const NotFound = lazy(() => import('containers/exception/404'));
 
-const Home = lazy(() => import('screens/home'));
-const TopLeader = lazy(() => import('screens/topLeader'));
+// const Home = lazy(() => import('screens/home'));
+const Dashboard = lazy(() => import('screens/dashboard'));
 const BecomeAnExpert = lazy(() => import('screens/becomeAnExpert'));
+const InvestmentHistory = lazy(() => import('screens/investmentHistory'));
 
 const RouterConfig = () => {
   return (
@@ -16,18 +17,24 @@ const RouterConfig = () => {
       {process.env.NODE_ENV === 'development' ? (
         <Route exact={true} path="/" render={() => <Redirect to="/copy-trading" />} />
       ) : null}
-      <CustomerLayoutRoute exact={true} path="/copy-trading" component={Home} />
+      {/* <CustomerLayoutRoute exact={true} path="/copy-trading" component={Home} /> */}
       <CustomerLayoutRoute
         exact={true}
-        path="/copy-trading/top-leader"
+        path="/copy-trading"
         activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER}
-        component={TopLeader}
+        component={Dashboard}
       />
       <CustomerLayoutRoute
         exact={true}
         path="/copy-trading/become-an-expert"
         activeSidebar={ACTIVE_SIDEBAR.BECOME_AN_EXPERT}
         component={BecomeAnExpert}
+      />
+      <CustomerLayoutRoute
+        exact={true}
+        path="/copy-trading/investment-history"
+        activeSidebar={ACTIVE_SIDEBAR.INVESTMENT_HISTORY}
+        component={InvestmentHistory}
       />
       <Route component={NotFound} />
     </Switch>
