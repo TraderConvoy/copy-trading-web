@@ -27,7 +27,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
       },
       {
         name: 'Investment Calculator',
-        href: '/investment-calculator',
+        href: '/copy-trading/investment-calculator',
         icon: 'calculator.svg',
         active: ACTIVE_SIDEBAR.INVESTMENT_CALCULATOR,
       },

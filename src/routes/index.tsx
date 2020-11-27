@@ -12,6 +12,7 @@ const BecomeAnExpert = lazy(() => import('screens/becomeAnExpert'));
 const InvestmentHistory = lazy(() => import('screens/investmentHistory'));
 const YourHistory = lazy(() => import('screens/yourHistory'));
 const ExpertManagement = lazy(() => import('screens/expertManagement'));
+const InvestmentCalculator = lazy(() => import('screens/investmentCalculator'));
 
 const RouterConfig = () => {
   return (
@@ -37,6 +38,12 @@ const RouterConfig = () => {
         path="/copy-trading/become-an-expert"
         activeSidebar={ACTIVE_SIDEBAR.BECOME_AN_EXPERT}
         component={BecomeAnExpert}
+      />
+      <CustomerLayoutRoute
+        exact={true}
+        path="/copy-trading/investment-calculator"
+        activeSidebar={ACTIVE_SIDEBAR.INVESTMENT_CALCULATOR}
+        component={InvestmentCalculator}
       />
       <CustomerLayoutRoute
         exact={true}
