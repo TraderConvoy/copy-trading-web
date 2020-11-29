@@ -70,7 +70,7 @@ const ModalStartCopy = ({ isOpen, closeModal }) => {
                   <Toggle active={haveMaximum} onClick={(value: boolean) => setHaveHaximum(value)} />
                 </div>
                 <div className="__input">
-                  <input />
+                  <input disabled={!haveMaximum} />
                 </div>
               </div>
               <div className="input-wrapper stop-loss">
@@ -79,7 +79,7 @@ const ModalStartCopy = ({ isOpen, closeModal }) => {
                   <Toggle active={haveStopLoss} onClick={(value: boolean) => setHaveStopLoss(value)} />
                 </div>
                 <div className="__input">
-                  <input />
+                  <input disabled={!haveStopLoss} />
                 </div>
               </div>
               <div className="input-wrapper take-profit">
@@ -88,7 +88,7 @@ const ModalStartCopy = ({ isOpen, closeModal }) => {
                   <Toggle active={haveTakeProfit} onClick={(value: boolean) => setHaveTakeProfit(value)} />
                 </div>
                 <div className="__input">
-                  <input />
+                  <input disabled={!haveTakeProfit} />
                 </div>
               </div>
             </Col>

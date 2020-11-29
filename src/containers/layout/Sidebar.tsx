@@ -44,6 +44,12 @@ const Sidebar = ({ activeSidebar = '' }) => {
         icon: 'settings.svg',
         active: ACTIVE_SIDEBAR.EXPERT_MANAGEMENT,
       },
+      {
+        name: 'Wallet',
+        href: '/copy-trading/wallet',
+        icon: 'settings.svg',
+        active: ACTIVE_SIDEBAR.WALLET,
+      },
     ],
     [],
   );

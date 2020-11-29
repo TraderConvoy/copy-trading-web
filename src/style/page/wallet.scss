@@ -1,0 +1,228 @@
+.wallet {
+  p {
+    margin-bottom: 0;
+  }
+  .title-wrapper {
+    color: white;
+    margin-bottom: 50px;
+    .title {
+      font-size: 36px;
+      font-weight: 300;
+    }
+    .sub {
+      font-size: 20px;
+      font-weight: 400;
+    }
+  }
+  .section-name {
+    font-size: 24px;
+    color: white;
+    font-weight: 400;
+    margin-top: 142px;
+    margin-bottom: 50px;
+  }
+}
+.transfer {
+  display: flex;
+  justify-content: flex-start;
+  color: white;
+  .real-account {
+    max-width: 288px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(to bottom, #4325c0, #162488);
+    height: 200px;
+    width: 22vw;
+    border-radius: 5px;
+    margin-right: 20px;
+    padding: 0 20px;
+    font-size: 48px;
+    font-weight: 700;
+    .name {
+      position: absolute;
+      top: 34px;
+      left: 20px;
+      font-size: 16px;
+      font-weight: 400;
+    }
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: -35px;
+      z-index: 1;
+    }
+  }
+  .transfer-input {
+    background-image: linear-gradient(to bottom, #4325c0, #162488);
+    height: 200px;
+    width: 22vw;
+    max-width: 288px;
+    border-radius: 5px;
+    margin-right: 20px;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: -35px;
+      z-index: 1;
+    }
+    p {
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      margin-top: 37px;
+    }
+    .input-wrapper {
+      input,
+      button {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        height: 50px;
+        border-radius: 5px;
+      }
+      .input {
+        margin-bottom: 13px;
+        position: relative;
+        color: #a697ef;
+        .currency {
+          position: absolute;
+          font-size: 18px;
+          font-weight: 700;
+          text-transform: uppercase;
+          margin: 0;
+          top: 50%;
+          right: 14px;
+          transform: translateY(-50%);
+        }
+        input {
+          background-color: #261f49;
+          padding-left: 17px;
+          padding-right: 65px;
+          font-size: 18px;
+          font-weight: 700;
+          color: #a697ef;
+        }
+      }
+      .button {
+        button {
+          text-transform: uppercase;
+          font-size: 16px;
+          line-height: 16px;
+          font-weight: 700;
+          color: white;
+          background-color: #3fc66d;
+        }
+      }
+    }
+  }
+  .copy-trade-account {
+    max-width: 288px;
+    width: 22vw;
+    background-image: linear-gradient(to bottom, #4325c0, #162488);
+    height: 200px;
+    width: 288px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+    font-size: 48px;
+    font-weight: 700;
+    .name {
+      position: absolute;
+      font-size: 16px;
+      font-weight: 400;
+      top: 34px;
+      left: 20px;
+    }
+  }
+}
+.table-transfer-history {
+  .amount {
+    color: #40da6c;
+    font-weight: 700;
+  }
+  .status {
+    color: #40da6c;
+    font-weight: 700;
+  }
+}
+
+@media only screen and (max-width: 1120px) {
+  .wallet {
+    p {
+    }
+    .title-wrapper {
+      .title {
+      }
+      .sub {
+      }
+    }
+    .section-name {
+    }
+  }
+  .transfer {
+    flex-direction: column;
+    .real-account {
+      width: 100%;
+      max-width: unset;
+      margin-right: 0;
+      margin-bottom: 20px;
+      height: 160px;
+      .name {
+      }
+      .arrow {
+        left: 50%;
+        top: unset;
+        transform: translateX(-50%) rotate(90deg);
+        bottom: -35px;
+      }
+    }
+    .transfer-input {
+      width: 100%;
+      max-width: unset;
+      margin-right: 0;
+      margin-bottom: 20px;
+      .arrow {
+        top: unset;
+        left: 50%;
+        transform: translateX(-50%) rotate(90deg);
+        bottom: -35px;
+      }
+      p {
+        margin-top: 20px;
+      }
+      .input-wrapper {
+        input,
+        button {
+        }
+        .input {
+          .currency {
+          }
+          input {
+          }
+        }
+        .button {
+          button {
+          }
+        }
+      }
+    }
+    .copy-trade-account {
+      height: 160px;
+      width: 100%;
+      max-width: unset;
+      .name {
+      }
+    }
+  }
+}
