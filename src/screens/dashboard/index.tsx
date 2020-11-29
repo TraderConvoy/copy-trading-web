@@ -5,9 +5,11 @@ import React, { useContext, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Leader from './components/Leader';
 import ModalStartCopy from './components/ModalStartCopy';
+import ModalTransfer from './components/ModalTransfer';
 
 const Dashboard = () => {
   const [showModalSC, setShowModalStartSC] = useState(false);
+  const [showModalTf, setShowModalTf] = useState(true);
   const [page, setPage] = useState(1);
   const urlImg = useContext(UrlImagesContext);
   const documentWidth = useContext(DocumentWidthContext);
@@ -18,6 +20,10 @@ const Dashboard = () => {
 
   const closeModalSC = () => {
     setShowModalStartSC(false);
+  };
+
+  const closeModalTf = () => {
+    setShowModalTf(false);
   };
 
   const handlePageChange = (page: number): void => {
@@ -31,6 +37,7 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <ModalStartCopy isOpen={showModalSC} closeModal={closeModalSC} />
+      <ModalTransfer isOpen={showModalTf} closeModal={closeModalTf} />
       <div className="dashboard__header">
         <Row>
           <Col md={true}>
