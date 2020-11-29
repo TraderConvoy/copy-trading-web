@@ -14,23 +14,18 @@ button {
 }
 
 .content-wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
   background-color: $backgroundColor;
   .wrapper-top {
   }
   .wrapper-middle {
-    flex: 1;
-    display: flex;
-    .wrapper-left {
+    .sidebar-wrapper {
+      max-width: 330px;
     }
-    .wrapper-right {
-      flex: 1;
-      .content {
-        margin: 0 20px;
-        max-width: 1370px;
-      }
+    .content {
+      padding: 0 20px;
+      max-width: 1370px;
+      overflow: hidden;
+      padding-bottom: 30px;
     }
   }
 }
@@ -118,6 +113,7 @@ button {
 }
 
 .copy-trade-table {
+  overflow-x: scroll;
   .rdt_Table {
     background-color: transparent;
     .rdt_TableHead {
@@ -168,5 +164,12 @@ button {
         }
       }
     }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .title {
+    font-size: 30px !important;
+    line-height: 30px !important;
   }
 }

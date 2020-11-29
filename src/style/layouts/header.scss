@@ -167,3 +167,167 @@
     }
   }
 }
+
+@media only screen and (max-width: 1200px) {
+  #header {
+    p {
+    }
+    .header-wrapper {
+      .header-desktop {
+        .header-nav {
+          .nav-wrapper {
+            padding: 10px 20px;
+            .nav-left {
+              .logo {
+                p {
+                  font-size: 24px;
+                  cursor: pointer;
+                  span {
+                  }
+                }
+              }
+            }
+            .nav-right {
+              .user-wrapper {
+                margin-left: 13px;
+                .avatar-wrapper {
+                }
+                .username {
+                }
+              }
+              .notification-wrapper {
+                margin-left: 13px;
+                .icon {
+                }
+                p {
+                }
+              }
+              .practice-account-wrapper {
+                margin-left: 13px;
+                .wrapper-left {
+                  p {
+                  }
+                  .wallet {
+                  }
+                }
+                .wrapper-right {
+                  .dropdown {
+                  }
+                }
+              }
+              .type-wrapper {
+                margin-left: 13px;
+                display: none;
+                .type {
+                  p {
+                  }
+                }
+              }
+              .level-wrapper {
+                margin-left: 13px;
+                display: none;
+                .level {
+                  p {
+                    &:first-child {
+                    }
+                  }
+                }
+              }
+              .deposit-wrapper {
+                display: none;
+                button {
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  #header {
+    p {
+    }
+    .header-wrapper {
+      .header-desktop {
+        .header-nav {
+          .nav-wrapper {
+            padding: 10px 20px;
+            .nav-left {
+              .logo {
+                p {
+                  font-size: 24px;
+                  cursor: pointer;
+                  span {
+                  }
+                }
+              }
+            }
+            .nav-right {
+              .user-wrapper {
+                margin-left: 13px;
+                .avatar-wrapper {
+                }
+                .username {
+                  display: none;
+                }
+              }
+              .notification-wrapper {
+                margin-left: 13px;
+                .icon {
+                }
+                p {
+                  display: none;
+                }
+              }
+              .practice-account-wrapper {
+                margin-left: 13px;
+                .wrapper-left {
+                  display: none;
+                  p {
+                  }
+                  .wallet {
+                  }
+                }
+                .wrapper-right {
+                  display: flex;
+                  align-items: center;
+                  .dropdown {
+                    height: 34px;
+                    width: 34px;
+                    margin: 0;
+                  }
+                }
+              }
+              .type-wrapper {
+                margin-left: 13px;
+                display: none;
+                .type {
+                  p {
+                  }
+                }
+              }
+              .level-wrapper {
+                margin-left: 13px;
+                display: none;
+                .level {
+                  p {
+                    &:first-child {
+                    }
+                  }
+                }
+              }
+              .deposit-wrapper {
+                display: none;
+                button {
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

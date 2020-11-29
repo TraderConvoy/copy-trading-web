@@ -44,7 +44,7 @@ const ExpertManagement = () => {
         </div>
       </div>
       <div className="expert-management__content">
-        <div className="first-section">
+        <div className="card-wrapper">
           <div className="start-copy-trade">
             <img src={`${urlImg}icons/start-copy-trade.svg`} />
             <p>Start copy trade now to receive profit from all Copier who copy your trade</p>
@@ -59,28 +59,26 @@ const ExpertManagement = () => {
             <button>withdrawal</button>
           </div>
         </div>
-        <div className="second-section">
-          <div className="tab-wrapper">
-            <div className="tab__name">
-              <p
-                className={`name ${tab === tabs.TRADING_HISTORY ? 'active' : ''}`}
-                onClick={() => setTab(tabs.TRADING_HISTORY)}
-              >
-                Trading history
-              </p>
-              <p
-                className={`name ${tab === tabs.PROFIT_SHARING_HISTORY ? 'active' : ''}`}
-                onClick={() => setTab(tabs.PROFIT_SHARING_HISTORY)}
-              >
-                Profit sharing history
-              </p>
-            </div>
-            <div className="tab__content">
-              {tab === tabs.TRADING_HISTORY ? <TableTradingHistory data={fakeDataTradingHistory} /> : null}
-              {tab === tabs.PROFIT_SHARING_HISTORY ? (
-                <TableProfitSharingHistory data={fakeDataProfitSharingHistory} />
-              ) : null}
-            </div>
+        <div className="tab-wrapper">
+          <div className="tab__name">
+            <p
+              className={`name ${tab === tabs.TRADING_HISTORY ? 'active' : ''}`}
+              onClick={() => setTab(tabs.TRADING_HISTORY)}
+            >
+              Trading history
+            </p>
+            <p
+              className={`name ${tab === tabs.PROFIT_SHARING_HISTORY ? 'active' : ''}`}
+              onClick={() => setTab(tabs.PROFIT_SHARING_HISTORY)}
+            >
+              Profit sharing history
+            </p>
+          </div>
+          <div className="tab__content">
+            {tab === tabs.TRADING_HISTORY ? <TableTradingHistory data={fakeDataTradingHistory} /> : null}
+            {tab === tabs.PROFIT_SHARING_HISTORY ? (
+              <TableProfitSharingHistory data={fakeDataProfitSharingHistory} />
+            ) : null}
           </div>
         </div>
       </div>

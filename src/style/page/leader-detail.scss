@@ -165,3 +165,121 @@
     }
   }
 }
+
+@media only screen and (max-width: 941px) {
+  .leader-detail {
+    p {
+    }
+    .leader-detail__header {
+      .title-wrapper {
+        p {
+        }
+      }
+    }
+    .leader-detail__content {
+      .leader-info {
+        .wrapper-top {
+        }
+        .wrapper-bottom {
+          .wrapper-left {
+            padding-left: 0;
+            .value {
+              font-size: 24px;
+            }
+            .sub {
+              font-size: 16px;
+            }
+            .sub-green {
+              font-size: 16px;
+            }
+          }
+          .wrapper-right {
+            .button-wrapper {
+              p {
+              }
+              button {
+                margin-left: 10px;
+              }
+            }
+          }
+        }
+      }
+      .tab-wrapper {
+        .tab-names {
+          .tab {
+            &:last-child {
+            }
+            &.active {
+              &::after {
+              }
+            }
+          }
+        }
+        .tab-content {
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .leader-detail {
+    p {
+    }
+    .leader-detail__header {
+      .title-wrapper {
+        p {
+        }
+      }
+    }
+    .leader-detail__content {
+      .leader-info {
+        padding: 20px;
+        .wrapper-top {
+        }
+        .wrapper-bottom {
+          .wrapper-left {
+            padding-left: 0;
+            .value {
+              font-size: 24px;
+            }
+            .sub {
+              font-size: 16px;
+            }
+            .sub-green {
+              font-size: 16px;
+            }
+          }
+          .wrapper-right {
+            .button-wrapper {
+              flex-direction: column-reverse;
+              align-items: flex-end;
+              justify-content: center;
+              p {
+                margin-top: 10px;
+              }
+              button {
+                margin-left: 10px;
+              }
+            }
+          }
+        }
+      }
+      .tab-wrapper {
+        .tab-names {
+          .tab {
+            margin-right: 20px;
+            &:last-child {
+            }
+            &.active {
+              &::after {
+              }
+            }
+          }
+        }
+        .tab-content {
+        }
+      }
+    }
+  }
+}

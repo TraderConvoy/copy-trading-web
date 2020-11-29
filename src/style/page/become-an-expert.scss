@@ -151,3 +151,159 @@
     }
   }
 }
+
+@media only screen and (max-width: 1338px) {
+  .become-an-expert {
+    p {
+    }
+    .become-an-expert__header {
+      .title-wrapper {
+        .title {
+        }
+      }
+    }
+    .become-an-expert__content {
+      .become-icon {
+        display: none;
+      }
+      .section-expert {
+      }
+    }
+  }
+
+  .do-want-to-expert {
+    p {
+    }
+    .title-wrapper {
+      .title,
+      .sub {
+      }
+      .sub {
+      }
+    }
+    .required-wrapper {
+      .title {
+      }
+      .checkbox-wrapper {
+        .checkbox-content {
+          &:last-child {
+          }
+          &.active {
+            .checkbox {
+              img {
+              }
+            }
+          }
+          .checkbox {
+            img {
+            }
+          }
+          p {
+          }
+        }
+      }
+    }
+    .button-wrapper {
+      button {
+      }
+    }
+  }
+
+  .become-success {
+    .check-done {
+      img {
+      }
+    }
+    .title-wrapper {
+      .title {
+      }
+      .sub {
+      }
+    }
+    .button-wrapper {
+      button {
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .become-an-expert {
+    p {
+    }
+    .become-an-expert__header {
+      .title-wrapper {
+        .title {
+        }
+      }
+    }
+    .become-an-expert__content {
+      .become-icon {
+      }
+      .section-expert {
+      }
+    }
+  }
+
+  .do-want-to-expert {
+    padding: 20px;
+    p {
+    }
+    .title-wrapper {
+      .title,
+      .sub {
+        font-size: 20px !important;
+        font-weight: 700;
+      }
+      .sub {
+        font-weight: 400;
+        font-size: 14px !important;
+      }
+    }
+    .required-wrapper {
+      .title {
+        font-size: 18px !important;
+      }
+      .checkbox-wrapper {
+        .checkbox-content {
+          &:last-child {
+          }
+          &.active {
+            .checkbox {
+              img {
+              }
+            }
+          }
+          .checkbox {
+            img {
+            }
+          }
+          p {
+          }
+        }
+      }
+    }
+    .button-wrapper {
+      button {
+      }
+    }
+  }
+
+  .become-success {
+    padding: 20px;
+    .check-done {
+      img {
+      }
+    }
+    .title-wrapper {
+      .title {
+      }
+      .sub {
+      }
+    }
+    .button-wrapper {
+      button {
+      }
+    }
+  }
+}

@@ -57,3 +57,38 @@
     height: 33px;
   }
 }
+
+@media only screen and (max-width: 1385px) {
+  .your-history {
+    p {
+    }
+    .your-history__header {
+      .title-wrapper {
+        .title {
+        }
+      }
+    }
+  }
+
+  .table-your-history {
+    .pagination {
+    }
+    .rdt_TableRow {
+    }
+    .order {
+      &.buy {
+      }
+      &.cell {
+      }
+    }
+    .profit,
+    .profit-sharing {
+    }
+    .profit {
+    }
+    .profit-sharing {
+    }
+    .total-profit {
+    }
+  }
+}

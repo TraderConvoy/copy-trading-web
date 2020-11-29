@@ -1,9 +1,10 @@
 import { ACTIVE_SIDEBAR } from 'constant/sidebar';
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Sidebar = ({ activeSidebar = '' }) => {
+  const [active, setActive] = useState(false);
   const urlImg = useContext(UrlImagesContext);
   const sidebars = useMemo(
     () => [
@@ -48,8 +49,11 @@ const Sidebar = ({ activeSidebar = '' }) => {
   );
 
   return (
-    <div id="sidebar">
+    <div id="sidebar" className={`${active ? 'active' : ''}`}>
       <div className="sidebar-wrapper">
+        <button className="toggle-menu" onClick={() => setActive(!active)}>
+          <img src={`${urlImg}icons/menu.svg`} />
+        </button>
         <div className="user-wrapper">
           <div className="avatar" />
           <div className="username">

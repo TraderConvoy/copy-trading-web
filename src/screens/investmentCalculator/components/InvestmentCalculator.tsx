@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 
 const InvestmentCalculator = () => {
   return (
@@ -25,12 +26,28 @@ const InvestmentCalculator = () => {
         <div className="item investment-period-wrapper">
           <p>Investment period</p>
           <div className="tab-wrapper">
-            <button className="tab">7 days</button>
-            <button className="tab">1 months</button>
-            <button className="tab active">2 months</button>
-            <button className="tab">3 months</button>
-            <button className="tab">6 months</button>
-            <button className="tab">12 months</button>
+            <Container fluid={true}>
+              <Row>
+                <Col sm={true} className="p-0 m-0">
+                  <button className="tab">7 days</button>
+                </Col>
+                <Col sm={true} className="p-0 m-0">
+                  <button className="tab">1 months</button>
+                </Col>
+                <Col sm={true} className="p-0 m-0">
+                  <button className="tab active">2 months</button>
+                </Col>
+                <Col sm={true} className="p-0 m-0">
+                  <button className="tab">3 months</button>
+                </Col>
+                <Col sm={true} className="p-0 m-0">
+                  <button className="tab">6 months</button>
+                </Col>
+                <Col sm={true} className="p-0 m-0">
+                  <button className="tab">12 months</button>
+                </Col>
+              </Row>
+            </Container>
           </div>
         </div>
       </div>

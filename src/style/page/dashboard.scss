@@ -1,7 +1,6 @@
 .dashboard {
+  width: 100%;
   .dashboard__header {
-    display: flex;
-    justify-content: space-between;
     .title-wrapper {
       .title {
         font-size: 36px;
@@ -11,6 +10,9 @@
       }
     }
     .search-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
       .search {
         position: relative;
         img {
@@ -38,9 +40,6 @@
   }
   .dashboard__content {
     margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
     .leader-card {
       margin-bottom: 20px;
     }
@@ -50,7 +49,6 @@
 .leader-card {
   background-color: $darkBlueColor;
   border-radius: 10px;
-  width: 446px;
   padding: 24px 26px;
   p {
     margin-bottom: 0;
@@ -76,6 +74,7 @@
         color: $lightBlueColor-2;
         font-weight: 700;
         font-size: 24px;
+        // font-size: 1.2rem;
         line-height: 24px;
         margin-bottom: 4px;
       }
@@ -123,9 +122,10 @@
       }
       .gain-percent {
         font-size: 13px;
+        line-height: 13px;
         color: $greenColor;
         font-weight: 500;
-        margin-bottom: 24px;
+        margin-bottom: 1.1vw;
       }
       .copy-counter {
         font-size: 14px;
@@ -147,6 +147,11 @@
       }
       .chart-wrapper {
         padding-top: 5px;
+        height: 100%;
+        width: 100%;
+        canvas {
+          max-width: 100%;
+        }
       }
     }
   }
@@ -250,10 +255,8 @@
       }
     }
     .modal-body {
-      display: flex;
       padding: 0;
       .wrapper-left {
-        width: 50%;
         padding: 33px 0px 33px 48px;
         border-right: 1px solid #3d436f;
         .title {
@@ -329,7 +332,6 @@
         }
       }
       .wrapper-right {
-        width: 50%;
         padding: 33px 48px;
         .advance-wrapper {
           margin-bottom: 20px;
@@ -392,6 +394,174 @@
           font-size: 16px;
           font-weight: 700;
           text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .dashboard {
+    .dashboard__header {
+      .row {
+      }
+      .title-wrapper {
+        .title {
+          // font-size: 30px;
+          line-height: 30px;
+        }
+      }
+      .search-wrapper {
+        .search {
+          img {
+          }
+          input {
+            width: 300px;
+            &::placeholder {
+            }
+          }
+        }
+      }
+    }
+    .dashboard__content {
+      .leader-card {
+      }
+      .row {
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .dashboard {
+    .dashboard__header {
+      .row {
+        display: flex;
+        flex-direction: column;
+      }
+      .title-wrapper {
+        .title {
+          font-size: 30px;
+          line-height: 30px;
+        }
+      }
+      .search-wrapper {
+        .search {
+          width: 100%;
+          img {
+          }
+          input {
+            width: 100%;
+            &::placeholder {
+            }
+          }
+        }
+      }
+    }
+    .dashboard__content {
+      .leader-card {
+      }
+      .row {
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .start-copy-modal {
+    .modal-dialog {
+    }
+    p {
+    }
+    .modal-content {
+      .modal-header {
+        padding: 20px;
+        .wrapper-left {
+          .info-wrapper {
+            .avatar-wrapper {
+              .avatar {
+              }
+            }
+            .name-wrapper {
+              .name {
+              }
+              .sub {
+                .expert {
+                }
+                .percent {
+                }
+              }
+            }
+          }
+        }
+        .wrapper-right {
+          .close-wrapper {
+            button {
+            }
+          }
+        }
+      }
+      .modal-body {
+        .wrapper-left {
+          padding: 20px;
+          border-bottom: 1px solid #3d436f;
+          border-left: 0;
+          .title {
+          }
+          .amount-wrapper {
+            p {
+            }
+            .input-wrapper {
+              .currency {
+              }
+              input {
+              }
+            }
+          }
+          .wallet-wrapper {
+            .total-wallet {
+              span {
+              }
+            }
+            .sub {
+            }
+          }
+          .advance-wrapper {
+            button {
+            }
+            p {
+            }
+          }
+        }
+        .wrapper-right {
+          padding: 20px;
+          .advance-wrapper {
+            p {
+              &:first-child {
+              }
+              &:last-child {
+              }
+            }
+          }
+          .input-wrapper {
+            &:last-child {
+            }
+            .__header {
+              p {
+              }
+            }
+            .__input {
+              input {
+              }
+            }
+          }
+        }
+      }
+      .modal-footer {
+        .button-wrapper {
+          padding: 20px;
+          button {
+          }
         }
       }
     }

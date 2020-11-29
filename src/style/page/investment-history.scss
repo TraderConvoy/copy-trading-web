@@ -22,18 +22,16 @@
 .investment-history-item {
   background-color: $modalBackground;
   border-radius: 5px;
-  display: flex;
   padding: 40px 30px;
   margin-bottom: 20px;
   &:last-child {
     margin-bottom: 0;
   }
   .info-wrapper {
-    flex: 1;
     display: flex;
     align-items: center;
-    width: 370px;
     min-width: 370px;
+    height: 100%;
     .wrapper-left {
       .avatar {
         height: 80px;
@@ -80,11 +78,14 @@
     }
   }
   .detail-wrapper {
-    flex: 2;
     display: flex;
     align-items: center;
+    height: 100%;
     .detail-item {
-      margin-left: 58px;
+      margin-left: 3vw;
+      &:first-child {
+        margin-left: 0;
+      }
       .name {
         font-size: 16px;
         color: $lightBlueColor-2;
@@ -107,6 +108,7 @@
     flex-direction: column;
     align-items: flex-end;
     justify-content: flex-end;
+    height: 100%;
     .button-wrapper__button {
       display: flex;
       button {
@@ -121,6 +123,130 @@
       font-weight: 400;
       color: $lightBlueColor-2;
       margin-top: 10px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1464px) {
+  .investment-history {
+    p {
+      .investment-history__header {
+        .title-wrapper {
+          .title {
+          }
+        }
+      }
+    }
+    .investment-history__content {
+      .history-wrapper {
+      }
+    }
+  }
+
+  .investment-history-item {
+    &:last-child {
+    }
+    .info-wrapper {
+      .wrapper-left {
+        .avatar {
+        }
+      }
+      .wrapper-right {
+        .name {
+        }
+        .sub {
+          .expert {
+          }
+          .percent {
+          }
+        }
+      }
+    }
+    .detail-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      .detail-item {
+        &:first-child {
+        }
+        .name {
+        }
+        .value {
+        }
+      }
+    }
+    .button-wrapper {
+      margin-top: 10px;
+      .button-wrapper__button {
+        button {
+          &:last-child {
+          }
+        }
+      }
+      .button-wrapper__sub {
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1134px) {
+  .investment-history {
+    p {
+      .investment-history__header {
+        .title-wrapper {
+          .title {
+          }
+        }
+      }
+    }
+    .investment-history__content {
+      .history-wrapper {
+      }
+    }
+  }
+
+  .investment-history-item {
+    padding: 20px;
+    &:last-child {
+    }
+    .info-wrapper {
+      .wrapper-left {
+        .avatar {
+        }
+      }
+      .wrapper-right {
+        .name {
+        }
+        .sub {
+          .expert {
+          }
+          .percent {
+          }
+        }
+      }
+    }
+    .detail-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+      .detail-item {
+        &:first-child {
+        }
+        .name {
+        }
+        .value {
+        }
+      }
+    }
+    .button-wrapper {
+      margin-top: 10px;
+      .button-wrapper__button {
+        button {
+          &:last-child {
+          }
+        }
+      }
+      .button-wrapper__sub {
+      }
     }
   }
 }
