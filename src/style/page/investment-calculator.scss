@@ -108,26 +108,30 @@
         }
       }
       .tab-wrapper {
-        display: flex;
+        .col {
+          &:first-child {
+            .tab {
+              border-top-left-radius: 4px;
+              border-bottom-left-radius: 4px;
+            }
+          }
+          &:last-child {
+            .tab {
+              border-top-right-radius: 4px;
+              border-bottom-right-radius: 4px;
+            }
+          }
+        }
         .tab {
-          flex: 1;
           outline: 0;
           border: 0;
           height: 40px;
+          width: 100%;
           border: 1px solid #4e558a;
-          border-left: 0;
           background-color: unset;
           font-size: 14px;
+          line-height: 14px;
           color: $lightBlueColor-2;
-          &:first-child {
-            border-left: 1px solid #4e558a;
-            border-top-left-radius: 4px;
-            border-bottom-left-radius: 4px;
-          }
-          &:last-child {
-            border-top-right-radius: 4px;
-            border-bottom-right-radius: 4px;
-          }
           &.active {
             background-color: #3e446a;
             color: white;
@@ -141,7 +145,7 @@
     display: flex;
     border-bottom: 1px solid #343a63;
     .item {
-      margin-right: 175px;
+      margin-right: 4vw;
       &:last-child {
         margin-right: 0;
       }
@@ -172,6 +176,190 @@
       font-weight: 700;
       font-size: 16px;
       text-transform: uppercase;
+    }
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .investment-calculator {
+    .investment-calculator__header {
+      .title-wrapper {
+        .title {
+        }
+      }
+    }
+    .investment-calculator__content {
+    }
+  }
+
+  .investment-calculator-component {
+    p {
+    }
+    .__header {
+      .title {
+      }
+      .sub {
+      }
+    }
+    .__search {
+      flex-wrap: wrap;
+      .item {
+        margin-top: 10px;
+        &:last-child {
+        }
+        &.deposit-wrapper {
+          input {
+          }
+          .search-wrapper {
+            p {
+            }
+            input {
+            }
+          }
+        }
+        &.profitability-wrapper {
+          input {
+          }
+          .search-wrapper {
+            p {
+            }
+            input {
+            }
+          }
+        }
+        &.investment-period-wrapper {
+          width: 100%;
+        }
+        p {
+        }
+        .search-wrapper {
+          p {
+          }
+          input {
+          }
+        }
+        .tab-wrapper {
+          .tab {
+            &:first-child {
+            }
+            &:last-child {
+            }
+            &.active {
+            }
+          }
+        }
+      }
+    }
+    .__detail {
+      .item {
+        &:last-child {
+        }
+        p {
+        }
+        .total {
+          font-size: 24px;
+          line-height: 24px;
+        }
+      }
+    }
+    .__button {
+      button {
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .investment-calculator {
+    .investment-calculator__header {
+      .title-wrapper {
+        .title {
+        }
+      }
+    }
+    .investment-calculator__content {
+    }
+  }
+
+  .investment-calculator-component {
+    padding: 20px;
+    p {
+    }
+    .__header {
+      .title {
+        margin-bottom: 5px;
+        font-size: 20px !important;
+      }
+      .sub {
+        font-size: 14px !important;
+      }
+    }
+    .__search {
+      flex-wrap: wrap;
+      .item {
+        margin-top: 10px;
+        &:last-child {
+        }
+        &.deposit-wrapper {
+          input {
+          }
+          .search-wrapper {
+            p {
+            }
+            input {
+            }
+          }
+        }
+        &.profitability-wrapper {
+          input {
+          }
+          .search-wrapper {
+            p {
+            }
+            input {
+            }
+          }
+        }
+        &.investment-period-wrapper {
+          width: 100%;
+        }
+        p {
+        }
+        .search-wrapper {
+          p {
+          }
+          input {
+          }
+        }
+        .tab-wrapper {
+          min-width: 300px;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+          .tab {
+            border: 1px solid #4e558a !important;
+            &:first-child {
+            }
+            &:last-child {
+            }
+            &.active {
+            }
+          }
+        }
+      }
+    }
+    .__detail {
+      .item {
+        &:last-child {
+        }
+        p {
+        }
+        .total {
+        }
+      }
+    }
+    .__button {
+      button {
+      }
     }
   }
 }

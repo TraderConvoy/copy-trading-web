@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import TableLeaderHistory from 'screens/expertManagement/components/TableTradingHistory';
 import LeaderInfo from './components/LeaderInfo';
+import Overview from './components/Overview';
 
 const tabs = {
   OVERVIEW: 'overview',
@@ -19,7 +20,7 @@ const fakeData = {
 };
 
 const LeaderDetail = () => {
-  const [tab, setTab] = useState(tabs.LEADER_HISTORY);
+  const [tab, setTab] = useState(tabs.OVERVIEW);
   const history = useHistory();
 
   return (
@@ -44,7 +45,7 @@ const LeaderDetail = () => {
             </p>
           </div>
           <div className="tab-content">
-            {tab === tabs.OVERVIEW ? <p>Overview</p> : null}
+            {tab === tabs.OVERVIEW ? <Overview /> : null}
             {tab === tabs.LEADER_HISTORY ? <TableLeaderHistory data={Array(99).fill(fakeData)} /> : null}
           </div>
         </div>

@@ -9,3 +9,17 @@
     margin-bottom: 0;
   }
 }
+
+@media only screen and (max-width: 992px) {
+  .brand {
+    padding: 40px 20px;
+    background-color: $backgroundColor;
+    p {
+      font-size: 38px;
+      line-height: 38px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 0;
+    }
+  }
+}

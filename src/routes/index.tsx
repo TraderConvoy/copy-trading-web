@@ -14,6 +14,7 @@ const YourHistory = lazy(() => import('screens/yourHistory'));
 const ExpertManagement = lazy(() => import('screens/expertManagement'));
 const InvestmentCalculator = lazy(() => import('screens/investmentCalculator'));
 const LeaderDetail = lazy(() => import('screens/leaderDetail'));
+const Wallet = lazy(() => import('screens/wallet'));
 
 const RouterConfig = () => {
   return (
@@ -63,6 +64,12 @@ const RouterConfig = () => {
         path="/copy-trading/expert-management"
         activeSidebar={ACTIVE_SIDEBAR.EXPERT_MANAGEMENT}
         component={ExpertManagement}
+      />
+      <CustomerLayoutRoute
+        exact={true}
+        path="/copy-trading/wallet"
+        activeSidebar={ACTIVE_SIDEBAR.WALLET}
+        component={Wallet}
       />
       <Route component={NotFound} />
     </Switch>

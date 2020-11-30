@@ -15,10 +15,10 @@ const BecomeAnExpert = () => {
         </div>
       </div>
       <div className="become-an-expert__content">
-        <img className="become-icon" src={`${urlImg}icons/become-an-expert.svg`} alt="become-an-expert" />
         <div className="section-expert">
           {success ? <BecomeSuccess /> : <DoWantToExpert onBecome={() => setSuccess(true)} />}
         </div>
+        <img className="become-icon" src={`${urlImg}icons/become-an-expert.svg`} alt="become-an-expert" />
       </div>
     </div>
   );

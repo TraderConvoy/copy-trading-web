@@ -1,25 +1,36 @@
 import 'moment/locale/vi';
 import React from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import Brand from './Brand';
 import Header from './Header';
 import SideBar from './Sidebar';
 
 const CustomerLayout = (props: any) => {
   return (
-    <div className="content-wrapper">
+    <Container fluid={true} className="content-wrapper">
       <div className="wrapper-top">
-        <Header />
-        <Brand />
+        <Row>
+          <Col className="p-0">
+            <Header />
+          </Col>
+        </Row>
+        <Row>
+          <Col className="p-0">
+            <Brand />
+          </Col>
+        </Row>
       </div>
       <div className="wrapper-middle">
-        <div className="wrapper-left">
-          <SideBar activeSidebar={props.activeSidebar} />
-        </div>
-        <div className="wrapper-right">
-          <div className="content">{props.children}</div>
-        </div>
+        <Row>
+          <Col md={true} className="sidebar-wrapper p-0">
+            <SideBar activeSidebar={props.activeSidebar} />
+          </Col>
+          <Col md={true} className="content">
+            {props.children}
+          </Col>
+        </Row>
       </div>
-    </div>
+    </Container>
   );
 };
 

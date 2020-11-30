@@ -139,3 +139,33 @@ export const TABLE_PROFIT_SHARING_HISTORY = () => [
     right: true,
   },
 ];
+
+export const TABLE_TRANSFER_HISTORY = () => [
+  {
+    name: 'Time',
+    selector: 'time',
+  },
+  {
+    name: 'Amount',
+    selector: 'amount',
+    cell: (row: any) => {
+      return <p className="amount">{row.amount}</p>;
+    },
+  },
+  {
+    name: 'From',
+    selector: 'from',
+  },
+  {
+    name: 'To',
+    selector: 'to',
+  },
+  {
+    name: 'Status',
+    selector: 'status',
+    cell: (row: any) => {
+      return <p className="status">{row.status}</p>;
+    },
+    right: true,
+  },
+];
