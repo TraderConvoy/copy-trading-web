@@ -1,7 +1,6 @@
 import 'moment/locale/vi';
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import Brand from './Brand';
 import Header from './Header';
 import SideBar from './Sidebar';
 
@@ -14,11 +13,11 @@ const CustomerLayout = (props: any) => {
             <Header />
           </Col>
         </Row>
-        <Row>
+        {/* <Row>
           <Col className="p-0">
             <Brand />
           </Col>
-        </Row>
+        </Row> */}
       </div>
       <div className="wrapper-middle">
         <Row>

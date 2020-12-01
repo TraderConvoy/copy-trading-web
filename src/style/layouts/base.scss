@@ -16,6 +16,7 @@ button {
 .content-wrapper {
   background-color: $backgroundColor;
   .wrapper-top {
+    margin-bottom: 20px;
   }
   .wrapper-middle {
     .sidebar-wrapper {
@@ -23,7 +24,7 @@ button {
     }
     .content {
       padding: 0 20px;
-      max-width: 1370px;
+      // max-width: 1370px;
       overflow: hidden;
       padding-bottom: 30px;
     }

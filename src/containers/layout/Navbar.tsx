@@ -12,7 +12,7 @@ const Navbar = () => {
         <div className="nav-left">
           <div className="logo">
             <p onClick={() => history.push('/')}>
-              FAST <span>MONEY</span>
+              FAST <span>MONEY</span> <span>Copy Trade</span>
             </p>
           </div>
         </div>
@@ -21,24 +21,24 @@ const Navbar = () => {
             <div className="avatar-wrapper">C</div>
             <p className="username">User name</p>
           </div>
-          <div className="notification-wrapper">
+          {/* <div className="notification-wrapper">
             <div className="icon">
               <img src={`${urlImg}icons/bell.svg`} />
             </div>
             <p>Notification</p>
-          </div>
+          </div> */}
           <div className="practice-account-wrapper">
             <div className="wrapper-left">
               <p>Practice Account</p>
               <p className="wallet">$ 23,694</p>
             </div>
-            <div className="wrapper-right">
+            {/* <div className="wrapper-right">
               <button className="dropdown">
                 <img src={`${urlImg}/icons/dropdown-icon.svg`} alt="icon-header" />
               </button>
-            </div>
+            </div> */}
           </div>
-          <div className="type-wrapper">
+          {/* <div className="type-wrapper">
             <div className="type">
               <p>IB</p>
             </div>
@@ -48,10 +48,10 @@ const Navbar = () => {
               <p>Level</p>
               <p>10</p>
             </div>
-          </div>
-          <div className="deposit-wrapper">
+          </div> */}
+          {/* <div className="deposit-wrapper">
             <button>Deposit</button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
