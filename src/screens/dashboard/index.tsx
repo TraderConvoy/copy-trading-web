@@ -9,7 +9,7 @@ import ModalTransfer from './components/ModalTransfer';
 
 const Dashboard = () => {
   const [showModalSC, setShowModalStartSC] = useState(false);
-  const [showModalTf, setShowModalTf] = useState(true);
+  const [showModalTf, setShowModalTf] = useState(false);
   const [page, setPage] = useState(1);
   const urlImg = useContext(UrlImagesContext);
   const documentWidth = useContext(DocumentWidthContext);
