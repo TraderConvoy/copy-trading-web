@@ -22,7 +22,6 @@ const RouterConfig = () => {
       {process.env.NODE_ENV === 'development' ? (
         <Route exact={true} path="/" render={() => <Redirect to="/copy-trading" />} />
       ) : null}
-      {/* <CustomerLayoutRoute exact={true} path="/copy-trading" component={Home} /> */}
       <CustomerLayoutRoute
         exact={true}
         path="/copy-trading"
