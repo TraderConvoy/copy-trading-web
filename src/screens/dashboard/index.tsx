@@ -1,18 +1,36 @@
 import Pagination, { itemWithPage } from 'containers/components/Pagination';
 import { DocumentWidthContext } from 'containers/contexts/DocumentWidthContext';
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import Leader from './components/Leader';
 import ModalStartCopy from './components/ModalStartCopy';
+import { getListExpertsAction } from './ducks/actions';
 // import ModalTransfer from './components/ModalTransfer';
+const initPage = {
+  count: '',
+  current: 1,
+  pageSize: 20,
+};
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
   const [showModalSC, setShowModalStartSC] = useState(false);
   // const [showModalTf, setShowModalTf] = useState(false);
   const [page, setPage] = useState(1);
   const urlImg = useContext(UrlImagesContext);
   const documentWidth = useContext(DocumentWidthContext);
+  const [pagination, setPagination] = useState(initPage);
+
+  useEffect(() => {
+    dispatch(
+      getListExpertsAction(
+        { id_user: '5fc70cadc982ed201cd6b6fa', page: pagination.current, size: pagination.pageSize },
+        () => {},
+      ),
+    );
+  }, []);
 
   const openModalSC = () => {
     setShowModalStartSC(true);

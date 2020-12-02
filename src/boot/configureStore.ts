@@ -7,11 +7,11 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import createSagaMiddleware from 'redux-saga';
 import { all, fork } from 'redux-saga/effects';
-// import screenReducers from 'screens/screenReducers';
+import screenReducers from 'screens/screenReducers';
 import screenSaga from 'screens/screenSaga';
 
 export const allReducers = {
-  // screen: screenReducers,
+  screen: screenReducers,
 };
 
 class ConfigureStore {
