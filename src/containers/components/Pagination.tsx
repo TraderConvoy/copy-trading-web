@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 export type Pagination = {
   page: number;
   perPage: number;
-  data: any[];
+  count: number;
   pageChange: (value: number) => void;
 };
 
@@ -18,24 +18,26 @@ export const itemWithPage = (page: number, perPage: number, data: any[]) => {
   return data.slice(startIndex - 1, endIndex);
 };
 
-const Pagination = ({ page, perPage, data, pageChange }: Pagination) => {
+const Pagination = ({ page, perPage, count, pageChange }: Pagination) => {
   const allPageNumber = useMemo(() => {
-    if (data.length < perPage) return 1;
-    return Math.floor(data.length / perPage) + (data.length % perPage > 0 ? 1 : 0);
-  }, [perPage, data]);
+    if (count < perPage) return 1;
+    return Math.floor(count / perPage) + (count % perPage > 0 ? 1 : 0);
+  }, [perPage, count]);
 
-  const { startIndex, endIndex } = itemWithIndex(page, perPage, data.length);
+  const { startIndex, endIndex } = itemWithIndex(page, perPage, count);
+
+  if (allPageNumber === 1) return null;
 
   return (
     <div className="pagination">
       <div className="wrapper">
         <div className="count-item">
           <p>
-            {startIndex}-{endIndex} of {data.length}
+            {startIndex}-{endIndex} of {count}
           </p>
         </div>
         <div className="page-item-wrapper">
-          {allPageNumber < 6
+          {allPageNumber <= 6
             ? Array(allPageNumber)
                 .fill('')
                 .map((_, i) => {

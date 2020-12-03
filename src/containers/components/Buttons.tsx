@@ -1,30 +1,30 @@
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
 import React, { useContext } from 'react';
 
-export const ButtonStart = () => {
+export const ButtonStart = ({ ...rest }) => {
   const urlImg = useContext(UrlImagesContext);
   return (
-    <button className="button-start">
+    <button {...rest} className="button-start">
       <img src={`${urlImg}icons/start.svg`} />
       Start
     </button>
   );
 };
 
-export const ButtonPause = () => {
+export const ButtonPause = ({ ...rest }) => {
   const urlImg = useContext(UrlImagesContext);
   return (
-    <button className="button-pause">
+    <button {...rest} className="button-pause">
       <img src={`${urlImg}icons/pause.svg`} />
       Pause
     </button>
   );
 };
 
-export const ButtonStop = () => {
+export const ButtonStop = ({ ...rest }) => {
   const urlImg = useContext(UrlImagesContext);
   return (
-    <button className="button-stop">
+    <button {...rest} className="button-stop">
       <img src={`${urlImg}icons/stop.svg`} />
       Stop
     </button>

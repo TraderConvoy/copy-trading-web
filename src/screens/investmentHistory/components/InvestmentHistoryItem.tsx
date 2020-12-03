@@ -1,9 +1,12 @@
 import { ButtonPause, ButtonStart, ButtonStop } from 'containers/components/Buttons';
 import { DocumentWidthContext } from 'containers/contexts/DocumentWidthContext';
+import moment from 'moment/moment';
 import React, { useContext } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
-const InvestmentHistoryItem = ({ running = false }) => {
+const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) => {
+  const loading = useSelector((state: any) => state.common.loading);
   const documentWidth = useContext(DocumentWidthContext);
 
   return (
@@ -16,7 +19,7 @@ const InvestmentHistoryItem = ({ running = false }) => {
             </div>
             <div className="wrapper-right">
               <div className="name-wrapper">
-                <p className="name">ManhDung225</p>
+                <p className="name">{item.expert_name}</p>
                 <p className="sub">
                   <span className="expert">Expert</span>
                   <span className="percent">5%</span>
@@ -34,22 +37,26 @@ const InvestmentHistoryItem = ({ running = false }) => {
             </div>
             <div className="detail-item">
               <p className="name">Amount of investment</p>
-              <p className="value">500 USD</p>
+              <p className="value">{item.investment_amount} USD</p>
             </div>
             <div className="detail-item">
               <p className="name">Current balance</p>
-              <p className="value">540 USD</p>
+              <p className="value">{item.base_amount} USD</p>
             </div>
           </div>
         </Col>
         <Col md={true} lg={documentWidth < 1465 ? 12 : 3}>
           <div className="button-wrapper">
             <div className="button-wrapper__button">
-              <ButtonStop />
-              {running ? <ButtonPause /> : <ButtonStart />}
+              <ButtonStop disabled={loading} onClick={() => handleStop(item._id)} />
+              {item.status === 'ACTIVE' ? (
+                <ButtonPause disabled={loading} onClick={() => handlePause(item._id)} />
+              ) : (
+                <ButtonStart disabled={loading} onClick={() => handleStart(item._id)} />
+              )}
             </div>
             <div className="button-wrapper__sub">
-              <p>Start time: 10/11/2020 - 08:02:02</p>
+              <p>{moment(item.createdAt).format('MM/DD/YYYY - hh:mm')}</p>
             </div>
           </div>
         </Col>

@@ -1,4 +1,5 @@
 import { connectRouter, routerMiddleware } from 'connected-react-router';
+import commonReducers from 'containers/redux/common/reducers';
 import { createBrowserHistory, History } from 'history';
 import { applyMiddleware, CombinedState, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -12,6 +13,7 @@ import screenSaga from 'screens/screenSaga';
 
 export const allReducers = {
   screen: screenReducers,
+  common: commonReducers,
 };
 
 class ConfigureStore {

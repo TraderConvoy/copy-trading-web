@@ -16,7 +16,7 @@ const postService = async (url: string, body: object, isAuthorization = true, is
       : { Accept: 'application/json', 'Content-Type': 'application/json' };
     headers.language = localStorage.getItem(system.LANG) || 'vi';
     // if (isAuthorization) headers.Authorization = 'Bearer ' + localStorage.getItem(system.TOKEN);
-    if (isAuthorization) headers.Authorization = 'Bearer ' + fakeToken2;
+    if (isAuthorization) headers.Authorization = 'Bearer ' + fakeToken1;
     const requestInit: any = { method: 'POST', headers };
     if (body)
       if (isFormData) requestInit.body = body;

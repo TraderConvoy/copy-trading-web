@@ -63,6 +63,17 @@
         width: 80px;
         border-radius: 50%;
         background-color: #9792e0;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          height: 100%;
+        }
+        p {
+          font-size: 24px;
+          color: $lightBlueColor-2;
+        }
       }
     }
     .wrapper-right {
@@ -201,6 +212,17 @@
               width: 80px;
               border-radius: 50%;
               background-color: #9792e0;
+              overflow: hidden;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              img {
+                height: 100%;
+              }
+              p {
+                font-size: 24px;
+                color: $lightBlueColor-2;
+              }
             }
           }
           .name-wrapper {

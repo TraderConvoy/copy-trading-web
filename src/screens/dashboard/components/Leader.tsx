@@ -1,7 +1,7 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 
-const Leader = ({ startCopy }) => {
+const Leader = ({ startCopy, detail }) => {
   const options = {
     legend: {
       display: false,
@@ -48,11 +48,13 @@ const Leader = ({ startCopy }) => {
     <div className="leader-card">
       <div className="info-wrapper">
         <div className="wrapper-left">
-          <div className="avatar" />
+          <div className="avatar">
+            {detail.avatar ? <img src={detail.avatar} alt="avatar" /> : <p>{detail.fullname.split('')[0]}</p>}
+          </div>
         </div>
         <div className="wrapper-right">
           <div className="name-wrapper">
-            <p className="name">ManhDung225</p>
+            <p className="name">{detail.fullname}</p>
             <p className="sub">
               <span className="expert">Expert</span>
               <span className="percent">5%</span>
@@ -77,7 +79,7 @@ const Leader = ({ startCopy }) => {
         </div>
       </div>
       <div className="button-wrapper">
-        <button className="start-copy-button" onClick={startCopy}>
+        <button className="start-copy-button" onClick={() => startCopy(detail)}>
           Start copy
         </button>
       </div>
