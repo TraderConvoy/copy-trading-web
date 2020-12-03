@@ -19,7 +19,7 @@ button {
   }
   .wrapper-middle {
     .sidebar-wrapper {
-      max-width: 330px;
+      max-width: $sidebarSize;
     }
     .content {
       padding: 0 20px;
