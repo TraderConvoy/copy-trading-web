@@ -1,7 +1,7 @@
 import Toggle from 'containers/components/Toggle';
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
 import useError from 'containers/hooks/useErrorContext';
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { Col, Container, Modal, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { createTradingCopyAction } from '../ducks/actions';
@@ -21,6 +21,10 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, userId }) => {
   const [haveStopLoss, setHaveStopLoss] = useState(false);
   const [haveTakeProfit, setHaveTakeProfit] = useState(false);
   const [data, setData] = useState({ ...initializeData });
+
+  useEffect(() => {
+    if (!isOpen) clearModal();
+  }, [isOpen]);
 
   const urlImg = useContext(UrlImagesContext);
 
@@ -53,11 +57,6 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, userId }) => {
     setHaveStopLoss(false);
     setHaveTakeProfit(false);
     setData({ ...initializeData });
-  };
-
-  const handleCloseModal = () => {
-    clearModal();
-    closeModal();
   };
 
   const validData: boolean = useMemo(() => {
@@ -121,10 +120,10 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, userId }) => {
                 </p>
                 <p className="sub">500USD is mininum required deposit for this trader</p>
               </div>
-              <div className="advance-wrapper">
+              {/* <div className="advance-wrapper">
                 <button />
                 <p>Advance setting</p>
-              </div>
+              </div> */}
             </Col>
             <Col md={true} className="wrapper-right">
               <div className="advance-wrapper">

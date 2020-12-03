@@ -17,7 +17,7 @@ function* getListTradingCopyWatcher() {
         if (payload.callback) payload.callback('', result);
       }
     } catch (error) {
-      if (payload.callback) payload.callback('Server Error', {});
+      if (payload.callback) payload.callback(error, {});
     } finally {
       yield put(loadingOffAction());
     }
@@ -27,17 +27,15 @@ function* getListTradingCopyWatcher() {
 function* resumeTradingCopyWatcher() {
   yield takeLatest(resumeTradingCopyAction, function* ({ payload }) {
     try {
-      // yield put(onLoadingAction());
-      // yield put(logErrorAction(false, ''));
+      yield put(loadingOnAction());
       const result = yield call(resumeTradingCopy, payload.body);
       if (result) {
         if (payload.callback) payload.callback('', result);
       }
     } catch (error) {
-      if (payload.callback) payload.callback('Server Error', {});
-      // yield put(logErrorAction(true, ''));
+      if (payload.callback) payload.callback(error, {});
     } finally {
-      // yield put(offLoadingAction());
+      yield put(loadingOffAction());
     }
   });
 }
@@ -45,17 +43,15 @@ function* resumeTradingCopyWatcher() {
 function* pauseTradingCopyWatcher() {
   yield takeLatest(pauseTradingCopyAction, function* ({ payload }) {
     try {
-      // yield put(onLoadingAction());
-      // yield put(logErrorAction(false, ''));
+      yield put(loadingOnAction());
       const result = yield call(pauseTradingCopy, payload.body);
       if (result) {
         if (payload.callback) payload.callback('', result);
       }
     } catch (error) {
-      if (payload.callback) payload.callback('Server Error', {});
-      // yield put(logErrorAction(true, ''));
+      if (payload.callback) payload.callback(error, {});
     } finally {
-      // yield put(offLoadingAction());
+      yield put(loadingOffAction());
     }
   });
 }
@@ -63,17 +59,15 @@ function* pauseTradingCopyWatcher() {
 function* stopTradingCopyWatcher() {
   yield takeLatest(stopTradingCopyAction, function* ({ payload }) {
     try {
-      // yield put(onLoadingAction());
-      // yield put(logErrorAction(false, ''));
+      yield put(loadingOnAction());
       const result = yield call(stopTradingCopy, payload.body);
       if (result) {
         if (payload.callback) payload.callback('', result);
       }
     } catch (error) {
       if (payload.callback) payload.callback('Server Error', {});
-      // yield put(logErrorAction(true, ''));
     } finally {
-      // yield put(offLoadingAction());
+      yield put(loadingOffAction());
     }
   });
 }

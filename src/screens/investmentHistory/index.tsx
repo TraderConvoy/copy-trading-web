@@ -68,7 +68,15 @@ const InvestmentHistory = () => {
       cancelContent: 'Cancel Stop',
       submitContent: 'Stop',
       handleCancel: () => closeModalConfirm(),
-      handleSubmit: () => dispatch(stopTradingCopyAction(body)),
+      handleSubmit: () =>
+        dispatch(
+          stopTradingCopyAction(body, (err, res) => {
+            if (err) addError(err, null);
+            closeModalConfirm();
+            handleGetListTradingCopy();
+            handlePageChange(1);
+          }),
+        ),
     }));
   };
 
@@ -85,7 +93,15 @@ const InvestmentHistory = () => {
       cancelContent: 'Cancel Start',
       submitContent: 'Start',
       handleCancel: () => closeModalConfirm(),
-      handleSubmit: () => dispatch(resumeTradingCopyAction(body)),
+      handleSubmit: () =>
+        dispatch(
+          resumeTradingCopyAction(body, (err, res) => {
+            if (err) addError(err, null);
+            closeModalConfirm();
+            handleGetListTradingCopy();
+            handlePageChange(1);
+          }),
+        ),
     }));
   };
 
@@ -102,7 +118,15 @@ const InvestmentHistory = () => {
       cancelContent: 'Cancel Pause',
       submitContent: 'Pause',
       handleCancel: () => closeModalConfirm(),
-      handleSubmit: () => dispatch(pauseTradingCopyAction(body)),
+      handleSubmit: () =>
+        dispatch(
+          pauseTradingCopyAction(body, (err, res) => {
+            if (err) addError(err, null);
+            closeModalConfirm();
+            handleGetListTradingCopy();
+            handlePageChange(1);
+          }),
+        ),
     }));
   };
 
