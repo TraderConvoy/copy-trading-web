@@ -141,6 +141,9 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, userId }) => {
                 </div>
                 <div className="__input">
                   <input
+                    // disabled={!haveMaximum}
+                    type="number"
+                    max="50"
                     value={data.maximum_rate}
                     onChange={(event) => handleInputChange('maximum_rate', event.target.value)}
                   />
@@ -153,7 +156,10 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, userId }) => {
                 </div>
                 <div className="__input">
                   <input
+                    // disabled={!haveStopLoss}
+                    min="10"
                     value={data.stop_loss}
+                    type="number"
                     onChange={(event) => handleInputChange('stop_loss', event.target.value)}
                   />
                 </div>
@@ -165,7 +171,10 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, userId }) => {
                 </div>
                 <div className="__input">
                   <input
+                    // disabled={!haveTakeProfit}
+                    min="150"
                     value={data.taken_profit}
+                    type="number"
                     onChange={(event) => handleInputChange('taken_profit', event.target.value)}
                   />
                 </div>
