@@ -15,6 +15,7 @@ const ExpertManagement = lazy(() => import('screens/expertManagement'));
 const InvestmentCalculator = lazy(() => import('screens/investmentCalculator'));
 const LeaderDetail = lazy(() => import('screens/leaderDetail'));
 const Wallet = lazy(() => import('screens/wallet'));
+const Login = lazy(() => import('screens/login'));
 
 const RouterConfig = () => {
   return (
@@ -22,6 +23,7 @@ const RouterConfig = () => {
       {process.env.NODE_ENV === 'development' ? (
         <Route exact={true} path="/" render={() => <Redirect to="/copy-trading" />} />
       ) : null}
+      <Route exact={true} path="/login" component={Login} />
       <CustomerLayoutRoute
         exact={true}
         path="/copy-trading"
@@ -30,7 +32,7 @@ const RouterConfig = () => {
       />
       <CustomerLayoutRoute
         exact={true}
-        path="/copy-trading/leader-detail/:leaderID?"
+        path="/copy-trading/leader-detail/:leaderID"
         activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER}
         component={LeaderDetail}
       />

@@ -1,9 +1,21 @@
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
-import React, { useContext } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import { Modal } from 'react-bootstrap';
 
 const ModalTransfer = ({ isOpen, closeModal }) => {
+  const [transferValue, setTransferValue] = useState('');
   const urlImg = useContext(UrlImagesContext);
+
+  const handleTransfer = () => {};
+
+  const handleTransferValueChange = (event) => {
+    setTransferValue(event.target.value);
+  };
+
+  const validData = useMemo(() => {
+    if (parseFloat(transferValue) < 500) return false;
+    return true;
+  }, [transferValue]);
 
   return (
     <Modal show={isOpen} onHide={() => closeModal()} className="transfer-modal" size="lg">
@@ -41,10 +53,12 @@ const ModalTransfer = ({ isOpen, closeModal }) => {
         <div className="button-wrapper">
           <div className="input">
             <p className="currency">USD</p>
-            <input />
+            <input value={transferValue} onChange={(event) => handleTransferValueChange(event)} />
           </div>
           <div className="button">
-            <button>Transfer</button>
+            <button disabled={!validData} onClick={() => handleTransfer()}>
+              Transfer
+            </button>
           </div>
           <p className="alert-detail">500 USD is minimum required deposit to start copy trade</p>
         </div>

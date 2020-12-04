@@ -61,9 +61,13 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, userId }) => {
 
   const validData: boolean = useMemo(() => {
     if (!data.investment_amount || parseFloat(data.investment_amount) < 500) return false;
-    if (!data.maximum_rate || parseFloat(data.maximum_rate) < 1) return false;
-    if (!data.stop_loss || parseFloat(data.stop_loss) < 1) return false;
-    if (!data.taken_profit || parseFloat(data.taken_profit) < 1) return false;
+    if (
+      (!data.maximum_rate || parseFloat(data.maximum_rate) > 50) &&
+      (!data.maximum_rate || parseFloat(data.maximum_rate) < 10)
+    )
+      return false;
+    if (!data.stop_loss || parseFloat(data.stop_loss) < 10) return false;
+    if (!data.taken_profit || parseFloat(data.taken_profit) < 150) return false;
     return true;
   }, [data, haveMaximum, haveStopLoss, haveTakeProfit]);
 
@@ -137,7 +141,6 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, userId }) => {
                 </div>
                 <div className="__input">
                   <input
-                    disabled={!haveMaximum}
                     value={data.maximum_rate}
                     onChange={(event) => handleInputChange('maximum_rate', event.target.value)}
                   />
@@ -150,7 +153,6 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, userId }) => {
                 </div>
                 <div className="__input">
                   <input
-                    disabled={!haveStopLoss}
                     value={data.stop_loss}
                     onChange={(event) => handleInputChange('stop_loss', event.target.value)}
                   />
@@ -163,7 +165,6 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, userId }) => {
                 </div>
                 <div className="__input">
                   <input
-                    disabled={!haveTakeProfit}
                     value={data.taken_profit}
                     onChange={(event) => handleInputChange('taken_profit', event.target.value)}
                   />

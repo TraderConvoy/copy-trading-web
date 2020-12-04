@@ -54,7 +54,9 @@ const Leader = ({ startCopy, detail }) => {
         </div>
         <div className="wrapper-right">
           <div className="name-wrapper">
-            <p className="name">{detail.fullname}</p>
+            <a href={`/copy-trading/leader-detail/${detail._id}`} className="name">
+              {detail.fullname}
+            </a>
             <p className="sub">
               <span className="expert">Expert</span>
               <span className="percent">5%</span>
