@@ -1,5 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Form } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { logInAction } from '../ducks/actions';
 
 const initializeForm = {
   username: '',
@@ -8,15 +10,29 @@ const initializeForm = {
 };
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState(initializeForm);
-
   const handleFormChange = (type: string, value: string) => {
     setFormData((oldState) => ({ ...oldState, [type]: value }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert('submit');
+    //:TODO Hardcode
+    let data = {
+      username: formData.username,
+      password: formData.password,
+      type: 'USER',
+      grant_type: 'password',
+      client_id: 'b109f3bbbc244eb82441917ed06d618b9008dd09b3bef',
+      client_secret: 'password',
+      scope: 'offline_access',
+    };
+    dispatch(
+      logInAction(data, () => {
+        console.log('success');
+      }),
+    );
   };
 
   const validData = useMemo(() => {
@@ -40,7 +56,7 @@ const LoginForm = () => {
         <Form.Label>Username</Form.Label>
         <Form.Control
           value={formData.username}
-          type="email"
+          type="text"
           placeholder="Your email"
           onChange={(event) => handleFormChange('username', event.target.value)}
         />
