@@ -14,7 +14,7 @@ import {
 
 const initializePage = {
   number: 1,
-  perPage: 3,
+  perPage: 6,
 };
 
 const InvestmentHistory = () => {
@@ -24,8 +24,6 @@ const InvestmentHistory = () => {
   const [data, setData] = useState({ data: [], count: 0 });
   const [page, setPage] = useState({ ...initializePage });
   const { addError } = useError();
-  // FIXME:
-  const userId = '5fc70cadc982ed201cd6b6fb';
 
   useEffect(() => {
     handleGetListTradingCopy();
@@ -38,7 +36,6 @@ const InvestmentHistory = () => {
   const handleGetListTradingCopy = () => {
     setPageLoading(true);
     const body = {
-      id_user: userId,
       page: page.number,
       size: page.perPage,
     };
@@ -57,7 +54,6 @@ const InvestmentHistory = () => {
 
   const handleStop = (id_copy) => {
     const body = {
-      id_user: userId,
       id_copy,
     };
     setModalCf((oldState) => ({
@@ -82,7 +78,6 @@ const InvestmentHistory = () => {
 
   const handleResume = (id_copy) => {
     const body = {
-      id_user: userId,
       id_copy,
     };
     setModalCf((oldState) => ({
@@ -107,7 +102,6 @@ const InvestmentHistory = () => {
 
   const handlePause = (id_copy) => {
     const body = {
-      id_user: userId,
       id_copy,
     };
     setModalCf((oldState) => ({

@@ -4,7 +4,6 @@ import moment from 'moment/moment';
 import React, { useContext } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-
 const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) => {
   const loading = useSelector((state: any) => state.common.loading);
   const documentWidth = useContext(DocumentWidthContext);
@@ -37,11 +36,11 @@ const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) =
             </div>
             <div className="detail-item">
               <p className="name">Amount of investment</p>
-              <p className="value">{item.investment_amount} USD</p>
+              <p className="value">{item.base_amount} USD</p>
             </div>
             <div className="detail-item">
               <p className="name">Current balance</p>
-              <p className="value">{item.base_amount} USD</p>
+              <p className="value">{item.investment_amount} USD</p>
             </div>
           </div>
         </Col>

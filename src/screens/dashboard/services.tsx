@@ -31,3 +31,11 @@ export const createExpertService = async (expert) => {
     throw error;
   }
 };
+
+export const tranferAmountService = async (body) => {
+  try {
+    return await api.postService(`tranfer-amount/doi-api`, body, true);
+  } catch (error) {
+    throw error;
+  }
+};
