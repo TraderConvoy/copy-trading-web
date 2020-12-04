@@ -56,16 +56,16 @@ const Sidebar = ({ activeSidebar = '' }) => {
 
   return (
     <div id="sidebar" className={`${active ? 'active' : ''}`}>
+      <button className="toggle-menu" onClick={() => setActive(!active)}>
+        <img src={`${urlImg}icons/menu.svg`} />
+      </button>
       <div className="sidebar-wrapper">
-        <button className="toggle-menu" onClick={() => setActive(!active)}>
-          <img src={`${urlImg}icons/menu.svg`} />
-        </button>
-        <div className="user-wrapper">
+        {/* <div className="user-wrapper">
           <div className="avatar" />
           <div className="username">
             <p>nguyenmanhdung@gmail.com</p>
           </div>
-        </div>
+        </div> */}
         <div className="sidebar-list">
           <ul className="sidebar-content">
             {sidebars.map((el, i) => (
