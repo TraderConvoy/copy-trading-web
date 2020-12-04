@@ -26,13 +26,14 @@
     }
   }
   .sidebar-wrapper {
+    width: 100%;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     background-color: $darkBlueColor;
     position: fixed;
     left: 0;
     top: 120px;
-    padding: 26px 39px;
+    padding: 3vh 2vh;
     // .user-wrapper {
     //   display: flex;
     //   align-items: center;
@@ -58,7 +59,7 @@
         margin: 0;
         .sidebar-item {
           .sidebar-link {
-            margin-top: 40px;
+            margin-top: 2vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -72,9 +73,6 @@
                 opacity: 1;
               }
             }
-            &:first-child {
-              margin-top: 25px;
-            }
             .sidebar-icon {
               width: 40px;
               margin-bottom: 10px;
@@ -82,6 +80,98 @@
               align-items: center;
               justify-content: center;
               opacity: 0.3;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-height: 738px) {
+  #sidebar {
+    &.active {
+      &:after {
+      }
+    }
+    p {
+    }
+    .toggle-menu {
+    }
+    .sidebar-wrapper {
+      padding: 2vh 2vh;
+      .user-wrapper {
+        .avatar {
+        }
+        .username {
+          p {
+          }
+        }
+      }
+      .sidebar-list {
+        .sidebar-content {
+          .sidebar-item {
+            .sidebar-link {
+              font-size: 1.4vh;
+              &.active {
+                svg {
+                }
+                .sidebar-icon {
+                }
+              }
+              &:first-child {
+              }
+              .sidebar-icon {
+                transform: scale(0.7);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-height: 630px) and (min-width: 767px) {
+  #sidebar {
+    &.active {
+      &:after {
+      }
+    }
+    p {
+    }
+    .toggle-menu {
+    }
+    .sidebar-wrapper {
+      padding: 2vh 2vh;
+      .user-wrapper {
+        .avatar {
+        }
+        .username {
+          p {
+          }
+        }
+      }
+      .sidebar-list {
+        .sidebar-content {
+          .sidebar-item {
+            .sidebar-link {
+              align-items: center;
+              font-size: 1.4vh;
+              flex-direction: row;
+              text-align: left;
+              &.active {
+                svg {
+                }
+                .sidebar-icon {
+                }
+              }
+              &:first-child {
+              }
+              .sidebar-icon {
+                margin-bottom: 0;
+                transform: scale(0.7);
+              }
             }
           }
         }
