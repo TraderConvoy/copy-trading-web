@@ -4,7 +4,6 @@ import { Form } from 'react-bootstrap';
 const initializeForm = {
   username: '',
   password: '',
-  type: 'USER',
 };
 
 const LoginForm = () => {
@@ -54,15 +53,6 @@ const LoginForm = () => {
           onChange={(event) => handleFormChange('password', event.target.value)}
         />
       </Form.Group>
-      <div className="type-wrapper">
-        <label>
-          Pick your account type
-          <select value={formData.type} onChange={(event) => handleFormChange('type', event.target.value)}>
-            <option value="USER">User</option>
-            <option value="EXPERT">Expert</option>
-          </select>
-        </label>
-      </div>
       <div className="forgot">
         <a href="/forgot-password">Forgot Password</a>
       </div>
