@@ -1,8 +1,6 @@
 #sidebar {
   width: 100%;
   background-color: $darkBlueColor;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
   transition: 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
   p {
     margin-bottom: 0;
@@ -28,7 +26,12 @@
     }
   }
   .sidebar-wrapper {
-    position: relative;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: $darkBlueColor;
+    position: fixed;
+    left: 0;
+    top: 120px;
     padding: 26px 39px;
     // .user-wrapper {
     //   display: flex;
