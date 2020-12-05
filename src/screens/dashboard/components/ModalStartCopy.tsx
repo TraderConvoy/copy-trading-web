@@ -16,6 +16,7 @@ const initializeData = {
 };
 
 const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
+  debugger;
   const dispatch = useDispatch();
   const loading = useSelector((state: any) => state.common.loading);
   const { addError } = useError();
@@ -36,7 +37,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
   const handleCreateTradingCopy = () => {
     setIsNotHaveAmount(false);
     const body = {
-      id_expert: detail._id,
+      id_expert: detail.expert._id,
       investment_amount: parseFloat(data.investment_amount),
       maximum_rate: haveMaximum ? data.maximum_rate : 0,
       has_maximum_rate: haveMaximum,
