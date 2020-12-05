@@ -58,7 +58,7 @@ const Leader = ({ startCopy, detail }) => {
         </div>
         <div className="wrapper-right">
           <div className="name-wrapper">
-            <a href={`/copy-trading/leader-detail/${detail._id}`} className="name">
+            <a href={`/copy-trading/leader-detail/${detail.expert._id}`} className="name">
               {detail.expert.fullname}
             </a>
             <p className="sub">

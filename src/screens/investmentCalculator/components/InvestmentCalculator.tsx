@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import NumberFormat from 'react-number-format';
 
 const initializeState = {
   profit: '',
@@ -45,17 +46,29 @@ const InvestmentCalculator = () => {
           <p>Deposit</p>
           <div className="search-wrapper">
             <p>USD</p>
-            <input value={data.profit} onChange={(event) => handleInputChange('profit', event.target.value)} />
+            {/* <input
+              value={data.profit}
+              onChange={(event) => handleInputChange('profit', event.target.value)} /> */}
+            <NumberFormat
+              value={data.profit}
+              onValueChange={(value) => handleInputChange('profit', value.floatValue)}
+              decimalScale={2}
+            />
           </div>
         </div>
         <div className="item profitability-wrapper">
           <p>Profitability</p>
           <div className="search-wrapper">
             <p>%</p>
-            <input
+            <NumberFormat
+              value={data.profitability}
+              onValueChange={(value) => handleInputChange('profitability', value.floatValue)}
+              decimalScale={2}
+            />
+            {/* <input
               value={data.profitability}
               onChange={(event) => handleInputChange('profitability', event.target.value)}
-            />
+            /> */}
           </div>
         </div>
         <div className="item investment-period-wrapper">

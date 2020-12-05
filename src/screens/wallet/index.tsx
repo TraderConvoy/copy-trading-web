@@ -1,4 +1,6 @@
-import React from 'react';
+import Loading from 'containers/components/Loading';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import TableTransferHistory from './components/TableTransferHistory';
 import Transfer from './components/Transfer';
 
@@ -11,7 +13,23 @@ const fakeItem = {
 };
 
 const Wallet = () => {
+  const [transferHistoryLoading, setTransferHistoryLoading] = useState(true);
+  const [dataHistory, setDataHistory] = useState([]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    handleGetTransferHistory();
+  }, []);
+
+  const handleGetTransferHistory = () => {
+    setTransferHistoryLoading(true);
+    setTimeout(() => setTransferHistoryLoading(false), [3000]);
+    // const body = {};
+    // dispatch(getTransferHistoryAction(body, () => {}))
+  };
+
   const fakeData = Array(70).fill(fakeItem);
+
   return (
     <div className="wallet">
       <div className="title-wrapper">
@@ -20,7 +38,9 @@ const Wallet = () => {
       </div>
       <Transfer />
       <p className="section-name">Tranfer History</p>
-      <TableTransferHistory data={fakeData} />
+      <Loading isLoading={transferHistoryLoading}>
+        <TableTransferHistory data={fakeData} />
+      </Loading>
     </div>
   );
 };
