@@ -4,11 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 
 type IContextProps = {
-  addError: (err: Response, message: null) => void;
+  addError: (err: Response, message?: string | null) => void;
 };
 
 export const ErrorContext = React.createContext<IContextProps>({
-  addError: (err: Response, message: null) => ({ err, message }),
+  addError: (err: Response, message?: string | null) => ({ err, message }),
 });
 
 export const ErrorContextProvider = ({ children }) => {
