@@ -1,3 +1,4 @@
+import system from 'constant/localstore';
 import Loading from 'containers/components/Loading';
 import Pagination from 'containers/components/Pagination';
 import { DocumentWidthContext } from 'containers/contexts/DocumentWidthContext';
@@ -6,25 +7,25 @@ import useError from 'containers/hooks/useErrorContext';
 import React, { useContext, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Leader from './components/Leader';
 import ModalStartCopy from './components/ModalStartCopy';
+import ModalTransfer from './components/ModalTransfer';
 import { getListExpertsAction } from './ducks/actions';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { addError } = useError();
   const [data, setData] = useState({ result: [], count: 0 });
+  const history = useHistory();
   const [expertSelector, setExpertSelector] = useState({});
   const [showModalSC, setShowModalStartSC] = useState(false);
   const [page, setPage] = useState(1);
   const [pageLoading, setPageLoading] = useState(true);
-
   const loading = useSelector((state: any) => state.common.loading);
-  // const [showModalTf, setShowModalTf] = useState(false);
+  const [showModalTf, setShowModalTf] = useState(false);
   const urlImg = useContext(UrlImagesContext);
   const documentWidth = useContext(DocumentWidthContext);
-  // FIXME:
-  const userId = '5fc70cadc982ed201cd6b6fb';
 
   useEffect(() => {
     handleGetListExpert(page);
@@ -46,6 +47,9 @@ const Dashboard = () => {
   };
 
   const handleStartCopy = (detail: any): void => {
+    if (!localStorage.getItem(system.TOKEN)) {
+      history.push('/copy-trading/login');
+    }
     setExpertSelector(detail);
     openModalSC();
   };
@@ -58,9 +62,9 @@ const Dashboard = () => {
     setShowModalStartSC(false);
   };
 
-  // const closeModalTf = () => {
-  //   setShowModalTf(false);
-  // };
+  const closeModalTf = () => {
+    setShowModalTf(false);
+  };
 
   const handlePageChange = (page: number): void => {
     setPage(page);
@@ -68,8 +72,16 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <ModalStartCopy detail={expertSelector} userId={userId} isOpen={showModalSC} closeModal={closeModalSC} />
-      {/* <ModalTransfer isOpen={showModalTf} closeModal={closeModalTf} /> */}
+      {showModalSC && (
+        <ModalStartCopy
+          detail={expertSelector}
+          isOpen={showModalSC}
+          closeModal={closeModalSC}
+          setShowModalTf={setShowModalTf}
+        />
+      )}
+      {showModalTf && <ModalTransfer isOpen={showModalTf} closeModal={closeModalTf} />}
+
       <div className="dashboard__header">
         <Row>
           <Col md={true}>

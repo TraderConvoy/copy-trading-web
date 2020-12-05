@@ -32,7 +32,7 @@ button {
   }
   .wrapper-middle {
     .sidebar-wrapper {
-      max-width: 330px;
+      max-width: $sidebarSize;
     }
     .content {
       padding: 0 20px;
@@ -263,6 +263,9 @@ button {
       }
     }
   }
+}
+.block {
+  display: block;
 }
 
 @media only screen and (max-width: 767px) {

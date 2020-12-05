@@ -1,13 +1,22 @@
 import { ButtonPause, ButtonStart, ButtonStop } from 'containers/components/Buttons';
 import { DocumentWidthContext } from 'containers/contexts/DocumentWidthContext';
 import moment from 'moment/moment';
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-
 const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) => {
   const loading = useSelector((state: any) => state.common.loading);
   const documentWidth = useContext(DocumentWidthContext);
+
+  const formatItemExpert = useMemo(() => {
+    if (item.expert[0]) {
+      return {
+        avatar: item.expert[0].avatar,
+        fullname: item.expert[0].fullname,
+      };
+    }
+    return {};
+  }, [item]);
 
   return (
     <div className="investment-history-item">
@@ -15,11 +24,17 @@ const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) =
         <Col md={true} lg={documentWidth < 1143 ? 12 : 3}>
           <div className="info-wrapper">
             <div className="wrapper-left">
-              <div className="avatar" />
+              <div className="avatar">
+                {formatItemExpert.avatar ? (
+                  <img src={formatItemExpert.avatar} alt="avatar" />
+                ) : (
+                  <p>{formatItemExpert.fullname.split('')[0]}</p>
+                )}
+              </div>
             </div>
             <div className="wrapper-right">
               <div className="name-wrapper">
-                <p className="name">{item.expert_name}</p>
+                <p className="name">{formatItemExpert.fullname}</p>
                 <p className="sub">
                   <span className="expert">Expert</span>
                   <span className="percent">5%</span>
@@ -41,7 +56,7 @@ const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) =
             </div>
             <div className="detail-item">
               <p className="name">Current balance</p>
-              <p className="value">{item.base_amount} USD</p>
+              <p className="value">{item.investment_amount} USD</p>
             </div>
           </div>
         </Col>
@@ -56,7 +71,7 @@ const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) =
               )}
             </div>
             <div className="button-wrapper__sub">
-              <p>{moment(item.createdAt).format('MM/DD/YYYY - hh:mm')}</p>
+              <p>{moment(item.createdAt).format('MM/DD/YYYY - HH:mm:ss')}</p>
             </div>
           </div>
         </Col>

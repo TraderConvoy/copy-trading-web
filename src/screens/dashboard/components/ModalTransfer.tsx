@@ -1,19 +1,31 @@
+import system from 'constant/localstore';
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
 import React, { useContext, useMemo, useState } from 'react';
 import { Modal } from 'react-bootstrap';
-
+import NumberFormat from 'react-number-format';
+import { useDispatch } from 'react-redux';
+import { transferAmountAction } from '../ducks/actions';
 const ModalTransfer = ({ isOpen, closeModal }) => {
   const [transferValue, setTransferValue] = useState('');
   const urlImg = useContext(UrlImagesContext);
+  const dispatch = useDispatch();
+  const handleTransfer = () => {
+    //TODO: update service khi có api | should check  both server client update more than 1000
+    let body = {
+      access_token: localStorage.getItem(system.TOKEN),
+      amount: transferValue,
+    };
+    alert(JSON.stringify(body));
+    return;
+    dispatch(transferAmountAction(body, (res) => {}));
+  };
 
-  const handleTransfer = () => {};
-
-  const handleTransferValueChange = (event) => {
-    setTransferValue(event.target.value);
+  const handleTransferValueChange = (value) => {
+    setTransferValue(value);
   };
 
   const validData = useMemo(() => {
-    if (parseFloat(transferValue) < 500) return false;
+    if (!transferValue || parseFloat(transferValue) < 1000) return false;
     return true;
   }, [transferValue]);
 
@@ -53,7 +65,15 @@ const ModalTransfer = ({ isOpen, closeModal }) => {
         <div className="button-wrapper">
           <div className="input">
             <p className="currency">USD</p>
-            <input value={transferValue} onChange={(event) => handleTransferValueChange(event)} />
+            {/* <input value={transferValue} onChange={(event) => handleTransferValueChange(event)} /> */}
+            <NumberFormat
+              thousandSeparator={true}
+              onValueChange={(values) => handleTransferValueChange(values.floatValue)}
+              prefix={'$'}
+              placeholder="$"
+              decimalScale={2}
+              value={transferValue}
+            />
           </div>
           <div className="button">
             <button disabled={!validData} onClick={() => handleTransfer()}>

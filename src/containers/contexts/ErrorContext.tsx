@@ -18,12 +18,16 @@ export const ErrorContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (!!errMess) {
-      const timeout = setTimeout(() => setErrMess(''), [3000]);
+      const timeout = setTimeout(() => setErrMess(''), [5000]);
       return () => clearTimeout(timeout);
     }
   }, [errMess]);
 
   const addError = async (err: Response, message: null) => {
+    if (message) {
+      setErrMess(message || '');
+      return;
+    }
     if (err.status === system.RESPONSE_STATUS.NOT_FOUND)
       setErrMess(
         i18n.language === 'vi'
@@ -33,7 +37,7 @@ export const ErrorContextProvider = ({ children }) => {
 
     if (err.status === system.RESPONSE_STATUS.FORBIDDEN) {
       localStorage.removeItem(system.TOKEN);
-      history.push('/');
+      history.push('/copy-trading/login');
     }
 
     if (err.status === system.RESPONSE_STATUS.INTERVAL_SERVER) {

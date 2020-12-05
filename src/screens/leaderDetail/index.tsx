@@ -33,8 +33,6 @@ const LeaderDetail = () => {
   const { addError } = useError();
   const { leaderID }: any = useParams();
 
-  const userId = '5fc70cadc982ed201cd6b6fb';
-
   useEffect(() => {
     handleGetLeaderDetail();
   }, []);
@@ -42,7 +40,6 @@ const LeaderDetail = () => {
   const handleGetLeaderDetail = () => {
     setLoadingPage(true);
     const body = {
-      id_user: userId,
       id_expert: leaderID,
     };
     dispatch(
