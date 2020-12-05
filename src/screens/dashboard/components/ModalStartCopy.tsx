@@ -16,7 +16,6 @@ const initializeData = {
 };
 
 const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
-  debugger;
   const dispatch = useDispatch();
   const loading = useSelector((state: any) => state.common.loading);
   const { addError } = useError();

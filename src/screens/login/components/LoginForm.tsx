@@ -5,7 +5,7 @@ import React, { useMemo, useState } from 'react';
 import { Form, Spinner } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { logInAction } from '../redux/actions';
+import { loginAction } from '../redux/actions';
 import { IState } from './propsState';
 
 const LoginForm = () => {
@@ -26,7 +26,7 @@ const LoginForm = () => {
     event.preventDefault();
     setLoading(true);
     dispatch(
-      logInAction(
+      loginAction(
         {
           username: state.username,
           password: state.password,
@@ -41,6 +41,7 @@ const LoginForm = () => {
           if (error) addError(error);
           else {
             history.push('/copy-trading/top-leaders');
+            // TODO:Setup socket client connect
           }
         },
       ),

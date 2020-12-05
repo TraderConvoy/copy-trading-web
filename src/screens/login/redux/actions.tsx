@@ -1,7 +1,18 @@
-import { createActions } from 'redux-actions';
+import { createAction } from 'redux-actions';
+import { IUser } from '../model';
 
-const actions = createActions<any>({
-  LOG_IN_ACTION: (body, callback) => ({ body, callback }),
-  SET_USER_INFO_ACTION: (data) => data,
-});
-export const { logInAction, setUserInfoAction } = actions;
+/** login action */
+export type LoginPayload = {
+  body: any;
+  callback: (error: any, result: any) => void;
+};
+export const loginAction = createAction<LoginPayload, any, (error: any, result: any) => void>(
+  'LOGIN_ACTION',
+  (body: any, callback: (error: any, result: any) => void) => ({ body, callback }),
+);
+
+/** set user infor action */
+export type SetUserInforPayload = { user: IUser };
+export const setUserInforAction = createAction<SetUserInforPayload, IUser>('SET_USER_INFO_ACTION', (user: IUser) => ({
+  user,
+}));

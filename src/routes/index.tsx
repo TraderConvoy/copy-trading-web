@@ -21,7 +21,7 @@ const RouterConfig = () => {
   return (
     <Switch>
       {process.env.NODE_ENV === 'development' ? (
-        <Route exact={true} path="/" render={() => <Redirect to="/copy-trading/top-leaders" />} />
+        <Route exact={true} path="/" render={() => <Redirect to="/copy-trading/login" />} />
       ) : null}
       <Route exact={true} path="/copy-trading/login" component={Login} />
       <CustomerLayoutRoute

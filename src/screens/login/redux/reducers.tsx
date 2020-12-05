@@ -1,14 +1,16 @@
-import { handleActions } from 'redux-actions';
-import { setUserInfoAction } from './actions';
-const initialState = {
-  user: [],
-};
-export default handleActions<any>(
+import { Action, handleActions } from 'redux-actions';
+import { SetUserInforPayload } from './actions';
+import { ActionState } from './state';
+
+type CombinedPayloads = SetUserInforPayload;
+export default handleActions<ActionState, CombinedPayloads>(
   {
-    [setUserInfoAction.toString()]: (state, { payload }) => ({
+    SET_USER_INFO_ACTION: (state, { payload }: Action<SetUserInforPayload>): ActionState => ({
       ...state,
-      user: payload,
+      userInfor: payload.user,
     }),
   },
-  initialState,
+  {
+    userInfor: null,
+  },
 );
