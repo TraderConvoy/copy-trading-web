@@ -1,5 +1,5 @@
 import Loading from 'containers/components/Loading';
-import Pagination, { itemWithPage } from 'containers/components/Pagination';
+import Pagination from 'containers/components/Pagination';
 import { DocumentWidthContext } from 'containers/contexts/DocumentWidthContext';
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
 import useError from 'containers/hooks/useErrorContext';
@@ -13,7 +13,7 @@ import { getListExpertsAction } from './ducks/actions';
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { addError } = useError();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({ result: [], count: 0 });
   const [expertSelector, setExpertSelector] = useState({});
   const [showModalSC, setShowModalStartSC] = useState(false);
   const [page, setPage] = useState(1);
@@ -27,15 +27,19 @@ const Dashboard = () => {
   const userId = '5fc70cadc982ed201cd6b6fb';
 
   useEffect(() => {
-    handleGetListExpert();
-  }, []);
+    handleGetListExpert(page);
+  }, [page]);
 
-  const handleGetListExpert = () => {
+  const handleGetListExpert = (page) => {
     setPageLoading(true);
     dispatch(
-      getListExpertsAction((err, res: any) => {
+      getListExpertsAction({ page, size: 9 }, (err, res: any) => {
         if (err) addError(err, null);
-        else setData(res.data);
+        else {
+          console.log(res);
+          setData(res.data);
+        }
+        // else setData(oldState => ({ ...oldState, result: res.data.result, count: res.data.count }));
         setPageLoading(false);
       }),
     );
@@ -86,16 +90,16 @@ const Dashboard = () => {
       <Loading isLoading={pageLoading}>
         <div className="dashboard__content">
           <Row>
-            {itemWithPage(page, 9, data).map((item) => {
+            {data.result.map((item: any) => {
               return (
-                <Col sm={true} md={true} lg={6} xl={documentWidth < 1360 ? 6 : 4} key={item._id}>
+                <Col sm={true} md={true} lg={6} xl={documentWidth < 1360 ? 6 : 4} key={item.expert._id}>
                   <Leader detail={item} startCopy={handleStartCopy} />
                 </Col>
               );
             })}
           </Row>
         </div>
-        <Pagination pageChange={handlePageChange} page={page} perPage={9} count={data.length} />
+        <Pagination pageChange={(page: number) => handlePageChange(page)} page={page} perPage={9} count={data.count} />
       </Loading>
     </div>
   );

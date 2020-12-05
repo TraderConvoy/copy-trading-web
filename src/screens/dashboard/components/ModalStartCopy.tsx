@@ -31,7 +31,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, userId }) => {
   const handleCreateTradingCopy = () => {
     const body = {
       id_user: userId,
-      id_expert: detail._id,
+      id_expert: detail.expert._id,
       investment_amount: data.investment_amount,
       maximum_rate: data.maximum_rate,
       has_maximum_rate: haveMaximum,
@@ -78,15 +78,15 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, userId }) => {
           <div className="info-wrapper">
             <div className="avatar-wrapper">
               <div className="avatar">
-                {detail.avatar ? (
-                  <img src={detail.avatar} alt="avatar" />
+                {detail.expert?.avatar ? (
+                  <img src={detail.expert.avatar} alt="avatar" />
                 ) : detail.fullname ? (
-                  <p>{detail.fullname.split('')[0]}</p>
+                  <p>{detail.expert.fullname.split('')[0]}</p>
                 ) : null}
               </div>
             </div>
             <div className="name-wrapper">
-              <p className="name">{detail.fullname}</p>
+              <p className="name">{detail.expert?.fullname}</p>
               <p className="sub">
                 <span className="expert">Expert</span>
                 <span className="percent">5%</span>
@@ -184,8 +184,10 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, userId }) => {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <div className="button-wrapper" onClick={() => handleCreateTradingCopy()}>
-          <button disabled={!validData || loading}>Start Copy</button>
+        <div className="button-wrapper">
+          <button disabled={!validData || loading} onClick={() => handleCreateTradingCopy()}>
+            Start Copy
+          </button>
         </div>
       </Modal.Footer>
     </Modal>
