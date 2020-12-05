@@ -23,126 +23,164 @@
   }
 }
 .transfer {
-  display: flex;
-  justify-content: flex-start;
-  color: white;
-  .real-account {
-    max-width: 288px;
+  p {
+    margin-bottom: 0;
+  }
+  .modal-content {
+    max-width: 600px;
+    background-color: #20284f;
+  }
+  .modal-header {
+    border-bottom: 1px solid #3d436f;
+    padding: 55px 0;
     position: relative;
-    display: flex;
-    align-items: center;
-    background-image: linear-gradient(to bottom, #4325c0, #162488);
-    height: 200px;
-    width: 22vw;
-    border-radius: 5px;
-    margin-right: 20px;
-    padding: 0 20px;
-    font-size: 48px;
-    font-weight: 700;
-    .name {
+    text-align: center;
+    .close-wrapper {
+      display: flex;
+      align-items: center;
       position: absolute;
-      top: 34px;
-      left: 20px;
-      font-size: 16px;
-      font-weight: 400;
+      height: 100%;
+      top: 0;
+      right: 47px;
+      button {
+        outline: 0;
+        border: 0;
+        background-color: transparent;
+      }
     }
-    .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      right: -35px;
-      z-index: 1;
+    .modal-name {
+      width: 100%;
+      p {
+        font-size: 30px;
+        line-height: 30px;
+        font-weight: 400;
+        color: #c2cdf2;
+      }
     }
   }
-  .transfer-input {
-    background-image: linear-gradient(to bottom, #4325c0, #162488);
-    height: 200px;
-    width: 22vw;
-    max-width: 288px;
-    border-radius: 5px;
-    margin-right: 20px;
-    padding: 0 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .modal-body {
+    padding: 0;
     position: relative;
-    .arrow {
+    .transfer-icon {
       position: absolute;
       top: 50%;
-      transform: translateY(-50%);
-      right: -35px;
-      z-index: 1;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
-    p {
-      font-size: 16px;
+    .content-wrapper {
+      background-color: transparent;
+      display: flex;
+      align-items: stretch;
+      height: 138px;
+      font-size: 20px;
       font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      margin-top: 37px;
-    }
-    .input-wrapper {
-      input,
-      button {
-        width: 100%;
-        border: 0;
-        outline: 0;
-        height: 50px;
-        border-radius: 5px;
-      }
-      .input {
-        margin-bottom: 13px;
+      color: $lightBlueColor-2;
+      .from-wrapper {
+        flex: 1;
         position: relative;
-        color: #a697ef;
-        .currency {
+        border-right: 1px solid #3d436f;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .name {
           position: absolute;
-          font-size: 18px;
-          font-weight: 700;
-          text-transform: uppercase;
-          margin: 0;
+          font-size: 16px;
+          font-weight: 400;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          color: #6d7193;
+        }
+      }
+      .to-wrapper {
+        position: relative;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .name {
+          position: absolute;
+          font-size: 16px;
+          font-weight: 400;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          color: #6d7193;
+        }
+      }
+    }
+  }
+  .modal-footer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #3d436f;
+    align-items: stretch;
+    padding: 27px 40px;
+    .detail-wrapper {
+      display: flex;
+      justify-content: space-between;
+      p {
+        color: #6d7193;
+        font-size: 16px;
+        font-weight: 400;
+      }
+      .number {
+        color: $lightBlueColor-2;
+      }
+      .available-wrapper {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+    .button-wrapper {
+      .input {
+        position: relative;
+        .currency {
+          right: 17px;
           top: 50%;
-          right: 14px;
           transform: translateY(-50%);
+          position: absolute;
+          color: #40da6c;
+          font-size: 16px;
+          font-weight: 400;
         }
         input {
-          background-color: #261f49;
-          padding-left: 17px;
-          padding-right: 65px;
-          font-size: 18px;
-          font-weight: 700;
-          color: #a697ef;
+          width: 100%;
+          border: 0;
+          outline: 0;
+          background-color: #3e446a;
+          height: 40px;
+          border-radius: 5px;
+          padding-left: 23px;
+          padding-right: 70px;
+          color: #40da6c;
+          font-size: 16px;
+          font-weight: 400;
         }
       }
       .button {
         button {
-          text-transform: uppercase;
-          font-size: 16px;
-          line-height: 16px;
-          font-weight: 700;
-          color: white;
+          margin-top: 16px;
+          height: 50px;
+          width: 100%;
+          border-radius: 5px;
           background-color: #3fc66d;
+          outline: 0;
+          border: 0;
+          font-size: 16px;
+          color: white;
+          text-transform: uppercase;
+          font-weight: 700;
         }
       }
     }
-  }
-  .copy-trade-account {
-    max-width: 288px;
-    width: 22vw;
-    background-image: linear-gradient(to bottom, #4325c0, #162488);
-    height: 200px;
-    width: 288px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    position: relative;
-    font-size: 48px;
-    font-weight: 700;
-    .name {
-      position: absolute;
+    .alert-detail {
+      color: #fdd65b;
       font-size: 16px;
       font-weight: 400;
-      top: 34px;
-      left: 20px;
+      text-align: center;
+      margin-top: 30px;
     }
   }
 }
