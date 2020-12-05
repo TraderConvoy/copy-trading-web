@@ -13,7 +13,7 @@ function* getDataExpertsWatcher() {
   yield takeLatest(getListExpertsAction, function* ({ payload }) {
     try {
       yield put(loadingOnAction());
-      const result = yield call(getDataExperts);
+      const result = yield call(getDataExperts, payload.body);
       if (result) {
         yield put(setListExpertsAction(result.data));
         if (payload.callback) payload.callback(null, result);

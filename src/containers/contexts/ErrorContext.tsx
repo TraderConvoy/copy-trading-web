@@ -37,7 +37,7 @@ export const ErrorContextProvider = ({ children }) => {
 
     if (err.status === system.RESPONSE_STATUS.FORBIDDEN) {
       localStorage.removeItem(system.TOKEN);
-      history.push('/');
+      history.push('/copy-trading/login');
     }
 
     if (err.status === system.RESPONSE_STATUS.INTERVAL_SERVER) {

@@ -19,7 +19,8 @@ const InvestmentCalculator = () => {
   const handleCaculator = () => {
     setCalculatorData((oldState) => {
       const profit = ((parseFloat(data.profit) * parseFloat(data.profitability)) / 100) * oldState.month;
-      return { ...oldState, profit, profitability: parseFloat(data.profitability) };
+      const profitability = parseFloat(data.profitability) * oldState.month;
+      return { ...oldState, profit, profitability };
     });
   };
 

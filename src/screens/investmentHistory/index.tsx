@@ -69,7 +69,6 @@ const InvestmentHistory = () => {
           stopTradingCopyAction(body, (err, res) => {
             if (err) addError(err, null);
             closeModalConfirm();
-            handleGetListTradingCopy();
             handlePageChange(1);
           }),
         ),
@@ -93,7 +92,6 @@ const InvestmentHistory = () => {
           resumeTradingCopyAction(body, (err, res) => {
             if (err) addError(err, null);
             closeModalConfirm();
-            handleGetListTradingCopy();
             handlePageChange(1);
           }),
         ),
@@ -117,7 +115,6 @@ const InvestmentHistory = () => {
           pauseTradingCopyAction(body, (err, res) => {
             if (err) addError(err, null);
             closeModalConfirm();
-            handleGetListTradingCopy();
             handlePageChange(1);
           }),
         ),

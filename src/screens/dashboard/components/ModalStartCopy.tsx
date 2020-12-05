@@ -7,6 +7,7 @@ import NumberFormat from 'react-number-format';
 import { useDispatch, useSelector } from 'react-redux';
 import { getErrMessage } from 'utils/utilities';
 import { createTradingCopyAction } from '../ducks/actions';
+
 const initializeData = {
   investment_amount: '',
   maximum_rate: '',
@@ -122,15 +123,15 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
           <div className="info-wrapper">
             <div className="avatar-wrapper">
               <div className="avatar">
-                {detail.avatar ? (
-                  <img src={detail.avatar} alt="avatar" />
-                ) : detail.fullname ? (
-                  <p>{detail.fullname.split('')[0]}</p>
+                {detail.expert?.avatar ? (
+                  <img src={detail.expert.avatar} alt="avatar" />
+                ) : detail.expert?.fullname ? (
+                  <p>{detail.expert.fullname.split('')[0]}</p>
                 ) : null}
               </div>
             </div>
             <div className="name-wrapper">
-              <p className="name">{detail.fullname}</p>
+              <p className="name">{detail.expert?.fullname}</p>
               <p className="sub">
                 <span className="expert">Expert</span>
                 <span className="percent">5%</span>
@@ -260,7 +261,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
       </Modal.Body>
       <Modal.Footer>
         <div className="button-wrapper">
-          <button onClick={() => handleCreateTradingCopy()} disabled={!validData || loading}>
+          <button disabled={!validData || loading} onClick={() => handleCreateTradingCopy()}>
             Start Copy
           </button>
         </div>
