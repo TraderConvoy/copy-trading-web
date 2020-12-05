@@ -34,7 +34,8 @@ const Transfer = () => {
       <div className="modal-content">
         <div className="modal-header">
           <div className="modal-name">
-            <p>Transfer</p>
+            <p className="title">Transfer</p>
+            <p className="sub">500 USD is minimum required deposit to start copy trade</p>
           </div>
         </div>
         <div className="modal-body">
@@ -48,11 +49,12 @@ const Transfer = () => {
               <p className="account">Copy trade account</p>
             </div>
           </div>
-          <img src={`${urlImg}icons/transfer-icon.svg`} className="transfer-icon" alt="transfer-icon" />
+          <div className="icon-wrapper">
+            <img src={`${urlImg}icons/transfer-arrow.svg`} className="transfer-icon" alt="transfer-icon" />
+          </div>
         </div>
         <div className="modal-footer">
           <div className="detail-wrapper">
-            <p>Amount</p>
             <div className="available-wrapper">
               <p className="available">Available :</p>
               <p className="number">1000 USD</p>
@@ -71,10 +73,11 @@ const Transfer = () => {
             </div>
             <div className="button">
               <button disabled={!validData} onClick={() => handleTransfer()}>
+                <img src={`${urlImg}icons/transfer-arrow.svg`} className="transfer-icon" alt="transfer-icon" />
                 Transfer
               </button>
             </div>
-            <p className="alert-detail">500 USD is minimum required deposit to start copy trade</p>
+            {/* <p className="alert-detail">500 USD is minimum required deposit to start copy trade</p> */}
           </div>
         </div>
       </div>
