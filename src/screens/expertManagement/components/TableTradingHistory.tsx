@@ -10,7 +10,7 @@ const TableTradingHistory = ({ data }) => {
   return (
     <div className="table-trading-history">
       <Datatable className="copy-trade-table" columns={TABLE_TRADING_HISTORY()} data={pageData} noHeader={true} />
-      <Pagination page={page} perPage={9} data={data} pageChange={(page: number) => setPage(page)} />
+      <Pagination page={page} perPage={9} count={data.length} pageChange={(page: number) => setPage(page)} />
     </div>
   );
 };

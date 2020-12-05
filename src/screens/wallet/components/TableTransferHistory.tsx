@@ -9,7 +9,7 @@ const TableTransferHistory = ({ data }) => {
   return (
     <div className="table-transfer-history">
       <Datatable className="copy-trade-table" columns={TABLE_TRANSFER_HISTORY()} data={pageItems} noHeader={true} />
-      <Pagination page={page} perPage={9} data={data} pageChange={(page: number) => setPage(page)} />
+      <Pagination page={page} perPage={9} count={data.length} pageChange={(page: number) => setPage(page)} />
     </div>
   );
 };

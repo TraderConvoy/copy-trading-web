@@ -1,5 +1,5 @@
 import system from 'constant/localstore';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 
@@ -16,7 +16,18 @@ export const ErrorContextProvider = ({ children }) => {
   const { i18n } = useTranslation();
   const [errMess, setErrMess] = useState('');
 
+  useEffect(() => {
+    if (!!errMess) {
+      const timeout = setTimeout(() => setErrMess(''), [5000]);
+      return () => clearTimeout(timeout);
+    }
+  }, [errMess]);
+
   const addError = async (err: Response, message: null) => {
+    if (message) {
+      setErrMess(message || '');
+      return;
+    }
     if (err.status === system.RESPONSE_STATUS.NOT_FOUND)
       setErrMess(
         i18n.language === 'vi'
@@ -26,7 +37,7 @@ export const ErrorContextProvider = ({ children }) => {
 
     if (err.status === system.RESPONSE_STATUS.FORBIDDEN) {
       localStorage.removeItem(system.TOKEN);
-      history.push('/');
+      history.push('/copy-trading/login');
     }
 
     if (err.status === system.RESPONSE_STATUS.INTERVAL_SERVER) {
@@ -42,7 +53,12 @@ export const ErrorContextProvider = ({ children }) => {
   return (
     <ErrorContext.Provider value={contextValue}>
       {children}
-      <div className="toasts-wrapper">{errMess ? <div className="toast">{errMess}</div> : null}</div>
+      {errMess ? (
+        <div className="toasts-wrapper">
+          <div className="toast error">{errMess}</div>
+        </div>
+      ) : null}
+      {/* <div className="toasts-wrapper">{errMess ? <div className="toast">{errMess}</div> : null}</div> */}
     </ErrorContext.Provider>
   );
 };

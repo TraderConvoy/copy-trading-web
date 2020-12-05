@@ -1,3 +1,7 @@
 import { combineReducers } from 'redux';
-
-export default combineReducers({});
+import userInfo from './login/ducks/reducers';
+import userHistory from './yourHistory/ducks/reducers';
+export default combineReducers({
+  userHistory,
+  userInfo,
+});

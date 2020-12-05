@@ -1,7 +1,7 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 
-const Leader = ({ startCopy }) => {
+const Leader = ({ startCopy, detail }) => {
   const options = {
     legend: {
       display: false,
@@ -48,11 +48,19 @@ const Leader = ({ startCopy }) => {
     <div className="leader-card">
       <div className="info-wrapper">
         <div className="wrapper-left">
-          <div className="avatar" />
+          <div className="avatar">
+            {detail.expert.avatar ? (
+              <img src={detail.expert.avatar} alt="avatar" />
+            ) : (
+              <p>{detail.expert.fullname.split('')[0]}</p>
+            )}
+          </div>
         </div>
         <div className="wrapper-right">
           <div className="name-wrapper">
-            <p className="name">ManhDung225</p>
+            <a href={`/copy-trading/leader-detail/${detail.expert._id}`} className="name">
+              {detail.expert.fullname}
+            </a>
             <p className="sub">
               <span className="expert">Expert</span>
               <span className="percent">5%</span>
@@ -63,11 +71,11 @@ const Leader = ({ startCopy }) => {
       </div>
       <div className="detail-wrapper">
         <div className="wrapper-left">
-          <p className="percent">+8%</p>
+          <p className="percent">{detail.info.gain_rate_last_month}%</p>
           <p className="gain">Gain last month</p>
-          <p className="gain-percent">+94% in 10.7 months</p>
-          <p className="copy-counter">216 Copier</p>
-          <p className="last"># -10 last 7d</p>
+          <p className="gain-percent">{detail.info.gain_rate_months}% in 10.7 months</p>
+          <p className="copy-counter">{detail.info.copier} Copier</p>
+          <p className="last"># -{detail.info.removed_copier} last 7d</p>
         </div>
         <div className="wrapper-right">
           <p className="last-30days">Last 30days</p>
@@ -77,7 +85,7 @@ const Leader = ({ startCopy }) => {
         </div>
       </div>
       <div className="button-wrapper">
-        <button className="start-copy-button" onClick={startCopy}>
+        <button className="start-copy-button" onClick={() => startCopy(detail)}>
           Start copy
         </button>
       </div>

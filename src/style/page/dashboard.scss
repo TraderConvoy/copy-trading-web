@@ -63,6 +63,17 @@
         width: 80px;
         border-radius: 50%;
         background-color: #9792e0;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          height: 100%;
+        }
+        p {
+          font-size: 24px;
+          color: $lightBlueColor-2;
+        }
       }
     }
     .wrapper-right {
@@ -201,6 +212,17 @@
               width: 80px;
               border-radius: 50%;
               background-color: #9792e0;
+              overflow: hidden;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              img {
+                height: 100%;
+              }
+              p {
+                font-size: 24px;
+                color: $lightBlueColor-2;
+              }
             }
           }
           .name-wrapper {
@@ -800,4 +822,15 @@
       }
     }
   }
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
 }

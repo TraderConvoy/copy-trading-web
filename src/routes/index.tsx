@@ -32,7 +32,7 @@ const RouterConfig = () => {
       />
       <CustomerLayoutRoute
         exact={true}
-        path="/copy-trading/leader-detail/:leaderID?"
+        path="/copy-trading/leader-detail/:leaderID"
         activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER}
         component={LeaderDetail}
       />

@@ -3,45 +3,45 @@ import React from 'react';
 export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Time',
-    selector: 'time',
+    selector: 'opening_time',
     minWidth: '190px',
   },
   {
     name: 'Type',
-    selector: 'type',
+    selector: 'type_of_money',
   },
   {
     name: 'Order',
-    selector: 'order',
+    selector: 'type_of_order',
     cell: (row: any) => {
-      return <p className={`order ${row.order}`}>{row.order}</p>;
+      return <p className={`order ${row.type_of_order}`}>{row.type_of_order}</p>;
     },
   },
   {
     name: 'Open',
-    selector: 'open',
+    selector: 'opening_price',
   },
   {
     name: 'Close',
-    selector: 'close',
+    selector: 'closing_price',
   },
   {
     name: 'Investment',
-    selector: 'investment',
+    selector: 'investment_amount',
   },
   {
     name: 'Profit',
     selector: 'profit',
     cell: (row: any) => {
-      return <p className="profit">{row.profit}</p>;
+      return row.profit > 0 ? <p className="profit">{row.profit}</p> : <p className="profit-sharing">{row.profit}</p>;
     },
   },
   {
     name: '5% Profit sharing',
-    selector: 'profit_sharing',
+    selector: 'fee_to_expert',
     minWidth: '150px',
     cell: (row: any) => {
-      return <p className="profit-sharing">{row.profit_sharing}</p>;
+      return <p className="profit-sharing">{row.fee_to_expert}</p>;
     },
   },
   {
@@ -50,10 +50,13 @@ export const TABLE_YOUR_HISTORY = () => [
   },
   {
     name: 'Total Profit',
-    selector: 'total_profit',
     right: true,
-    cell: (row: any) => {
-      return <div className="total-profit">{row.total_profit}</div>;
+    cell: (record: any) => {
+      return (
+        <div className="total-profit">
+          {record.profit > 0 && `+`} {(record.profit - record.fee_to_trading - record.fee_to_trading).toFixed(2)}
+        </div>
+      );
     },
   },
 ];

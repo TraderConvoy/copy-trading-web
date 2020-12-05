@@ -1,18 +1,58 @@
-import Pagination, { itemWithPage } from 'containers/components/Pagination';
+import system from 'constant/localstore';
+import Loading from 'containers/components/Loading';
+import Pagination from 'containers/components/Pagination';
 import { DocumentWidthContext } from 'containers/contexts/DocumentWidthContext';
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
-import React, { useContext, useState } from 'react';
+import useError from 'containers/hooks/useErrorContext';
+import React, { useContext, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Leader from './components/Leader';
 import ModalStartCopy from './components/ModalStartCopy';
-// import ModalTransfer from './components/ModalTransfer';
+import ModalTransfer from './components/ModalTransfer';
+import { getListExpertsAction } from './ducks/actions';
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  const { addError } = useError();
+  const [data, setData] = useState({ result: [], count: 0 });
+  const history = useHistory();
+  const [expertSelector, setExpertSelector] = useState({});
   const [showModalSC, setShowModalStartSC] = useState(false);
-  // const [showModalTf, setShowModalTf] = useState(false);
   const [page, setPage] = useState(1);
+  const [pageLoading, setPageLoading] = useState(true);
+  const loading = useSelector((state: any) => state.common.loading);
+  const [showModalTf, setShowModalTf] = useState(false);
   const urlImg = useContext(UrlImagesContext);
   const documentWidth = useContext(DocumentWidthContext);
+
+  useEffect(() => {
+    handleGetListExpert(page);
+  }, [page]);
+
+  const handleGetListExpert = (page) => {
+    setPageLoading(true);
+    dispatch(
+      getListExpertsAction({ page, size: 9 }, (err, res: any) => {
+        if (err) addError(err, null);
+        else {
+          console.log(res);
+          setData(res.data);
+        }
+        // else setData(oldState => ({ ...oldState, result: res.data.result, count: res.data.count }));
+        setPageLoading(false);
+      }),
+    );
+  };
+
+  const handleStartCopy = (detail: any): void => {
+    if (!localStorage.getItem(system.TOKEN)) {
+      history.push('/copy-trading/login');
+    }
+    setExpertSelector(detail);
+    openModalSC();
+  };
 
   const openModalSC = () => {
     setShowModalStartSC(true);
@@ -22,22 +62,26 @@ const Dashboard = () => {
     setShowModalStartSC(false);
   };
 
-  // const closeModalTf = () => {
-  //   setShowModalTf(false);
-  // };
+  const closeModalTf = () => {
+    setShowModalTf(false);
+  };
 
   const handlePageChange = (page: number): void => {
     setPage(page);
   };
 
-  const data = Array(60)
-    .fill('')
-    .map((_, i) => i + 1);
-
   return (
     <div className="dashboard">
-      <ModalStartCopy isOpen={showModalSC} closeModal={closeModalSC} />
-      {/* <ModalTransfer isOpen={showModalTf} closeModal={closeModalTf} /> */}
+      {showModalSC && (
+        <ModalStartCopy
+          detail={expertSelector}
+          isOpen={showModalSC}
+          closeModal={closeModalSC}
+          setShowModalTf={setShowModalTf}
+        />
+      )}
+      {showModalTf && <ModalTransfer isOpen={showModalTf} closeModal={closeModalTf} />}
+
       <div className="dashboard__header">
         <Row>
           <Col md={true}>
@@ -55,18 +99,20 @@ const Dashboard = () => {
           </Col>
         </Row>
       </div>
-      <div className="dashboard__content">
-        <Row>
-          {itemWithPage(page, 9, data).map((item) => {
-            return (
-              <Col sm={true} md={true} lg={6} xl={documentWidth < 1360 ? 6 : 4} key={item}>
-                <Leader startCopy={() => openModalSC()} />
-              </Col>
-            );
-          })}
-        </Row>
-      </div>
-      <Pagination pageChange={handlePageChange} page={page} perPage={9} data={data} />
+      <Loading isLoading={pageLoading}>
+        <div className="dashboard__content">
+          <Row>
+            {data.result.map((item: any) => {
+              return (
+                <Col sm={true} md={true} lg={6} xl={documentWidth < 1360 ? 6 : 4} key={item.expert._id}>
+                  <Leader detail={item} startCopy={handleStartCopy} />
+                </Col>
+              );
+            })}
+          </Row>
+        </div>
+        <Pagination pageChange={(page: number) => handlePageChange(page)} page={page} perPage={9} count={data.count} />
+      </Loading>
     </div>
   );
 };

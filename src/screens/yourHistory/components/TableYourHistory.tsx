@@ -16,7 +16,7 @@ const TableYourHistory = ({ data }) => {
         paginationPerPage={10}
         responsive={true}
       />
-      <Pagination page={page} perPage={9} data={data} pageChange={(page: number) => setPage(page)} />
+      <Pagination page={page} perPage={9} count={data.length} pageChange={(page: number) => setPage(page)} />
     </div>
   );
 };
