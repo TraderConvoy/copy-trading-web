@@ -1,5 +1,7 @@
 import Loading from 'containers/components/Loading';
-import React, { useEffect, useState } from 'react';
+import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
+import React, { useContext, useEffect, useState } from 'react';
+import { Col, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import TableTransferHistory from './components/TableTransferHistory';
 import Transfer from './components/Transfer';
@@ -15,6 +17,8 @@ const fakeItem = {
 const Wallet = () => {
   const [transferHistoryLoading, setTransferHistoryLoading] = useState(true);
   const [dataHistory, setDataHistory] = useState([]);
+  const urlImg = useContext(UrlImagesContext);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,7 +40,16 @@ const Wallet = () => {
         <p className="title">Wallet</p>
         <p className="sub">To start copy trade you need transfer money from Real account to Copy trade account</p>
       </div>
-      <Transfer />
+      <Row>
+        <Col md={true}>
+          <Transfer />
+        </Col>
+        <Col md={true} className="d-md-none d-lg-block">
+          <div className="image-wrapper d-md-none d-lg-block">
+            <img src={`${urlImg}icons/wallet-icons.svg`} />
+          </div>
+        </Col>
+      </Row>
       <p className="section-name">Tranfer History</p>
       <Loading isLoading={transferHistoryLoading}>
         <TableTransferHistory data={fakeData} />
