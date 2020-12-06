@@ -17,6 +17,11 @@ const Navbar = () => {
           </div>
         </div>
         <div className="nav-right">
+          <div className="type-wrapper">
+            <div className="type">
+              <img src={`${urlImg}/icons/logout.svg`} alt="icon-sidebar" />
+            </div>
+          </div>
           <div className="user-wrapper">
             <div className="avatar-wrapper">C</div>
             <p className="username">User name</p>
