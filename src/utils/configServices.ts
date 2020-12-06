@@ -31,7 +31,7 @@ const getService = async (url: string, params?: { [key: string]: any }, isAuthor
       'Content-Type': 'application/json',
       language: localStorage.getItem(system.LANG) || 'vi',
     };
-    if (isAuthorization) headers.Authorization = localStorage.getItem(system.TOKEN);
+    if (isAuthorization) headers.Authorization = `Bearer ${localStorage.getItem(system.TOKEN)}`;
     const requestInit = { method: 'GET', headers };
     let queryString = '';
     if (params)

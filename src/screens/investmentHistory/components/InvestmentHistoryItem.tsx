@@ -12,7 +12,7 @@ const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) =
     if (item.expert[0]) {
       return {
         avatar: item.expert[0].avatar,
-        fullname: item.expert[0].fullname,
+        fullname: item.expert[0].username,
       };
     }
     return {};

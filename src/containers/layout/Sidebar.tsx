@@ -10,7 +10,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
     () => [
       {
         name: 'Top leader',
-        href: '/copy-trading',
+        href: '/copy-trading/top-leaders',
         icon: 'flag.svg',
         active: ACTIVE_SIDEBAR.TOP_LEADER,
       },
@@ -47,7 +47,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
       {
         name: 'Wallet',
         href: '/copy-trading/wallet',
-        icon: 'settings.svg',
+        icon: 'wallet.svg',
         active: ACTIVE_SIDEBAR.WALLET,
       },
     ],
@@ -60,13 +60,24 @@ const Sidebar = ({ activeSidebar = '' }) => {
         <img src={`${urlImg}icons/menu.svg`} />
       </button>
       <div className="sidebar-wrapper">
-        {/* <div className="user-wrapper">
-          <div className="avatar" />
-          <div className="username">
-            <p>nguyenmanhdung@gmail.com</p>
-          </div>
-        </div> */}
         <div className="sidebar-list">
+          <div className="logo">
+            <p>
+              FAST <span>MONEY</span> <span>Copy Trade</span>
+            </p>
+          </div>
+          <div className="user-wrapper">
+            <div className="avatar-wrapper">C</div>
+            <p className="username">Ninh.phammanh</p>
+          </div>
+          <div className="wrapper-left">
+            <p className="wallet">$ 23,694</p>
+          </div>
+          <div className="type-wrapper">
+            <div className="type">
+              <p>Logout</p>
+            </div>
+          </div>
           <ul className="sidebar-content">
             {sidebars.map((el, i) => (
               <li className="sidebar-item" key={i}>
@@ -77,8 +88,8 @@ const Sidebar = ({ activeSidebar = '' }) => {
                 >
                   <span className="sidebar-icon">
                     <img src={`${urlImg}/icons/${el.icon}`} alt="icon-sidebar" />
+                    <p>{el.name}</p>
                   </span>
-                  {el.name}
                 </Link>
               </li>
             ))}
