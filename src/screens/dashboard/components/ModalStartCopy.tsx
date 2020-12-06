@@ -27,12 +27,12 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
   const [isStopLoss, setStopLoss] = useState(false);
   const [isTakeProfit, setTakeProfit] = useState(false);
   const [isNotHaveAmount, setIsNotHaveAmount] = useState(false);
+  const [isVaidate, setisVaidate] = useState(false);
   useEffect(() => {
     if (!isOpen) clearModal();
   }, [isOpen]);
 
   const urlImg = useContext(UrlImagesContext);
-
   const handleCreateTradingCopy = () => {
     setIsNotHaveAmount(false);
     const body = {
@@ -81,38 +81,67 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
 
   const validData: boolean = useMemo(() => {
     if (!data.investment_amount || parseFloat(data.investment_amount) < 500) return false;
-    if (haveMaximum && parseFloat(data.maximum_rate) > 50) return false;
-    if (haveStopLoss && parseFloat(data.stop_loss) < 10) return false;
-    if (haveTakeProfit && parseFloat(data.taken_profit) < 150) return false;
     return true;
   }, [data, haveMaximum, haveStopLoss, haveTakeProfit]);
 
-  const MaxRateHandle = (type, event) => {
-    let value = parseInt(event.target.value);
-    setMaxRate(false);
-    setStopLoss(false);
-    setTakeProfit(false);
+  const handleTypeChange = async (value, type) => {
+    switch (type) {
+      case 'haveMaximum':
+        await setHaveHaximum(!value);
+        validateHandle('maximum_rate', data.maximum_rate, value);
+        break;
+      case 'haveStopLoss':
+        await setHaveStopLoss(!value);
+        validateHandle('stop_loss', data.stop_loss, value);
+        break;
+      case 'haveTakeProfit':
+        await setHaveTakeProfit(!value);
+        validateHandle('taken_profit', data.taken_profit, value);
+        break;
+
+      default:
+        break;
+    }
+    console.log(haveMaximum);
+  };
+
+  const validateHandle = (type, values, isReturn?) => {
+    const value = parseFloat(values);
+    setisVaidate(false);
+    if (!data.investment_amount || parseFloat(data.investment_amount) < 500) {
+      setisVaidate(true);
+      return;
+    }
     switch (type) {
       case 'maximum_rate':
-        if (!haveMaximum) return;
+        setMaxRate(false);
+        if (isReturn) return;
         if (value > 50 || value < 1) {
+          setisVaidate(true);
           setMaxRate(true);
         }
         break;
       case 'stop_loss':
-        if (!haveStopLoss) return;
-        if (value < 10 || value > 100) {
+        setStopLoss(false);
+        if (isReturn) return;
+        if (value > 100 || value < 10) {
+          setisVaidate(true);
           setStopLoss(true);
         }
         break;
       case 'taken_profit':
-        if (!haveTakeProfit) return;
+        setTakeProfit(false);
+        if (isReturn) return;
         if (value < 150) {
+          setisVaidate(true);
           setTakeProfit(true);
         }
         break;
       default:
         break;
+    }
+    if (isMaxRate || isStopLoss || isTakeProfit) {
+      setisVaidate(true);
     }
   };
 
@@ -160,6 +189,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                   <NumberFormat
                     thousandSeparator={true}
                     onValueChange={(values) => handleInputChange('investment_amount', values.floatValue)}
+                    onBlur={(event) => validateHandle('maximum_rate', event.target.value)}
                     prefix={'$'}
                     placeholder="$"
                     decimalScale={2}
@@ -189,7 +219,10 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
               <div className="input-wrapper maxinum">
                 <div className="__header">
                   <p>Maximum</p>
-                  <Toggle active={haveMaximum} onClick={(value: boolean) => setHaveHaximum(value)} />
+                  <Toggle
+                    active={haveMaximum}
+                    onClick={(value: boolean) => handleTypeChange(haveMaximum, 'haveMaximum')}
+                  />
                 </div>
                 <div className="__input">
                   {/* <input
@@ -200,8 +233,9 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                     onChange={(event) => handleInputChange('maximum_rate', event.target.value)}
                   /> */}
                   <NumberFormat
+                    disabled={!haveMaximum}
                     onValueChange={(values) => handleInputChange('maximum_rate', values.floatValue)}
-                    onBlur={(event) => MaxRateHandle('maximum_rate', event)}
+                    onBlur={(event) => validateHandle('maximum_rate', event.target.value)}
                     placeholder="%"
                     suffix={'%'}
                     value={data.maximum_rate}
@@ -212,7 +246,10 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
               <div className="input-wrapper stop-loss">
                 <div className="__header">
                   <p>Stop loss</p>
-                  <Toggle active={haveStopLoss} onClick={(value: boolean) => setHaveStopLoss(value)} />
+                  <Toggle
+                    active={haveStopLoss}
+                    onClick={(value: boolean) => handleTypeChange(haveStopLoss, 'haveStopLoss')}
+                  />
                 </div>
                 <div className="__input">
                   {/* <input
@@ -223,19 +260,25 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                     onChange={(event) => handleInputChange('stop_loss', event.target.value)}
                   /> */}
                   <NumberFormat
+                    disabled={!haveStopLoss}
                     onValueChange={(values) => handleInputChange('stop_loss', values.floatValue)}
-                    onBlur={(event) => MaxRateHandle('stop_loss', event)}
+                    onBlur={(event) => validateHandle('stop_loss', event.target.value)}
                     placeholder="%"
                     suffix={'%'}
                     value={data.stop_loss}
                   />
-                  {isStopLoss && <div className="invalid-feedback block">Stop loss is more than 10%</div>}
+                  {isStopLoss && (
+                    <div className="invalid-feedback block">Stop loss is more than 10% and less than 100</div>
+                  )}
                 </div>
               </div>
               <div className="input-wrapper take-profit">
                 <div className="__header">
                   <p>Take profit</p>
-                  <Toggle active={haveTakeProfit} onClick={(value: boolean) => setHaveTakeProfit(value)} />
+                  <Toggle
+                    active={haveTakeProfit}
+                    onClick={(value: boolean) => handleTypeChange(haveTakeProfit, 'haveTakeProfit')}
+                  />
                 </div>
                 <div className="__input">
                   {/* <input
@@ -246,8 +289,9 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                     onChange={(event) => handleInputChange('taken_profit', event.target.value)}
                   /> */}
                   <NumberFormat
+                    disabled={!haveTakeProfit}
                     onValueChange={(values) => handleInputChange('taken_profit', values.floatValue)}
-                    onBlur={(event) => MaxRateHandle('taken_profit', event)}
+                    onBlur={(event) => validateHandle('taken_profit', event.target.value)}
                     placeholder="%"
                     suffix={'%'}
                     value={data.taken_profit}
@@ -261,7 +305,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
       </Modal.Body>
       <Modal.Footer>
         <div className="button-wrapper">
-          <button disabled={!validData || loading} onClick={() => handleCreateTradingCopy()}>
+          <button disabled={isVaidate || !validData || loading} onClick={() => handleCreateTradingCopy()}>
             Start Copy
           </button>
         </div>

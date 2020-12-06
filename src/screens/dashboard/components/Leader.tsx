@@ -1,5 +1,6 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
+import NumberFormat from 'react-number-format';
 
 const Leader = ({ startCopy, detail }) => {
   const options = {
@@ -73,9 +74,13 @@ const Leader = ({ startCopy, detail }) => {
         <div className="wrapper-left">
           <p className="percent">{detail.info.gain_rate_last_month}%</p>
           <p className="gain">Gain last month</p>
-          <p className="gain-percent">{detail.info.gain_rate_months}% in 10.7 months</p>
+          <p className={detail.info.gain_rate_months >= 0 ? 'gain-percent' : 'loss-percent'}>
+            {/* FIXME: update month view  */}
+            <NumberFormat displayType="text" value={detail.info.gain_rate_months} suffix={'%'} decimalScale={2} /> in
+            10.7 months
+          </p>
           <p className="copy-counter">{detail.info.copier} Copier</p>
-          <p className="last"># -{detail.info.removed_copier} last 7d</p>
+          {detail.info.removed_copier && <p className="last"># -{detail.info.removed_copier} last 7d</p>}
         </div>
         <div className="wrapper-right">
           <p className="last-30days">Last 30days</p>

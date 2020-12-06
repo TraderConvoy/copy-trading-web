@@ -6,7 +6,7 @@ import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
 import useError from 'containers/hooks/useErrorContext';
 import React, { useContext, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Leader from './components/Leader';
 import ModalStartCopy from './components/ModalStartCopy';
@@ -22,7 +22,6 @@ const Dashboard = () => {
   const [showModalSC, setShowModalStartSC] = useState(false);
   const [page, setPage] = useState(1);
   const [pageLoading, setPageLoading] = useState(true);
-  const loading = useSelector((state: any) => state.common.loading);
   const [showModalTf, setShowModalTf] = useState(false);
   const urlImg = useContext(UrlImagesContext);
   const documentWidth = useContext(DocumentWidthContext);
