@@ -131,10 +131,22 @@
         line-height: 14px;
         color: $lightBlueColor-2;
       }
+      .loss {
+        font-size: 14px;
+        line-height: 14px;
+        color: #c72826;
+      }
       .gain-percent {
         font-size: 13px;
         line-height: 13px;
         color: $greenColor;
+        font-weight: 500;
+        margin-bottom: 1.1vw;
+      }
+      .loss-percent {
+        color: #c72826;
+        font-size: 13px;
+        line-height: 13px;
         font-weight: 500;
         margin-bottom: 1.1vw;
       }
@@ -833,4 +845,8 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type='number'] {
   -moz-appearance: textfield;
+}
+
+input[type='text']:disabled {
+  opacity: 0.35;
 }
