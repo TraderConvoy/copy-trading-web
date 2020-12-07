@@ -47,6 +47,13 @@ export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Leader',
     selector: 'leader',
+    cell: (record: any) => {
+      return (
+        <div className="">
+          <p>{record?.expert[0]['username']}</p>
+        </div>
+      );
+    },
   },
   {
     name: 'Total Profit',

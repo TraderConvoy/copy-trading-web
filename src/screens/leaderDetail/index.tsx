@@ -1,8 +1,9 @@
 import Loading from 'containers/components/Loading';
 import useError from 'containers/hooks/useErrorContext';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import ModalStartCopy from 'screens/dashboard/components/ModalStartCopy';
 import TableLeaderHistory from 'screens/expertManagement/components/TableTradingHistory';
 import LeaderInfo from './components/LeaderInfo';
 import Overview from './components/Overview';
@@ -27,12 +28,15 @@ const LeaderDetail = () => {
   const [data, setData] = useState({});
   const [loadingPage, setLoadingPage] = useState(true);
   const [tab, setTab] = useState(tabs.OVERVIEW);
-
   const dispatch = useDispatch();
   const history = useHistory();
   const { addError } = useError();
   const { leaderID }: any = useParams();
-
+  const expertInfo = useSelector((state: any) => state.screen.leaderDetail.expertDetail.data);
+  const expertDetail = {
+    expert: expertInfo.result,
+  };
+  const [showModalSC, setShowModalStartSC] = useState(false);
   useEffect(() => {
     handleGetLeaderDetail();
   }, []);
@@ -40,7 +44,7 @@ const LeaderDetail = () => {
   const handleGetLeaderDetail = () => {
     setLoadingPage(true);
     const body = {
-      id_expert: leaderID,
+      _id: leaderID,
     };
     dispatch(
       getLeaderDetailAction(body, (err, res) => {
@@ -52,7 +56,13 @@ const LeaderDetail = () => {
       }),
     );
   };
-
+  const closeModalSC = () => {
+    setShowModalStartSC(false);
+  };
+  const setShowModalStart = () => {
+    debugger;
+    setShowModalStartSC(true);
+  };
   return (
     <Loading isLoading={loadingPage}>
       <div className="leader-detail">
@@ -62,7 +72,15 @@ const LeaderDetail = () => {
           </div>
         </div>
         <div className="leader-detail__content">
-          <LeaderInfo />
+          {showModalSC && (
+            <ModalStartCopy
+              detail={expertDetail}
+              isOpen={showModalSC}
+              closeModal={closeModalSC}
+              setShowModalTf={false}
+            />
+          )}
+          <LeaderInfo setShowModalStart={setShowModalStart} expertInfo={expertInfo} />
           <div className="tab-wrapper">
             <div className="tab-names">
               <p className={`tab ${tab === tabs.OVERVIEW ? 'active' : ''}`} onClick={() => setTab(tabs.OVERVIEW)}>

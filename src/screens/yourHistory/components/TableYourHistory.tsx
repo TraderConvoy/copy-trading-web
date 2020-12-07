@@ -5,7 +5,7 @@ import Datatable from 'react-data-table-component';
 
 const TableYourHistory = ({ data }) => {
   const [page, setPage] = useState(1);
-  const pageItems = itemWithPage(page, 9, data);
+  const pageItems = itemWithPage(page, 50, data);
   return (
     <div className="table-your-history">
       <Datatable
@@ -13,10 +13,10 @@ const TableYourHistory = ({ data }) => {
         noHeader={true}
         columns={TABLE_YOUR_HISTORY()}
         data={pageItems}
-        paginationPerPage={10}
+        paginationPerPage={50}
         responsive={true}
       />
-      <Pagination page={page} perPage={9} count={data.length} pageChange={(page: number) => setPage(page)} />
+      <Pagination page={page} perPage={50} count={data.length} pageChange={(page: number) => setPage(page)} />
     </div>
   );
 };

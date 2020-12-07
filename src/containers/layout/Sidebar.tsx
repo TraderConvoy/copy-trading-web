@@ -1,10 +1,13 @@
 import { ACTIVE_SIDEBAR } from 'constant/sidebar';
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
 import React, { useContext, useMemo, useState } from 'react';
+import NumberFormat from 'react-number-format';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Sidebar = ({ activeSidebar = '' }) => {
   const [active, setActive] = useState(false);
+  const userInfor = useSelector((state: any) => state.screen.userInfo.userInfor);
   const urlImg = useContext(UrlImagesContext);
   const sidebars = useMemo(
     () => [
@@ -67,14 +70,23 @@ const Sidebar = ({ activeSidebar = '' }) => {
             </p>
           </div>
           <div className="user-wrapper">
-            <div className="avatar-wrapper">C</div>
-            <p className="username">Ninh.phammanh</p>
+            {/* TODO: change avata */}
+            <div className="avatar-wrapper">{userInfor?.avata ? 'A' : userInfor.username.split('')[0]}</div>
+            <p className="username">{userInfor.username}</p>
           </div>
           <div className="wrapper-left">
-            <p className="wallet">$ 23,694</p>
+            <p className="wallet">
+              <NumberFormat
+                thousandSeparator={true}
+                displayType="text"
+                prefix={'$'}
+                decimalScale={2}
+                value={userInfor.total_amount}
+              />
+            </p>
           </div>
           <div className="type-wrapper">
-            <div className="type">
+            <div className="type" style={{ cursor: 'pointer' }}>
               <p>Logout</p>
             </div>
           </div>

@@ -45,7 +45,7 @@ class ConfigureStore {
     const persistConfig = {
       key: 'root',
       storage,
-      whitelist: [''],
+      // whitelist: [''],
       blacklist: ['router'],
     };
     const persistedReducer = persistReducer(persistConfig, resettableAppReducer);
