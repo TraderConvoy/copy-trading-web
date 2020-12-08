@@ -24,7 +24,6 @@ const Overview = () => {
       ],
     },
   };
-  debugger;
   let randoms = [...Array(15)].map(() => Math.floor(Math.random() * 12));
   console.log();
   const data = {

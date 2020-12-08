@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getErrMessage } from 'utils/utilities';
 import { createTradingCopyAction } from '../ducks/actions';
-
 const initializeData = {
   investment_amount: '',
   maximum_rate: '',

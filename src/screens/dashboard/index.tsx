@@ -28,7 +28,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     handleGetListExpert(page);
-  }, [page]);
+  }, []);
 
   const handleGetListExpert = (page) => {
     setPageLoading(true);
@@ -67,6 +67,7 @@ const Dashboard = () => {
 
   const handlePageChange = (page: number): void => {
     setPage(page);
+    handleGetListExpert(page);
   };
 
   return (

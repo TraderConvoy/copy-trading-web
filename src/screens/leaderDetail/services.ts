@@ -7,3 +7,11 @@ export const getLeaderDetail = async (body) => {
     throw error;
   }
 };
+
+export const getLeaderHistory = async (body) => {
+  try {
+    return await api.postService(`trading_history/get_list_trading_histories_by_expert`, body, true);
+  } catch (error) {
+    throw error;
+  }
+};

@@ -1,7 +1,12 @@
 import { loadingOffAction, loadingOnAction } from 'containers/redux/common/actions';
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { getLeaderDetail } from '../services';
-import { getLeaderDetailAction, setLeaderDetailAction } from './actions';
+import { getLeaderDetail, getLeaderHistory } from '../services';
+import {
+  getLeaderDetailAction,
+  getLeaderHistoryAction,
+  setLeaderDetailAction,
+  setLeaderHistoryAction,
+} from './actions';
 
 function* getLeaderDetailWatcher() {
   yield takeLatest(getLeaderDetailAction, function* ({ payload }) {
@@ -20,6 +25,24 @@ function* getLeaderDetailWatcher() {
   });
 }
 
+function* getLeaderHistoryWatcher() {
+  yield takeLatest(getLeaderHistoryAction, function* ({ payload }) {
+    try {
+      yield put(loadingOnAction());
+      const result = yield call(getLeaderHistory, payload.body);
+      if (result) {
+        yield put(setLeaderHistoryAction(result.data));
+        if (payload.callback) payload.callback(null, result);
+      }
+    } catch (error) {
+      if (payload.callback) payload.callback(error, {});
+    } finally {
+      yield put(loadingOffAction());
+    }
+  });
+}
+
 export default {
   getLeaderDetailWatcher,
+  getLeaderHistoryWatcher,
 };

@@ -33,18 +33,28 @@ const Leader = ({ startCopy, detail }) => {
       ],
     },
   };
+  const getRandomArbitrary = (min, max) => {
+    return Math.random() * (max - min) + min;
+  };
+
   const data = {
-    labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    labels: [1, 3, 3, 4, 5, 6, 7, 8, 9, 10],
     datasets: [
       {
         backgroundColor: 'rgba(30, 96, 121, 1)',
         borderColor: 'rgb(43 139 192)',
-        data: [0, 5, 4, 10, 10, 15, 14, 30, 34, 60],
+        data: [...Array(10)].map(() => Math.floor(getRandomArbitrary(40, 80))),
         pointRadius: 0,
       },
     ],
   };
+  // [0, 5, 4, 10, 10, 15, 14, 30, 34, 60],
 
+  const getRandomInt = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
   return (
     <div className="leader-card">
       <div className="info-wrapper">

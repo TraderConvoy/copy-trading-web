@@ -1,11 +1,14 @@
 import moment from 'moment';
 import React from 'react';
-
+import NumberFormat from 'react-number-format';
 export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Time',
     selector: 'opening_time',
-    minWidth: '190px',
+    minWidth: '180px',
+    cell: (row: any) => {
+      return <p>{moment(row.opening_time).format('YYYY-MM-DD HH:mm')}</p>;
+    },
   },
   {
     name: 'Type',
@@ -14,6 +17,7 @@ export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Order',
     selector: 'type_of_order',
+    minWidth: '80px',
     cell: (row: any) => {
       return <p className={`order ${row.type_of_order}`}>{row.type_of_order}</p>;
     },
@@ -29,12 +33,52 @@ export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Investment',
     selector: 'investment_amount',
+    right: true,
+    cell: (row: any) => {
+      return (
+        <p>
+          {
+            <NumberFormat
+              thousandSeparator={true}
+              displayType="text"
+              prefix={'$'}
+              decimalScale={2}
+              value={row.investment_amount}
+            />
+          }
+        </p>
+      );
+    },
   },
   {
     name: 'Profit',
     selector: 'profit',
     cell: (row: any) => {
-      return row.profit > 0 ? <p className="profit">{row.profit}</p> : <p className="profit-sharing">{row.profit}</p>;
+      return row.profit > 0 ? (
+        <p className="profit">
+          {
+            <NumberFormat
+              thousandSeparator={true}
+              displayType="text"
+              // prefix={'$'}
+              decimalScale={2}
+              value={row.profit}
+            />
+          }
+        </p>
+      ) : (
+        <p className="profit-sharing">
+          {
+            <NumberFormat
+              thousandSeparator={true}
+              displayType="text"
+              // prefix={'$'}
+              decimalScale={2}
+              value={row.profit}
+            />
+          }
+        </p>
+      );
     },
   },
   {
@@ -62,7 +106,15 @@ export const TABLE_YOUR_HISTORY = () => [
     cell: (record: any) => {
       return (
         <div className="total-profit">
-          {record.profit > 0 && `+`} {(record.profit - record.fee_to_trading - record.fee_to_trading).toFixed(2)}
+          {record.profit > 0 && `+`}{' '}
+          {
+            <NumberFormat
+              thousandSeparator={true}
+              displayType="text"
+              decimalScale={2}
+              value={record.profit - record.fee_to_trading - record.fee_to_trading}
+            />
+          }
         </div>
       );
     },
@@ -156,7 +208,7 @@ export const TABLE_TRANSFER_HISTORY = () => [
     name: 'Time',
     selector: 'paidAt',
     cell: (row: any) => {
-      return <p className="">{moment(row).format('YYYY-MM-DD HH:mm:ss')}</p>;
+      return <p className="">{moment(row.paidAt).format('YYYY-MM-DD HH:mm')}</p>;
     },
   },
   {
@@ -195,5 +247,67 @@ export const TABLE_TRANSFER_HISTORY = () => [
       return <p className="status">{row.status}</p>;
     },
     right: true,
+  },
+];
+
+export const TABLE_LEADER_HISTORY = () => [
+  {
+    name: 'Time',
+    selector: 'time',
+    minWidth: '190px',
+    cell: (row: any) => {
+      return <p>{moment(row.time).format('YYYY-MM-DD HH:mm')}</p>;
+    },
+  },
+  {
+    name: 'Type',
+    selector: 'type_of_money',
+  },
+  {
+    name: 'Order',
+    selector: 'type_of_order',
+    cell: (row: any) => {
+      return <p className={`order ${row.type_of_order}`}>{row.type_of_order}</p>;
+    },
+  },
+  {
+    name: 'Open',
+    selector: 'opening_price',
+  },
+  {
+    name: 'Close',
+    selector: 'closing_price',
+  },
+  {
+    name: 'Investment',
+    selector: 'investment_amount',
+    cell: (row: any) => {
+      return (
+        <p>
+          {<NumberFormat thousandSeparator={true} displayType="text" decimalScale={2} value={row.investment_amount} />}
+        </p>
+      );
+    },
+  },
+  {
+    name: 'Profit',
+    selector: 'profit',
+    right: true,
+    cell: (record: any) => {
+      return (
+        <p className="profit">
+          {' '}
+          {record.profit > 0 && `+`}{' '}
+          {
+            <NumberFormat
+              thousandSeparator={true}
+              displayType="text"
+              decimalScale={2}
+              value={record.profit - record.fee_to_trading - record.fee_to_trading}
+            />
+          }
+        </p>
+      );
+    },
   },
 ];

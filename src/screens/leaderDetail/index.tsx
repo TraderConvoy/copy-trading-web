@@ -4,10 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import ModalStartCopy from 'screens/dashboard/components/ModalStartCopy';
-import TableLeaderHistory from 'screens/expertManagement/components/TableTradingHistory';
 import LeaderInfo from './components/LeaderInfo';
 import Overview from './components/Overview';
-import { getLeaderDetailAction } from './redux/actions';
+import TableLeaderHistory from './components/TableLeaderHistory';
+import { getLeaderDetailAction, getLeaderHistoryAction } from './redux/actions';
 
 const tabs = {
   OVERVIEW: 'overview',
@@ -32,14 +32,32 @@ const LeaderDetail = () => {
   const history = useHistory();
   const { addError } = useError();
   const { leaderID }: any = useParams();
+  const [page, setPage] = useState(1);
+  const [transferHistoryLoading, setTransferHistoryLoading] = useState(true);
   const expertInfo = useSelector((state: any) => state.screen.leaderDetail.expertDetail.data);
+  const leaderHistory = useSelector((state: any) => state.screen.leaderDetail.leaderHistory);
   const expertDetail = {
     expert: expertInfo?.result,
   };
   const [showModalSC, setShowModalStartSC] = useState(false);
   useEffect(() => {
+    dispatch(
+      getLeaderHistoryAction({ id_expert: expertInfo.result._id, page: page, size: 50 }, () => {
+        setTransferHistoryLoading(false);
+      }),
+    );
     handleGetLeaderDetail();
   }, []);
+
+  useEffect(() => {
+    if (tab === tabs.LEADER_HISTORY) {
+      dispatch(
+        getLeaderHistoryAction({ page: page, size: 50 }, () => {
+          setTransferHistoryLoading(false);
+        }),
+      );
+    }
+  }, [page]);
 
   const handleGetLeaderDetail = () => {
     setLoadingPage(true);
@@ -94,7 +112,9 @@ const LeaderDetail = () => {
             </div>
             <div className="tab-content">
               {tab === tabs.OVERVIEW ? <Overview /> : null}
-              {tab === tabs.LEADER_HISTORY ? <TableLeaderHistory data={Array(99).fill(fakeData)} /> : null}
+              {tab === tabs.LEADER_HISTORY && leaderHistory && (
+                <TableLeaderHistory data={leaderHistory} setPage={setPage} page={page} />
+              )}
             </div>
           </div>
         </div>

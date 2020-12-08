@@ -3,6 +3,7 @@ import { DocumentWidthContext } from 'containers/contexts/DocumentWidthContext';
 import moment from 'moment/moment';
 import React, { useContext, useMemo } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import NumberFormat from 'react-number-format';
 import { useSelector } from 'react-redux';
 const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) => {
   const loading = useSelector((state: any) => state.common.loading);
@@ -52,11 +53,27 @@ const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) =
             </div>
             <div className="detail-item">
               <p className="name">Amount of investment</p>
-              <p className="value">{item.investment_amount} USD</p>
+              <p className="value">
+                {' '}
+                {
+                  <NumberFormat thousandSeparator={true} displayType="text" decimalScale={2} value={item.base_amount} />
+                }{' '}
+                USD
+              </p>
             </div>
             <div className="detail-item">
               <p className="name">Current balance</p>
-              <p className="value">{item.investment_amount} USD</p>
+              <p className="value">
+                {
+                  <NumberFormat
+                    thousandSeparator={true}
+                    displayType="text"
+                    decimalScale={2}
+                    value={item.investment_amount}
+                  />
+                }{' '}
+                USD
+              </p>
             </div>
           </div>
         </Col>
