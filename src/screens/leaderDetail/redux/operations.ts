@@ -9,7 +9,6 @@ function* getLeaderDetailWatcher() {
       yield put(loadingOnAction());
       const result = yield call(getLeaderDetail, payload.body);
       if (result) {
-        debugger;
         yield put(setLeaderDetailAction(result.data));
         if (payload.callback) payload.callback(null, result);
       }

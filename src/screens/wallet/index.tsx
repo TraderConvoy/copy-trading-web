@@ -2,9 +2,10 @@ import Loading from 'containers/components/Loading';
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
 import React, { useContext, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import TableTransferHistory from './components/TableTransferHistory';
 import Transfer from './components/Transfer';
+import { getTransferHistoryAction } from './redux/actions';
 
 const fakeItem = {
   time: '18/11/2020 - 18:20:39',
@@ -18,18 +19,25 @@ const Wallet = () => {
   const [transferHistoryLoading, setTransferHistoryLoading] = useState(true);
   const [dataHistory, setDataHistory] = useState([]);
   const urlImg = useContext(UrlImagesContext);
-
   const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
+  const [pageLoading, setPageLoading] = useState(true);
+  const walletHistory = useSelector((state: any) => state.screen.wallet.walletHistory.data);
+  console.log('walletHistory', walletHistory);
 
   useEffect(() => {
     handleGetTransferHistory();
-  }, []);
+  }, [page]);
 
   const handleGetTransferHistory = () => {
-    setTransferHistoryLoading(true);
-    setTimeout(() => setTransferHistoryLoading(false), [3000]);
-    // const body = {};
-    // dispatch(getTransferHistoryAction(body, () => {}))
+    // setTimeout(() => setTransferHistoryLoading(false), [3000]);
+    try {
+      dispatch(
+        getTransferHistoryAction({ page: page, size: 50 }, () => {
+          setTransferHistoryLoading(false);
+        }),
+      );
+    } catch (error) {}
   };
 
   const fakeData = Array(70).fill(fakeItem);
@@ -42,7 +50,7 @@ const Wallet = () => {
       </div>
       <Row>
         <Col md={true}>
-          <Transfer />
+          <Transfer handleGetTransferHistory={handleGetTransferHistory} />
         </Col>
         <Col md={true} className="d-md-none d-lg-block">
           <div className="image-wrapper d-md-none d-lg-block">
@@ -52,7 +60,7 @@ const Wallet = () => {
       </Row>
       <p className="section-name">Tranfer History</p>
       <Loading isLoading={transferHistoryLoading}>
-        <TableTransferHistory data={fakeData} />
+        <TableTransferHistory walletHistory={walletHistory} setPage={setPage} page={page} />
       </Loading>
     </div>
   );

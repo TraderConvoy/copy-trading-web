@@ -60,7 +60,6 @@ const LeaderDetail = () => {
     setShowModalStartSC(false);
   };
   const setShowModalStart = () => {
-    debugger;
     setShowModalStartSC(true);
   };
   return (

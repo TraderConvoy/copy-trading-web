@@ -1,9 +1,10 @@
 import { ACTIVE_SIDEBAR } from 'constant/sidebar';
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import NumberFormat from 'react-number-format';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getUserAmountAction } from 'screens/dashboard/ducks/actions';
 
 const Sidebar = ({ activeSidebar = '' }) => {
   const [active, setActive] = useState(false);
@@ -56,7 +57,17 @@ const Sidebar = ({ activeSidebar = '' }) => {
     ],
     [],
   );
+  const dispatch = useDispatch();
+  const amount = useSelector((state: any) => state.screen.dashBoard.userAmount.data);
+  useEffect(() => {
+    handleGetAmount();
+  }, []);
 
+  const handleGetAmount = () => {
+    try {
+      dispatch(getUserAmountAction({ source: 'COPY_TRADE' }, () => {}));
+    } catch (error) {}
+  };
   return (
     <div id="sidebar" className={`${active ? 'active' : ''}`}>
       <button className="toggle-menu" onClick={() => setActive(!active)}>
@@ -81,7 +92,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
                 displayType="text"
                 prefix={'$'}
                 decimalScale={2}
-                value={userInfor.total_amount}
+                value={amount ? amount : userInfor.total_amount}
               />
             </p>
           </div>

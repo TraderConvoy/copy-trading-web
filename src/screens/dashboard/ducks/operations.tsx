@@ -1,10 +1,13 @@
 import { loadingOffAction, loadingOnAction } from 'containers/redux/common/actions';
 import { call, put, takeLatest } from 'redux-saga/effects';
+import { getAmountAvailable } from 'screens/wallet/services';
 import { createTradingCopy, getDataExperts, getListTradingCopies, tranferAmountService } from '../services';
 import {
   createTradingCopyAction,
   getListExpertsAction,
   getListTradingCopiesAction,
+  getUserAmountAction,
+  setAmountAction,
   setListExpertsAction,
   transferAmountAction,
 } from './actions';
@@ -73,9 +76,24 @@ function* transferAmountWatcher() {
   });
 }
 
+function* getAmountWatcher() {
+  yield takeLatest(getUserAmountAction, function* ({ payload }) {
+    try {
+      const result = yield call(getAmountAvailable, payload.body);
+      if (result) {
+        yield put(setAmountAction(result));
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+    }
+  });
+}
+
 export default {
   getDataExpertsWatcher,
   getListTradingCopiesWatcher,
   createTradingCopyWatcher,
   transferAmountWatcher,
+  getAmountWatcher,
 };

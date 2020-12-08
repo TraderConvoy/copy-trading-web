@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React from 'react';
 
 export const TABLE_YOUR_HISTORY = () => [
@@ -153,7 +154,10 @@ export const TABLE_PROFIT_SHARING_HISTORY = () => [
 export const TABLE_TRANSFER_HISTORY = () => [
   {
     name: 'Time',
-    selector: 'time',
+    selector: 'paidAt',
+    cell: (row: any) => {
+      return <p className="">{moment(row).format('YYYY-MM-DD HH:mm:ss')}</p>;
+    },
   },
   {
     name: 'Amount',
@@ -165,10 +169,24 @@ export const TABLE_TRANSFER_HISTORY = () => [
   {
     name: 'From',
     selector: 'from',
+    cell: (row: any) => {
+      return (
+        <p className="amount">
+          {row.type_of_withdraw === 'TRANSFER_TO_WALLET' ? 'Copy Trade Account' : 'Real Account'}
+        </p>
+      );
+    },
   },
   {
     name: 'To',
     selector: 'to',
+    cell: (row: any) => {
+      return (
+        <p className="amount">
+          {row.type_of_withdraw !== 'TRANSFER_TO_WALLET' ? 'Copy Trade Account' : 'Real Account'}
+        </p>
+      );
+    },
   },
   {
     name: 'Status',
