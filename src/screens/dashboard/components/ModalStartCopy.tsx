@@ -80,70 +80,101 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
   };
 
   const validData: boolean = useMemo(() => {
-    if (!data.investment_amount || parseFloat(data.investment_amount) < 500) return false;
-    return true;
+    let result = true;
+    if (!data.investment_amount || parseFloat(data.investment_amount) < 500) {
+      result = false;
+    }
+    if (haveMaximum) {
+      if (!data.maximum_rate || parseFloat(data.maximum_rate) > 50) {
+        setMaxRate(true);
+        result = false;
+      } else {
+        setMaxRate(false);
+      }
+    } else {
+      setMaxRate(false);
+    }
+    if (haveStopLoss) {
+      if (!data.stop_loss || parseFloat(data.stop_loss) < 10 || parseFloat(data.stop_loss) > 100) {
+        setStopLoss(true);
+        result = false;
+      } else {
+        setStopLoss(false);
+      }
+    } else {
+      setStopLoss(false);
+    }
+    if (haveTakeProfit) {
+      if (!data.taken_profit || parseFloat(data.taken_profit) < 150) {
+        setTakeProfit(true);
+        result = false;
+      } else {
+        setTakeProfit(false);
+      }
+    } else {
+      setTakeProfit(false);
+    }
+    return result;
   }, [data, haveMaximum, haveStopLoss, haveTakeProfit]);
 
   const handleTypeChange = async (value, type) => {
     switch (type) {
       case 'haveMaximum':
-        await setHaveHaximum(!value);
-        validateHandle('maximum_rate', data.maximum_rate, value);
+        setData((oldState) => ({ ...oldState, maximum_rate: '' }));
+        setHaveHaximum(!value);
         break;
       case 'haveStopLoss':
-        await setHaveStopLoss(!value);
-        validateHandle('stop_loss', data.stop_loss, value);
+        setData((oldState) => ({ ...oldState, stop_loss: '' }));
+        setHaveStopLoss(!value);
         break;
       case 'haveTakeProfit':
-        await setHaveTakeProfit(!value);
-        validateHandle('taken_profit', data.taken_profit, value);
-        break;
-
-      default:
-        break;
-    }
-    console.log(haveMaximum);
-  };
-
-  const validateHandle = (type, values, isReturn?) => {
-    const value = parseFloat(values);
-    setisVaidate(false);
-    if (!data.investment_amount || parseFloat(data.investment_amount) < 500) {
-      setisVaidate(true);
-      return;
-    }
-    switch (type) {
-      case 'maximum_rate':
-        setMaxRate(false);
-        if (isReturn) return;
-        if (value > 50 || value < 1) {
-          setisVaidate(true);
-          setMaxRate(true);
-        }
-        break;
-      case 'stop_loss':
-        setStopLoss(false);
-        if (isReturn) return;
-        if (value > 100 || value < 10) {
-          setisVaidate(true);
-          setStopLoss(true);
-        }
-        break;
-      case 'taken_profit':
-        setTakeProfit(false);
-        if (isReturn) return;
-        if (value < 150) {
-          setisVaidate(true);
-          setTakeProfit(true);
-        }
+        setData((oldState) => ({ ...oldState, taken_profit: '' }));
+        setHaveTakeProfit(!value);
         break;
       default:
         break;
     }
-    if (isMaxRate || isStopLoss || isTakeProfit) {
-      setisVaidate(true);
-    }
   };
+
+  // const validateHandle = (type, values, isReturn?) => {
+  //   const value = parseFloat(values);
+  //   setisVaidate(false);
+  //   if (!data.investment_amount || parseFloat(data.investment_amount) < 500) {
+  //     setisVaidate(true);
+  //     return;
+  //   }
+  //   switch (type) {
+  //     case 'maximum_rate':
+  //       setMaxRate(false);
+  //       if (isReturn) return;
+  //       if (value > 50 || value < 1) {
+  //         setisVaidate(true);
+  //         setMaxRate(true);
+  //       }
+  //       break;
+  //     case 'stop_loss':
+  //       setStopLoss(false);
+  //       if (isReturn) return;
+  //       if (value > 100 || value < 10) {
+  //         setisVaidate(true);
+  //         setStopLoss(true);
+  //       }
+  //       break;
+  //     case 'taken_profit':
+  //       setTakeProfit(false);
+  //       if (isReturn) return;
+  //       if (value < 150) {
+  //         setisVaidate(true);
+  //         setTakeProfit(true);
+  //       }
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  //   if (isMaxRate || isStopLoss || isTakeProfit) {
+  //     setisVaidate(true);
+  //   }
+  // };
 
   return (
     <Modal show={isOpen} onHide={() => closeModal()} className="start-copy-modal" size="lg">
@@ -189,7 +220,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                   <NumberFormat
                     thousandSeparator={true}
                     onValueChange={(values) => handleInputChange('investment_amount', values.floatValue)}
-                    onBlur={(event) => validateHandle('maximum_rate', event.target.value)}
+                    // onBlur={(event) => validateHandle('maximum_rate', event.target.value)}
                     prefix={'$'}
                     placeholder="$"
                     decimalScale={2}
@@ -235,7 +266,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                   <NumberFormat
                     disabled={!haveMaximum}
                     onValueChange={(values) => handleInputChange('maximum_rate', values.floatValue)}
-                    onBlur={(event) => validateHandle('maximum_rate', event.target.value)}
+                    // onBlur={(event) => validateHandle('maximum_rate', event.target.value)}
                     placeholder="%"
                     suffix={'%'}
                     value={data.maximum_rate}
@@ -262,7 +293,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                   <NumberFormat
                     disabled={!haveStopLoss}
                     onValueChange={(values) => handleInputChange('stop_loss', values.floatValue)}
-                    onBlur={(event) => validateHandle('stop_loss', event.target.value)}
+                    // onBlur={(event) => validateHandle('stop_loss', event.target.value)}
                     placeholder="%"
                     suffix={'%'}
                     value={data.stop_loss}
@@ -291,7 +322,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                   <NumberFormat
                     disabled={!haveTakeProfit}
                     onValueChange={(values) => handleInputChange('taken_profit', values.floatValue)}
-                    onBlur={(event) => validateHandle('taken_profit', event.target.value)}
+                    // onBlur={(event) => validateHandle('taken_profit', event.target.value)}
                     placeholder="%"
                     suffix={'%'}
                     value={data.taken_profit}
