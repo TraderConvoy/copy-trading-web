@@ -1,10 +1,12 @@
 import Toggle from 'containers/components/Toggle';
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
 import useError from 'containers/hooks/useErrorContext';
+import useToastContext from 'containers/hooks/useToastContext';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { Col, Container, Modal, Row } from 'react-bootstrap';
 import NumberFormat from 'react-number-format';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getErrMessage } from 'utils/utilities';
 import { createTradingCopyAction } from '../ducks/actions';
 
@@ -31,7 +33,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
   useEffect(() => {
     if (!isOpen) clearModal();
   }, [isOpen]);
-
+  const { addToast } = useToastContext();
   const urlImg = useContext(UrlImagesContext);
   const handleCreateTradingCopy = () => {
     setIsNotHaveAmount(false);
@@ -52,15 +54,11 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
           if (message.indexOf('Account does not have enough money!') !== -1) {
             setIsNotHaveAmount(true);
             clearModal();
-            setTimeout(() => {
-              closeModal();
-              setShowModalTf(true);
-            }, 300);
             return;
           }
           addError(err, message ? message : null);
         } else {
-          //:FIXME: show message success rồi close modal
+          addToast('Copy traded successfully!');
           closeModal();
           clearModal();
         }
@@ -135,47 +133,6 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
         break;
     }
   };
-
-  // const validateHandle = (type, values, isReturn?) => {
-  //   const value = parseFloat(values);
-  //   setisVaidate(false);
-  //   if (!data.investment_amount || parseFloat(data.investment_amount) < 500) {
-  //     setisVaidate(true);
-  //     return;
-  //   }
-  //   switch (type) {
-  //     case 'maximum_rate':
-  //       setMaxRate(false);
-  //       if (isReturn) return;
-  //       if (value > 50 || value < 1) {
-  //         setisVaidate(true);
-  //         setMaxRate(true);
-  //       }
-  //       break;
-  //     case 'stop_loss':
-  //       setStopLoss(false);
-  //       if (isReturn) return;
-  //       if (value > 100 || value < 10) {
-  //         setisVaidate(true);
-  //         setStopLoss(true);
-  //       }
-  //       break;
-  //     case 'taken_profit':
-  //       setTakeProfit(false);
-  //       if (isReturn) return;
-  //       if (value < 150) {
-  //         setisVaidate(true);
-  //         setTakeProfit(true);
-  //       }
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  //   if (isMaxRate || isStopLoss || isTakeProfit) {
-  //     setisVaidate(true);
-  //   }
-  // };
-
   return (
     <Modal show={isOpen} onHide={() => closeModal()} className="start-copy-modal" size="lg">
       <Modal.Header>
@@ -226,6 +183,11 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                     decimalScale={2}
                     value={data.investment_amount}
                   />
+                  {isNotHaveAmount && (
+                    <div className="invalid-feedback block">
+                      Account does not have enough money! <Link to="/copy-trading/wallet">link to Wallet</Link>
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -234,8 +196,6 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                   Total wallet: <span>500 USD</span>
                 </p>
                 <p className="sub">500 USD is mininum required deposit for this trader</p>
-                <br />
-                {isNotHaveAmount && <div className="invalid-feedback block">Account does not have enough money!</div>}
               </div>
               {/* <div className="advance-wrapper">
                 <button />

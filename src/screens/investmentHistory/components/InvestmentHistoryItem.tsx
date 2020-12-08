@@ -11,8 +11,8 @@ const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) =
   const formatItemExpert = useMemo(() => {
     if (item.expert[0]) {
       return {
-        avatar: item.expert[0].avatar,
-        fullname: item.expert[0].username,
+        avatar: item.expert[0]?.avatar,
+        fullname: item.expert[0]?.username ? item.expert[0]?.username : 'RD',
       };
     }
     return {};
@@ -28,13 +28,13 @@ const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) =
                 {formatItemExpert.avatar ? (
                   <img src={formatItemExpert.avatar} alt="avatar" />
                 ) : (
-                  <p>{formatItemExpert.fullname.split('')[0]}</p>
+                  <p>{item.expert[0]?.username.split('')[0]}</p>
                 )}
               </div>
             </div>
             <div className="wrapper-right">
               <div className="name-wrapper">
-                <p className="name">{formatItemExpert.fullname}</p>
+                <p className="name">{item.expert[0]?.username}</p>
                 <p className="sub">
                   <span className="expert">Expert</span>
                   <span className="percent">5%</span>

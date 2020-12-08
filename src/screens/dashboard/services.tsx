@@ -2,7 +2,7 @@ import api from '../../utils/configServices';
 
 export const getDataExperts = async (body) => {
   try {
-    return await api.postService(`experts/get_list_experts`, body, true);
+    return await api.postService(`experts/get_list_experts_for_user`, body, true);
   } catch (error) {
     throw error;
   }

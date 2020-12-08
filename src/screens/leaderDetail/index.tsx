@@ -34,7 +34,7 @@ const LeaderDetail = () => {
   const { leaderID }: any = useParams();
   const expertInfo = useSelector((state: any) => state.screen.leaderDetail.expertDetail.data);
   const expertDetail = {
-    expert: expertInfo.result,
+    expert: expertInfo?.result,
   };
   const [showModalSC, setShowModalStartSC] = useState(false);
   useEffect(() => {
@@ -79,7 +79,7 @@ const LeaderDetail = () => {
               setShowModalTf={false}
             />
           )}
-          <LeaderInfo setShowModalStart={setShowModalStart} expertInfo={expertInfo} />
+          {expertInfo && <LeaderInfo setShowModalStart={setShowModalStart} expertInfo={expertInfo} />}
           <div className="tab-wrapper">
             <div className="tab-names">
               <p className={`tab ${tab === tabs.OVERVIEW ? 'active' : ''}`} onClick={() => setTab(tabs.OVERVIEW)}>

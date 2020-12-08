@@ -36,18 +36,18 @@ const Sidebar = ({ activeSidebar = '' }) => {
         icon: 'calculator.svg',
         active: ACTIVE_SIDEBAR.INVESTMENT_CALCULATOR,
       },
-      {
-        name: 'Become an Expert',
-        href: '/copy-trading/become-an-expert',
-        icon: 'achievement.svg',
-        active: ACTIVE_SIDEBAR.BECOME_AN_EXPERT,
-      },
-      {
-        name: 'Expert management',
-        href: '/copy-trading/expert-management',
-        icon: 'settings.svg',
-        active: ACTIVE_SIDEBAR.EXPERT_MANAGEMENT,
-      },
+      // {
+      //   name: 'Become an Expert',
+      //   href: '/copy-trading/become-an-expert',
+      //   icon: 'achievement.svg',
+      //   active: ACTIVE_SIDEBAR.BECOME_AN_EXPERT,
+      // },
+      // {
+      //   name: 'Expert management',
+      //   href: '/copy-trading/expert-management',
+      //   icon: 'settings.svg',
+      //   active: ACTIVE_SIDEBAR.EXPERT_MANAGEMENT,
+      // },
       {
         name: 'Wallet',
         href: '/copy-trading/wallet',
@@ -58,7 +58,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
     [],
   );
   const dispatch = useDispatch();
-  const amount = useSelector((state: any) => state.screen.dashBoard.userAmount.data);
+  const amount = useSelector((state: any) => state.screen.dashBoard.userAmount?.data);
   useEffect(() => {
     handleGetAmount();
   }, []);
