@@ -1,4 +1,5 @@
 import { ACTIVE_SIDEBAR } from 'constant/sidebar';
+import ModalConfirm, { initializeModal } from 'containers/components/ModalConfirm';
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import NumberFormat from 'react-number-format';
@@ -9,6 +10,7 @@ import { getUserAmountAction } from 'screens/dashboard/ducks/actions';
 const Sidebar = ({ activeSidebar = '' }) => {
   const [active, setActive] = useState(false);
   const userInfor = useSelector((state: any) => state.screen.userInfo.userInfor);
+  const [modalCf, setModalCf] = useState({ ...initializeModal });
   const urlImg = useContext(UrlImagesContext);
   const sidebars = useMemo(
     () => [
@@ -68,59 +70,89 @@ const Sidebar = ({ activeSidebar = '' }) => {
       dispatch(getUserAmountAction({ source: 'COPY_TRADE' }, () => {}));
     } catch (error) {}
   };
+  const closeModalConfirm = () => {
+    setModalCf({ ...initializeModal });
+  };
+
+  const logOut = () => {
+    setModalCf((oldState) => ({
+      ...oldState,
+      isOpen: true,
+      title: 'Confirm',
+      content: 'Are you sure you want to stop copy ?',
+      cancelContent: 'Cancel Stop',
+      submitContent: 'Stop',
+      handleCancel: () => closeModalConfirm(),
+      handleSubmit: () => {
+        localStorage.clear();
+        window.location.replace(`/copy-trading/login`);
+      },
+    }));
+  };
   return (
-    <div id="sidebar" className={`${active ? 'active' : ''}`}>
-      <button className="toggle-menu" onClick={() => setActive(!active)}>
-        <img src={`${urlImg}icons/menu.svg`} />
-      </button>
-      <div className="sidebar-wrapper">
-        <div className="sidebar-list">
-          <div className="logo">
-            <p>
-              FAST <span>MONEY</span> <span>Copy Trade</span>
-            </p>
-          </div>
-          <div className="user-wrapper">
-            <div className="avatar-wrapper">
-              {userInfor?.avatar ? userInfor?.avatar : userInfor.username.split('')[0]}
+    <>
+      <ModalConfirm
+        isOpen={modalCf.isOpen}
+        title={modalCf.title}
+        content={modalCf.content}
+        cancelContent={modalCf.cancelContent}
+        submitContent={modalCf.submitContent}
+        handleCancel={modalCf.handleCancel}
+        handleSubmit={modalCf.handleSubmit}
+      />
+      <div id="sidebar" className={`${active ? 'active' : ''}`}>
+        <button className="toggle-menu" onClick={() => setActive(!active)}>
+          <img src={`${urlImg}icons/menu.svg`} />
+        </button>
+        <div className="sidebar-wrapper">
+          <div className="sidebar-list">
+            <div className="logo">
+              <p>
+                FAST <span>MONEY</span> <span>Copy Trade</span>
+              </p>
             </div>
-            <p className="username">{userInfor?.username}</p>
-          </div>
-          <div className="wrapper-left">
-            <p className="wallet">
-              <NumberFormat
-                thousandSeparator={true}
-                displayType="text"
-                prefix={'$'}
-                decimalScale={2}
-                value={amount ? amount : userInfor.total_amount}
-              />
-            </p>
-          </div>
-          <div className="type-wrapper">
-            <div className="type" style={{ cursor: 'pointer' }}>
-              <p>Logout</p>
+            <div className="user-wrapper">
+              <div className="avatar-wrapper">
+                {userInfor?.avatar ? userInfor?.avatar : userInfor.username.split('')[0]}
+              </div>
+              <p className="username">{userInfor?.username}</p>
             </div>
-          </div>
-          <ul className="sidebar-content">
-            {sidebars.map((el, i) => (
-              <li className="sidebar-item" key={i}>
-                <Link
-                  to={el.href}
-                  className={`sidebar-link
+            <div className="wrapper-left">
+              <p className="wallet">
+                <NumberFormat
+                  thousandSeparator={true}
+                  displayType="text"
+                  prefix={'$'}
+                  decimalScale={2}
+                  value={amount ? amount : userInfor.total_amount}
+                />
+              </p>
+            </div>
+            <div className="type-wrapper">
+              <div className="type" style={{ cursor: 'pointer' }} onClick={() => logOut}>
+                <p>Logout</p>
+              </div>
+            </div>
+            <ul className="sidebar-content">
+              {sidebars.map((el, i) => (
+                <li className="sidebar-item" key={i}>
+                  <Link
+                    to={el.href}
+                    className={`sidebar-link
                   ${activeSidebar === el.active ? ' active' : ''}`}
-                >
-                  <span className="sidebar-icon">
-                    <img src={`${urlImg}/icons/${el.icon}`} alt="icon-sidebar" />
-                    <p>{el.name}</p>
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+                  >
+                    <span className="sidebar-icon">
+                      <img src={`${urlImg}/icons/${el.icon}`} alt="icon-sidebar" />
+                      <p>{el.name}</p>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
