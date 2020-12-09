@@ -18,11 +18,17 @@ const Wallet = lazy(() => import('screens/wallet'));
 const Login = lazy(() => import('screens/login'));
 
 const RouterConfig = () => {
-  let isHaveToken = localStorage.getItem(system.TOKEN);
+  const isHaveToken = localStorage.getItem(system.TOKEN);
   return (
     <Switch>
       {!isHaveToken ? <Route render={() => <Redirect to="/copy-trading/login" />} component={Login} /> : null}
       <CustomerLayoutRoute exact={true} path="/" activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER} component={Dashboard} />
+      <CustomerLayoutRoute
+        exact={true}
+        path="/copy-trading/login"
+        activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER}
+        component={Dashboard}
+      />
       <CustomerLayoutRoute
         exact={true}
         path="/copy-trading/top-leaders"

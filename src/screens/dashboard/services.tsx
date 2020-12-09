@@ -39,3 +39,11 @@ export const tranferAmountService = async (body) => {
     throw error;
   }
 };
+
+export const getDataExpertsByUserName = async (body) => {
+  try {
+    return await api.postService(`experts/get_expert_by_name`, body, true);
+  } catch (error) {
+    throw error;
+  }
+};

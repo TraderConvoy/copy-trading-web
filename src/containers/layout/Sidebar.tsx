@@ -79,9 +79,9 @@ const Sidebar = ({ activeSidebar = '' }) => {
       ...oldState,
       isOpen: true,
       title: 'Confirm',
-      content: 'Are you sure you want to stop copy ?',
-      cancelContent: 'Cancel Stop',
-      submitContent: 'Stop',
+      content: 'Are you sure you want to logout ?',
+      cancelContent: 'Cancel',
+      submitContent: 'Logout',
       handleCancel: () => closeModalConfirm(),
       handleSubmit: () => {
         localStorage.clear();
@@ -129,7 +129,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
               </p>
             </div>
             <div className="type-wrapper">
-              <div className="type" style={{ cursor: 'pointer' }} onClick={() => logOut}>
+              <div className="type" style={{ cursor: 'pointer' }} onClick={logOut}>
                 <p>Logout</p>
               </div>
             </div>

@@ -10,12 +10,12 @@ const LeaderInfo = ({ setShowModalStart, expertInfo }) => {
               {expertInfo.result.avatar ? (
                 <img style={{ height: '100%', borderRadius: '100%' }} src={expertInfo.result.avatar} alt="avatar" />
               ) : (
-                <p>{expertInfo.result?.fullname.split('')[0]}</p>
+                <p>{expertInfo.result?.username.split('')[0]}</p>
               )}
             </div>
           </div>
           <div className="name-wrapper">
-            <p className="name">{expertInfo.result?.fullname}</p>
+            <p className="name">{expertInfo.result?.username}</p>
             <p className="sub">
               <span className="expert">Expert</span>
               <span className="percent">5%</span>

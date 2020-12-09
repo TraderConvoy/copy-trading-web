@@ -57,14 +57,14 @@ const Leader = ({ startCopy, detail }) => {
             {detail.expert.avatar ? (
               <img src={detail.expert.avatar} alt="avatar" />
             ) : (
-              <p>{detail.expert.fullname.split('')[0]}</p>
+              <p>{detail.expert.username.split('')[0]}</p>
             )}
           </div>
         </div>
         <div className="wrapper-right">
           <div className="name-wrapper">
             <a href={`/copy-trading/leader-detail/${detail.expert._id}`} className="name">
-              {detail.expert.fullname}
+              {detail.expert?.username}
             </a>
             <p className="sub">
               <span className="expert">Expert</span>
