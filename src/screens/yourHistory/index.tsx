@@ -3,40 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import TableYourHistory from './components/TableYourHistory';
 import { getUserHistoryAction } from './ducks/actions';
 
-// const fakeData = {
-//   time: '18/11/2020 - 18:20:39',
-//   type: 'BTC/USDT',
-//   order: 'buy',
-//   open: '9,486.2 USDT',
-//   close: '9,658.3 USDT',
-//   investment: '100.00',
-//   profit: '+95 USD',
-//   profit_sharing: '-5 USD',
-//   leader: 'Donkin391',
-//   total_profit: '+90 USD',
-// };
-
-const initPage = {
-  count: '',
-  current: 1,
-  pageSize: 20,
-};
-
 const YourHistory = () => {
   const dispatch = useDispatch();
   // const data = Array(220).fill(fakeData);
+  const userInfo = useSelector((state: any) => state.screen.userInfo.userInfor);
   const listHistory = useSelector((state: any) => state.screen.userHistory.historyList);
-  const [pagination, setPagination] = useState(initPage);
+  const [page, setPage] = useState(1);
   useEffect(() => {
     dispatch(
-      getUserHistoryAction(
-        { id_user: '5fc70cadc982ed201cd6b6fa', page: pagination.current, size: pagination.pageSize },
-        (res) => {
-          console.log(res);
-        },
-      ),
+      getUserHistoryAction({ id_user: userInfo._id, page: page, size: 50 }, (res) => {
+        console.log(res);
+      }),
     );
-  }, []);
+  }, [page]);
   return (
     <div className="your-history">
       <div className="your-history__header">
@@ -45,7 +24,7 @@ const YourHistory = () => {
         </div>
       </div>
       <div className="your-history__content">
-        <TableYourHistory data={listHistory} />
+        {listHistory && <TableYourHistory data={listHistory} setPage={setPage} page={page} />}
       </div>
     </div>
   );

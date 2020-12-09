@@ -36,24 +36,18 @@ const Leader = ({ startCopy, detail }) => {
   const getRandomArbitrary = (min, max) => {
     return Math.random() * (max - min) + min;
   };
-
+  let dataChart = detail.expert.gain_every_months;
+  const map1 = dataChart.map((x) => x.total_gain);
   const data = {
-    labels: [1, 3, 3, 4, 5, 6, 7, 8, 9, 10],
+    labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
     datasets: [
       {
         backgroundColor: 'rgba(30, 96, 121, 1)',
         borderColor: 'rgb(43 139 192)',
-        data: [...Array(10)].map(() => Math.floor(getRandomArbitrary(40, 80))),
+        data: map1,
         pointRadius: 0,
       },
     ],
-  };
-  // [0, 5, 4, 10, 10, 15, 14, 30, 34, 60],
-
-  const getRandomInt = (min, max) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
   };
   return (
     <div className="leader-card">
@@ -85,9 +79,8 @@ const Leader = ({ startCopy, detail }) => {
           <p className="percent">{detail.info.gain_rate_last_month}%</p>
           <p className="gain">Gain last month</p>
           <p className={detail.info.gain_rate_months >= 0 ? 'gain-percent' : 'loss-percent'}>
-            {/* FIXME: update month view  */}
             <NumberFormat displayType="text" value={detail.info.gain_rate_months} suffix={'%'} decimalScale={2} /> in
-            10.7 months
+            month
           </p>
           <p className="copy-counter">{detail.info.copier} Copier</p>
           <p className="last"># -{detail.info.removed_copier} last 7d</p>

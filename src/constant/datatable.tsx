@@ -95,7 +95,7 @@ export const TABLE_YOUR_HISTORY = () => [
     cell: (record: any) => {
       return (
         <div className="">
-          <p>{record?.expert[0]['username']}</p>
+          <p>{record?.expert.length !== 0 ? record?.expert[0]['username'] : ''}</p>
         </div>
       );
     },

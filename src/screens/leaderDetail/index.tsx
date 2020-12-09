@@ -24,8 +24,7 @@ const fakeData = {
   profit: '+95 USD',
 };
 
-const LeaderDetail = () => {
-  const [data, setData] = useState({});
+const LeaderDetail = (props) => {
   const [loadingPage, setLoadingPage] = useState(true);
   const [tab, setTab] = useState(tabs.OVERVIEW);
   const dispatch = useDispatch();
@@ -42,7 +41,7 @@ const LeaderDetail = () => {
   const [showModalSC, setShowModalStartSC] = useState(false);
   useEffect(() => {
     dispatch(
-      getLeaderHistoryAction({ id_expert: expertInfo?.result._id, page: page, size: 50 }, () => {
+      getLeaderHistoryAction({ id_expert: leaderID, page: page, size: 50 }, () => {
         setTransferHistoryLoading(false);
       }),
     );
@@ -85,7 +84,7 @@ const LeaderDetail = () => {
       <div className="leader-detail">
         <div className="leader-detail__header">
           <div className="title-wrapper">
-            <p onClick={() => history.push('/copy-tradding')}>Back</p>
+            <p onClick={() => history.push('/copy-trading/top-leaders')}>Back</p>
           </div>
         </div>
         <div className="leader-detail__content">
@@ -111,7 +110,7 @@ const LeaderDetail = () => {
               </p>
             </div>
             <div className="tab-content">
-              {tab === tabs.OVERVIEW ? <Overview /> : null}
+              {tab === tabs.OVERVIEW && expertInfo && <Overview data={expertInfo} />}
               {tab === tabs.LEADER_HISTORY && leaderHistory && (
                 <TableLeaderHistory data={leaderHistory} setPage={setPage} page={page} />
               )}

@@ -15,6 +15,7 @@ function* LogInActionWatcher() {
         const userInfor = yield call(getUserById);
         if (userInfor.data) {
           yield put(setUserInforAction(userInfor.data));
+          localStorage.setItem(system.USER_INFO, JSON.stringify(userInfor.data));
           if (payload.callback) payload.callback(null, userInfor.data);
         } else {
           if (payload.callback) payload.callback(null, null);

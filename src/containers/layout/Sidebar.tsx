@@ -81,9 +81,10 @@ const Sidebar = ({ activeSidebar = '' }) => {
             </p>
           </div>
           <div className="user-wrapper">
-            {/* TODO: change avata */}
-            <div className="avatar-wrapper">{userInfor?.avata ? 'A' : userInfor.username.split('')[0]}</div>
-            <p className="username">{userInfor.username}</p>
+            <div className="avatar-wrapper">
+              {userInfor?.avatar ? userInfor?.avatar : userInfor.username.split('')[0]}
+            </div>
+            <p className="username">{userInfor?.username}</p>
           </div>
           <div className="wrapper-left">
             <p className="wallet">

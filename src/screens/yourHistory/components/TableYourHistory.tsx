@@ -1,10 +1,9 @@
 import { TABLE_YOUR_HISTORY } from 'constant/datatable';
 import Pagination, { itemWithPage } from 'containers/components/Pagination';
-import React, { useState } from 'react';
+import React from 'react';
 import Datatable from 'react-data-table-component';
 
-const TableYourHistory = ({ data }) => {
-  const [page, setPage] = useState(1);
+const TableYourHistory = ({ data, setPage, page }) => {
   const pageItems = itemWithPage(page, 50, data);
   return (
     <div className="table-your-history">
@@ -16,7 +15,7 @@ const TableYourHistory = ({ data }) => {
         paginationPerPage={50}
         responsive={true}
       />
-      <Pagination page={page} perPage={50} count={data.length} pageChange={(page: number) => setPage(page)} />
+      <Pagination page={page} perPage={50} count={data.count} pageChange={(page: number) => setPage(page)} />
     </div>
   );
 };

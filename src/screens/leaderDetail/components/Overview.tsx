@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import moment from 'moment';
+import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
-const Overview = () => {
-  const [number, setNumber] = useState(0);
+const Overview = ({ data }) => {
+  // const [number, setNumber] = useState(0);
   const options = {
     legend: {
       display: false,
@@ -24,31 +25,30 @@ const Overview = () => {
       ],
     },
   };
-  let randoms = [...Array(15)].map(() => Math.floor(Math.random() * 12));
-  console.log();
-  const data = {
-    labels: ['26.Oct', '', '28.Oct', '', '30.Oct', '', '1.Nov', '', '3.Nov', '', '5.Nov', '', '7.Nov'],
+  let dataChart = data.result.gain_every_months.reverse();
+  const map1 = dataChart.map((x) => x.total_gain);
+  const map2 = dataChart.map((x) => moment(x.updatedAt).format('MMM'));
+  const chart = {
+    labels: map2,
     datasets: [
       {
         backgroundColor: '#3FC66D',
-        data: randoms,
-        // data: [55, 4, 10, 10, 15, 14, 30, 40, 34, 60, 50, 80, 90],
+        data: map1,
         pointRadius: 0,
       },
     ],
   };
-  const fillChartByTime = (date) => {
-    console.log(date);
-  };
+  // const fillChartByTime = (date) => {
+  //   console.log(date);
+  // };
 
   return (
     <div className="overview">
-      <p className="name-wrapper">
-        <p>Montly Gain</p>
-        <p>Data as of 23 Nov 2020, 11:55:43</p>
-      </p>
-      <div className="tab-wrapper">
-        {/* <button className="tab">3 days</button> */}
+      <div className="name-wrapper">
+        <p>Yearly Gain</p>
+        <p>Data as of {dataChart && moment(dataChart[0].updatedAt).format('DD MMM YYYY HH:mm:ss')}</p>
+      </div>
+      {/* <div className="tab-wrapper">
         <button className="tab" onClick={() => fillChartByTime(0)}>
           7 days
         </button>
@@ -67,8 +67,8 @@ const Overview = () => {
         <button className="tab" onClick={() => fillChartByTime(24)}>
           All
         </button>
-      </div>
-      <Bar width={1300} height={230} data={data} options={options} />
+      </div> */}
+      <Bar width={1300} height={230} data={chart} options={options} />
     </div>
   );
 };

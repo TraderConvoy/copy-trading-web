@@ -7,21 +7,11 @@ import TableTransferHistory from './components/TableTransferHistory';
 import Transfer from './components/Transfer';
 import { getTransferHistoryAction } from './redux/actions';
 
-const fakeItem = {
-  time: '18/11/2020 - 18:20:39',
-  amount: '95 USD',
-  from: 'Real Account',
-  to: 'Copy trade account',
-  status: 'Success',
-};
-
 const Wallet = () => {
   const [transferHistoryLoading, setTransferHistoryLoading] = useState(true);
-  const [dataHistory, setDataHistory] = useState([]);
   const urlImg = useContext(UrlImagesContext);
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
-  const [pageLoading, setPageLoading] = useState(true);
   const walletHistory = useSelector((state: any) => state.screen.wallet.walletHistory.data);
   console.log('walletHistory', walletHistory);
 
@@ -39,8 +29,6 @@ const Wallet = () => {
       );
     } catch (error) {}
   };
-
-  const fakeData = Array(70).fill(fakeItem);
 
   return (
     <div className="wallet">
