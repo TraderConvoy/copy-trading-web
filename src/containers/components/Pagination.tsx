@@ -15,7 +15,7 @@ export const itemWithIndex = (page: number, perPage: number, len: number) => {
 
 export const itemWithPage = (page: number, perPage: number, data: any[]) => {
   const { startIndex, endIndex } = itemWithIndex(page, perPage, data?.length);
-  return data.slice(startIndex - 1, endIndex);
+  return data?.slice(startIndex - 1, endIndex);
 };
 
 const Pagination = ({ page, perPage, count, pageChange }: Pagination) => {

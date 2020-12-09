@@ -21,62 +21,47 @@ const RouterConfig = () => {
   const isHaveToken = localStorage.getItem(system.TOKEN);
   return (
     <Switch>
-      {!isHaveToken ? <Route render={() => <Redirect to="/copy-trading/login" />} component={Login} /> : null}
-      <CustomerLayoutRoute exact={true} path="/" activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER} component={Dashboard} />
+      {/* {!isHaveToken ? (
+        <Route exact={true} render={() => <Redirect to="/copy-trading/login" />} component={Login} />
+      ) : null} */}
+      <Redirect exact={true} from="/copy-trading" to="/copy-trading/top-leaders" />
+      <Route path="/copy-trading/login" component={Login} />
       <CustomerLayoutRoute
-        exact={true}
-        path="/copy-trading/login"
-        activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER}
-        component={Dashboard}
-      />
-      <CustomerLayoutRoute
-        exact={true}
         path="/copy-trading/top-leaders"
         activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER}
         component={Dashboard}
       />
       <CustomerLayoutRoute
-        exact={true}
         path="/copy-trading/leader-detail/:leaderID"
         activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER}
         component={LeaderDetail}
       />
       <CustomerLayoutRoute
-        exact={true}
         path="/copy-trading/your-history"
         activeSidebar={ACTIVE_SIDEBAR.YOUR_HISTORY}
         component={YourHistory}
       />
       <CustomerLayoutRoute
-        exact={true}
         path="/copy-trading/become-an-expert"
         activeSidebar={ACTIVE_SIDEBAR.BECOME_AN_EXPERT}
         component={BecomeAnExpert}
       />
       <CustomerLayoutRoute
-        exact={true}
         path="/copy-trading/investment-calculator"
         activeSidebar={ACTIVE_SIDEBAR.INVESTMENT_CALCULATOR}
         component={InvestmentCalculator}
       />
       <CustomerLayoutRoute
-        exact={true}
         path="/copy-trading/investment-history"
         activeSidebar={ACTIVE_SIDEBAR.INVESTMENT_HISTORY}
         component={InvestmentHistory}
       />
       <CustomerLayoutRoute
-        exact={true}
         path="/copy-trading/expert-management"
         activeSidebar={ACTIVE_SIDEBAR.EXPERT_MANAGEMENT}
         component={ExpertManagement}
       />
-      <CustomerLayoutRoute
-        exact={true}
-        path="/copy-trading/wallet"
-        activeSidebar={ACTIVE_SIDEBAR.WALLET}
-        component={Wallet}
-      />
+      <CustomerLayoutRoute path="/copy-trading/wallet" activeSidebar={ACTIVE_SIDEBAR.WALLET} component={Wallet} />
       <Route component={NotFound} />
     </Switch>
   );
