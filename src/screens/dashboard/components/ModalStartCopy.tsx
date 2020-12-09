@@ -38,7 +38,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
     setIsNotHaveAmount(false);
     const body = {
       id_expert: detail.expert._id,
-      investment_amount: parseFloat(data.investment_amount),
+      investment_amount: parseFloat(data.investment_amount) * 100,
       maximum_rate: haveMaximum ? data.maximum_rate : 0,
       has_maximum_rate: haveMaximum,
       stop_loss: haveStopLoss ? data.stop_loss : 0,
@@ -78,7 +78,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
 
   const validData: boolean = useMemo(() => {
     let result = true;
-    if (!data.investment_amount || parseFloat(data.investment_amount) < 500) {
+    if (!data.investment_amount || parseFloat(data.investment_amount) < 5) {
       result = false;
     }
     if (haveMaximum) {
@@ -172,7 +172,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
               <div className="amount-wrapper">
                 <p>Amount of investment</p>
                 <div className="input-wrapper">
-                  <p className="currency">USD</p>
+                  <p className="currency">00 USD</p>
                   <NumberFormat
                     thousandSeparator={true}
                     onValueChange={(values) => handleInputChange('investment_amount', values.floatValue)}

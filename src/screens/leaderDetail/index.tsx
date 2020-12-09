@@ -42,7 +42,7 @@ const LeaderDetail = () => {
   const [showModalSC, setShowModalStartSC] = useState(false);
   useEffect(() => {
     dispatch(
-      getLeaderHistoryAction({ id_expert: expertInfo.result._id, page: page, size: 50 }, () => {
+      getLeaderHistoryAction({ id_expert: expertInfo?.result._id, page: page, size: 50 }, () => {
         setTransferHistoryLoading(false);
       }),
     );

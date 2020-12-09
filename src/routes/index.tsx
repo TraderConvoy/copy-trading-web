@@ -1,8 +1,8 @@
+import system from 'constant/localstore';
 import { ACTIVE_SIDEBAR } from 'constant/sidebar';
 import CustomerLayoutRoute from 'containers/layout';
 import React, { lazy } from 'react';
 import { Redirect, Route, Switch } from 'react-router';
-
 /** not found */
 const NotFound = lazy(() => import('containers/exception/404'));
 
@@ -18,12 +18,11 @@ const Wallet = lazy(() => import('screens/wallet'));
 const Login = lazy(() => import('screens/login'));
 
 const RouterConfig = () => {
+  let isHaveToken = localStorage.getItem(system.TOKEN);
   return (
     <Switch>
-      {process.env.NODE_ENV === 'development' ? (
-        <Route exact={true} path="/" render={() => <Redirect to="/copy-trading/login" />} />
-      ) : null}
-      <Route exact={true} path="/copy-trading/login" component={Login} />
+      {!isHaveToken ? <Route render={() => <Redirect to="/copy-trading/login" />} component={Login} /> : null}
+      <CustomerLayoutRoute exact={true} path="/" activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER} component={Dashboard} />
       <CustomerLayoutRoute
         exact={true}
         path="/copy-trading/top-leaders"

@@ -1,3 +1,10 @@
+.toasts-wrapper {
+  color: white;
+  .toast {
+    background-color: $greenColor;
+    color: white;
+  }
+}
 .dashboard {
   width: 100%;
   .dashboard__header {
@@ -314,19 +321,19 @@
               color: $greenColor;
               top: 20px;
               transform: translateY(-50%);
-              left: 209px;
+              left: 85px;
             }
             input {
               height: 40px;
-              width: 260px;
-              background-color: $inputBackground;
+              width: 75px;
+              background-color: #3e446a;
               border-radius: 5px;
               outline: 0;
               border: 0;
-              color: $greenColor;
+              color: #40da6c;
               font-size: 16px;
               font-weight: 500;
-              padding-right: 60px;
+              padding-right: 0px;
               padding-left: 20px;
             }
           }

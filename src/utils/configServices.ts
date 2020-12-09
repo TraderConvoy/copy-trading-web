@@ -1,5 +1,6 @@
 import config from 'constant/config';
 import system from 'constant/localstore';
+import { HandleErrorInterceptor } from './error.interceptor';
 
 const _responseConfig = async (response: Response) => {
   if (response.status === system.RESPONSE_STATUS.SUCESS) return await response.json();
@@ -20,6 +21,7 @@ const postService = async (url: string, body: object, isAuthorization = true, is
     const response = await fetch(`${config.HOST_API}/${url}`, requestInit);
     return await _responseConfig(response);
   } catch (error) {
+    HandleErrorInterceptor(error);
     throw error;
   }
 };
@@ -41,6 +43,7 @@ const getService = async (url: string, params?: { [key: string]: any }, isAuthor
     const response = await fetch(`${config.HOST_API}/${url}${queryString}`, requestInit);
     return await _responseConfig(response);
   } catch (error) {
+    HandleErrorInterceptor(error);
     throw error;
   }
 };
