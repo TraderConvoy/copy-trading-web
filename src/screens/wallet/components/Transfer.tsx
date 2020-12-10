@@ -44,7 +44,7 @@ const Transfer = ({ handleGetTransferHistory }) => {
   };
 
   const validData = useMemo(() => {
-    if (!transferValue || parseFloat(transferValue) < 500) return false;
+    if (!transferValue || parseFloat(transferValue) < 10) return false;
     return true;
   }, [transferValue]);
 

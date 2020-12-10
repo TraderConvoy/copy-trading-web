@@ -16,10 +16,18 @@
   }
 }
 
+.rdt_Table_none {
+  div:first-child {
+    background: #13183d;
+    color: white;
+  }
+}
+
 .table-your-history {
   .pagination {
     padding-top: 25px;
   }
+
   .rdt_TableRow {
     padding: 17px 0 !important;
   }

@@ -8,7 +8,7 @@ const TableYourHistory = ({ data, setPage, page }) => {
   return (
     <div className="table-your-history">
       <Datatable
-        className="copy-trade-table"
+        className={data.length > 0 ? 'copy-trade-table' : 'rdt_Table_none'}
         noHeader={true}
         columns={TABLE_YOUR_HISTORY()}
         data={pageItems}
