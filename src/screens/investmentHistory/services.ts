@@ -31,3 +31,11 @@ export const stopTradingCopy = async (body) => {
     throw error;
   }
 };
+
+export const getListStopOrderCopies = async (body) => {
+  try {
+    return await api.postService(`trading_copy/get_list_stop_trading_copies`, body, true);
+  } catch (error) {
+    throw error;
+  }
+};

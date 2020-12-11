@@ -1,4 +1,4 @@
-import { ButtonPause, ButtonStart, ButtonStop } from 'containers/components/Buttons';
+import { ButtonStop } from 'containers/components/Buttons';
 import { DocumentWidthContext } from 'containers/contexts/DocumentWidthContext';
 import moment from 'moment/moment';
 import React, { useContext, useMemo } from 'react';
@@ -48,7 +48,7 @@ const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) =
         <Col md={true} lg={documentWidth < 1465 ? 9 : 6}>
           <div className="detail-wrapper">
             <div className="detail-item">
-              <p className="name">Gain last time</p>
+              <p className="name">Percentage gain</p>
               <p className="value">+8%</p>
             </div>
             <div className="detail-item">
@@ -62,7 +62,7 @@ const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) =
               </p>
             </div>
             <div className="detail-item">
-              <p className="name">Current balance</p>
+              <p className="name">Profit</p>
               <p className="value">
                 {
                   <NumberFormat
@@ -81,11 +81,11 @@ const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) =
           <div className="button-wrapper">
             <div className="button-wrapper__button">
               <ButtonStop disabled={loading} onClick={() => handleStop(item._id)} />
-              {item.status === 'ACTIVE' ? (
+              {/* {item.status === 'ACTIVE' ? (
                 <ButtonPause disabled={loading} onClick={() => handlePause(item._id)} />
               ) : (
                 <ButtonStart disabled={loading} onClick={() => handleStart(item._id)} />
-              )}
+              )} */}
             </div>
             <div className="button-wrapper__sub">
               <p>{moment(item.createdAt).format('MM/DD/YYYY - HH:mm:ss')}</p>

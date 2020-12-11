@@ -1,4 +1,3 @@
-import Toggle from 'containers/components/Toggle';
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
 import useError from 'containers/hooks/useErrorContext';
 import useToastContext from 'containers/hooks/useToastContext';
@@ -28,7 +27,6 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
   const [isStopLoss, setStopLoss] = useState(false);
   const [isTakeProfit, setTakeProfit] = useState(false);
   const [isNotHaveAmount, setIsNotHaveAmount] = useState(false);
-  const [isVaidate, setisVaidate] = useState(false);
   useEffect(() => {
     if (!isOpen) clearModal();
   }, [isOpen]);
@@ -82,6 +80,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
     if (!data.investment_amount || parseFloat(data.investment_amount) < 5) {
       result = false;
     }
+    return result;
     if (haveMaximum) {
       if (!data.maximum_rate || parseFloat(data.maximum_rate) > 50) {
         setMaxRate(true);
@@ -202,7 +201,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                 <p>Advance setting</p>
               </div> */}
             </Col>
-            <Col md={true} className="wrapper-right">
+            {/* <Col md={true} className="wrapper-right">
               <div className="advance-wrapper">
                 <p>Advance setting</p>
                 <p>1 USD is mininum required to start copy</p>
@@ -216,17 +215,9 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                   />
                 </div>
                 <div className="__input">
-                  {/* <input
-                    // disabled={!haveMaximum}
-                    type="number"
-                    max="50"
-                    value={data.maximum_rate}
-                    onChange={(event) => handleInputChange('maximum_rate', event.target.value)}
-                  /> */}
                   <NumberFormat
                     disabled={!haveMaximum}
                     onValueChange={(values) => handleInputChange('maximum_rate', values.floatValue)}
-                    // onBlur={(event) => validateHandle('maximum_rate', event.target.value)}
                     placeholder="%"
                     suffix={'%'}
                     value={data.maximum_rate}
@@ -243,17 +234,9 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                   />
                 </div>
                 <div className="__input">
-                  {/* <input
-                    // disabled={!haveStopLoss}
-                    min="10"
-                    value={data.stop_loss}
-                    type="number"
-                    onChange={(event) => handleInputChange('stop_loss', event.target.value)}
-                  /> */}
                   <NumberFormat
                     disabled={!haveStopLoss}
                     onValueChange={(values) => handleInputChange('stop_loss', values.floatValue)}
-                    // onBlur={(event) => validateHandle('stop_loss', event.target.value)}
                     placeholder="%"
                     suffix={'%'}
                     value={data.stop_loss}
@@ -272,17 +255,9 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                   />
                 </div>
                 <div className="__input">
-                  {/* <input
-                    // disabled={!haveTakeProfit}
-                    min="150"
-                    value={data.taken_profit}
-                    type="number"
-                    onChange={(event) => handleInputChange('taken_profit', event.target.value)}
-                  /> */}
                   <NumberFormat
                     disabled={!haveTakeProfit}
                     onValueChange={(values) => handleInputChange('taken_profit', values.floatValue)}
-                    // onBlur={(event) => validateHandle('taken_profit', event.target.value)}
                     placeholder="%"
                     suffix={'%'}
                     value={data.taken_profit}
@@ -290,13 +265,13 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                   {isTakeProfit && <div className="invalid-feedback block">Take profit is more than 150%</div>}
                 </div>
               </div>
-            </Col>
+            </Col> */}
           </Row>
         </Container>
       </Modal.Body>
       <Modal.Footer>
         <div className="button-wrapper">
-          <button disabled={isVaidate || !validData || loading} onClick={() => handleCreateTradingCopy()}>
+          <button disabled={!validData || loading} onClick={() => handleCreateTradingCopy()}>
             Start Copy
           </button>
         </div>

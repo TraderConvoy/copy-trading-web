@@ -5,7 +5,6 @@ import Datatable from 'react-data-table-component';
 
 const TableTradingHistory = ({ data, setPage, page }) => {
   const pageData = itemWithPage(page, 50, data.data);
-
   return (
     <div className="table-trading-history">
       <Datatable className="copy-trade-table" columns={TABLE_LEADER_HISTORY()} data={pageData} noHeader={true} />

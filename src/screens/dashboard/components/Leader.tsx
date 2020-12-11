@@ -83,7 +83,7 @@ const Leader = ({ startCopy, detail }) => {
             month
           </p>
           <p className="copy-counter">{detail.info.copier} Copier</p>
-          <p className="last"># -{detail.info.removed_copier} in month</p>
+          {/* <p className="last"># -{detail.info.removed_copier} in month</p> */}
         </div>
         <div className="wrapper-right">
           <p className="last-30days">Last 30days</p>

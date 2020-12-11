@@ -10,7 +10,7 @@ function* getUserHistoryWatcher() {
       const { body, callback } = payload;
       const result = yield call(getUserHistoryService, body);
       if (result) {
-        yield put(setUserHistoryAction(result.data));
+        yield put(setUserHistoryAction(result));
         if (callback) {
           yield call(callback(true));
         }

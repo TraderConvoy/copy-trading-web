@@ -21,6 +21,12 @@ const Sidebar = ({ activeSidebar = '' }) => {
         active: ACTIVE_SIDEBAR.TOP_LEADER,
       },
       {
+        name: 'Wallet',
+        href: '/copy-trading/wallet',
+        icon: 'wallet.svg',
+        active: ACTIVE_SIDEBAR.WALLET,
+      },
+      {
         name: 'Your History',
         href: '/copy-trading/your-history',
         icon: 'history.svg',
@@ -38,24 +44,18 @@ const Sidebar = ({ activeSidebar = '' }) => {
         icon: 'calculator.svg',
         active: ACTIVE_SIDEBAR.INVESTMENT_CALCULATOR,
       },
-      // {
-      //   name: 'Become an Expert',
-      //   href: '/copy-trading/become-an-expert',
-      //   icon: 'achievement.svg',
-      //   active: ACTIVE_SIDEBAR.BECOME_AN_EXPERT,
-      // },
+      {
+        name: 'Become an Expert',
+        href: '/copy-trading/become-an-expert',
+        icon: 'achievement.svg',
+        active: ACTIVE_SIDEBAR.BECOME_AN_EXPERT,
+      },
       // {
       //   name: 'Expert management',
       //   href: '/copy-trading/expert-management',
       //   icon: 'settings.svg',
       //   active: ACTIVE_SIDEBAR.EXPERT_MANAGEMENT,
       // },
-      {
-        name: 'Wallet',
-        href: '/copy-trading/wallet',
-        icon: 'wallet.svg',
-        active: ACTIVE_SIDEBAR.WALLET,
-      },
     ],
     [],
   );
@@ -128,11 +128,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
                 />
               </p>
             </div>
-            <div className="type-wrapper">
-              <div className="type" style={{ cursor: 'pointer' }} onClick={logOut}>
-                <p>Logout</p>
-              </div>
-            </div>
+            <hr />
             <ul className="sidebar-content">
               {sidebars.map((el, i) => (
                 <li className="sidebar-item" key={i}>
@@ -149,6 +145,12 @@ const Sidebar = ({ activeSidebar = '' }) => {
                 </li>
               ))}
             </ul>
+            <hr />
+            <div className="type-wrapper">
+              <div className="type" style={{ cursor: 'pointer' }} onClick={logOut}>
+                <p>Logout</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

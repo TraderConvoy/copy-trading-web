@@ -267,6 +267,11 @@ button {
 .block {
   display: block;
 }
+.tag {
+  color: #d83a39;
+  border: 1px solid #d83a39;
+  padding: 10px 20px;
+}
 
 @media only screen and (max-width: 767px) {
   .title {

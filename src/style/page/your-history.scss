@@ -1,4 +1,5 @@
 .your-history {
+  min-height: 500px;
   p {
     margin-bottom: 0;
     font-size: 16px;
@@ -13,6 +14,16 @@
         font-weight: 300;
       }
     }
+  }
+  .profit-count {
+    float: left;
+    color: white;
+    margin-top: 16px;
+  }
+  .react-date-picker--disabled {
+    background-color: transparent;
+    color: #6d6d6d;
+    opacity: 0.5;
   }
 }
 
@@ -64,6 +75,38 @@
     min-width: 99px;
     height: 33px;
   }
+}
+.react-date-picker {
+  float: right;
+  background: #20284f;
+  padding: 5px 20px;
+  margin-bottom: 10px;
+  color: white;
+  border-radius: 5px;
+  .react-date-picker__wrapper {
+    border: none;
+    color: white;
+  }
+  input {
+    color: white;
+  }
+  svg {
+    stroke: white;
+  }
+}
+.from-date,
+.to-date {
+  text-align: right;
+  display: flow-root;
+  color: white;
+  b {
+    line-height: 35px;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+}
+.from-date {
+  float: right;
 }
 
 @media only screen and (max-width: 1385px) {

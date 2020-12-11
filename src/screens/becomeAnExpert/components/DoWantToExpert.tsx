@@ -18,13 +18,14 @@ const DoWantToExpert = (props: DoWantToExpert) => {
       <div className="required-wrapper">
         <p className="title">Required</p>
         <div className="checkbox-wrapper">
-          <div className="checkbox-content active">
+          {/* <div className="checkbox-content active"> */}
+          <div className="checkbox-content">
             <div className="checkbox">
               <img src={`${urlImg}icons/checkbox-check.svg`} />
             </div>
             <p>$10000 is mininum</p>
           </div>
-          <div className="checkbox-content active">
+          <div className="checkbox-content">
             <div className="checkbox">
               <img src={`${urlImg}icons/checkbox-check.svg`} />
             </div>
@@ -40,8 +41,10 @@ const DoWantToExpert = (props: DoWantToExpert) => {
       </div>
 
       <div className="button-wrapper">
-        <button onClick={() => props.onBecome()}>BECOME AN EXPERT</button>
-        <p className="text-danger mt-2">You do not have permission</p>
+        <button disabled onClick={() => props.onBecome()}>
+          BECOME AN EXPERT
+        </button>
+        {/* <p className="text-danger mt-2">You do not have permission</p> */}
       </div>
     </div>
   );

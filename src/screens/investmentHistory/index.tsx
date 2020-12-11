@@ -4,8 +4,11 @@ import Pagination from 'containers/components/Pagination';
 import useError from 'containers/hooks/useErrorContext';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { getUserAmountAction } from 'screens/dashboard/ducks/actions';
 import InvestmentHistoryItem from './components/InvestmentHistoryItem';
+import OrderUserHistory from './components/orderUserHistory';
 import {
+  getListStopTradingCopyAction,
   getListTradingCopyAction,
   pauseTradingCopyAction,
   resumeTradingCopyAction,
@@ -17,20 +20,46 @@ const initializePage = {
   perPage: 6,
 };
 
+const initPage = {
+  number: 1,
+  perPage: 50,
+};
+
 const InvestmentHistory = () => {
   const dispatch = useDispatch();
   const [modalCf, setModalCf] = useState({ ...initializeModal });
   const [pageLoading, setPageLoading] = useState(true);
   const [data, setData] = useState({ data: [], count: 0 });
+  const [stopOrder, setStopOrder] = useState({ data: [], count: 0 });
   const [page, setPage] = useState({ ...initializePage });
+  const [pageOrder, setPageOrder] = useState(1);
   const { addError } = useError();
 
   useEffect(() => {
     handleGetListTradingCopy();
   }, [page]);
 
+  useEffect(() => {
+    handleGetOrderStop();
+  }, [pageOrder]);
+
   const closeModalConfirm = () => {
     setModalCf({ ...initializeModal });
+  };
+
+  const handleGetOrderStop = () => {
+    setPageLoading(true);
+    const body = {
+      page: pageOrder,
+      size: 50,
+    };
+    dispatch(
+      getListStopTradingCopyAction(body, (err, res: any) => {
+        if (err) addError(err, null);
+        else setStopOrder(res);
+        setPageLoading(false);
+      }),
+    );
   };
 
   const handleGetListTradingCopy = () => {
@@ -68,6 +97,7 @@ const InvestmentHistory = () => {
         dispatch(
           stopTradingCopyAction(body, (err, res) => {
             if (err) addError(err, null);
+            dispatch(getUserAmountAction({ source: 'COPY_TRADE' }, () => {}));
             closeModalConfirm();
             handlePageChange(1);
           }),
@@ -160,6 +190,12 @@ const InvestmentHistory = () => {
             count={data.count}
             pageChange={(page: number) => handlePageChange(page)}
           />
+        </div>
+        <div className="investment-history__content">
+          <br />
+          {stopOrder.data.length !== 0 && (
+            <OrderUserHistory data={stopOrder} setPageOrder={setPageOrder} pageOrder={pageOrder} />
+          )}
         </div>
       </div>
     </React.Fragment>

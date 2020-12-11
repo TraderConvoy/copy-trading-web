@@ -53,6 +53,7 @@ export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Profit',
     selector: 'profit',
+    minWidth: '80px',
     cell: (row: any) => {
       return row.profit > 0 ? (
         <p className="profit">
@@ -308,6 +309,52 @@ export const TABLE_LEADER_HISTORY = () => [
           }
         </p>
       );
+    },
+  },
+];
+
+export const ORDER_USER_HISTORY = () => [
+  {
+    name: 'Time',
+    selector: 'createAt',
+    minWidth: '190px',
+    cell: (row: any) => {
+      return <p>{moment(row.createAt).format('YYYY-MM-DD HH:mm')}</p>;
+    },
+  },
+  {
+    name: 'Amount of investment',
+    selector: 'base_amount',
+    cell: (row: any) => {
+      return (
+        <p> {<NumberFormat thousandSeparator={true} displayType="text" decimalScale={2} value={row.base_amount} />}</p>
+      );
+    },
+  },
+  {
+    name: 'Profit',
+    selector: 'investment_amount',
+    cell: (row: any) => {
+      return (
+        <p>
+          {' '}
+          {<NumberFormat thousandSeparator={true} displayType="text" decimalScale={2} value={row.investment_amount} />}
+        </p>
+      );
+    },
+  },
+  {
+    name: 'Percentage gain',
+    selector: 'status',
+    cell: (row: any) => {
+      return <p className="status">+8%</p>;
+    },
+  },
+  {
+    name: 'Status',
+    selector: 'status',
+    cell: (row: any) => {
+      return <p className="tag">{row.status}</p>;
     },
   },
 ];
