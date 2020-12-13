@@ -1,7 +1,11 @@
 import { handleActions } from 'redux-actions';
 import { setUserHistoryAction } from './actions';
 const initialState = {
-  historyList: [],
+  historyList: {
+    data: [],
+    count: 0,
+    profit: [],
+  },
 };
 export default handleActions<any>(
   {

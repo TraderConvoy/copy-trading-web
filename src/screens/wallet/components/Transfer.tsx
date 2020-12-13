@@ -5,7 +5,7 @@ import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import NumberFormat from 'react-number-format';
 import { useDispatch } from 'react-redux';
-import { getAmountAction, transferHistoryAction } from '../redux/actions';
+import { getAmountAction, getWalletAmountAction, transferHistoryAction } from '../redux/actions';
 const Transfer = ({ handleGetTransferHistory }) => {
   const dispatch = useDispatch();
   const { addError } = useError();
@@ -14,20 +14,21 @@ const Transfer = ({ handleGetTransferHistory }) => {
   const urlImg = useContext(UrlImagesContext);
   const [isSwitchReal, setIsSwitchReal] = useState(true);
   const [availableAmount, setAvailableAmount] = useState(0);
+  const [tradingAmount, setTradingAmount] = useState(0);
   const [loading, setIsLoading] = useState(false);
   const handleTransferValueChange = (value) => {
     setTransferValue(value);
   };
   useEffect(() => {
     handleGetAmount();
+    handleGetWalletAmount();
   }, [isSwitchReal]);
 
   const handleGetAmount = () => {
     try {
       setIsLoading(true);
-      // if (isSwitchReal) {
       dispatch(
-        getAmountAction({ source: isSwitchReal ? 'WALLET' : 'COPY_TRADE' }, (res) => {
+        getAmountAction({ source: 'COPY_TRADE' }, (res) => {
           if (res) {
             setAvailableAmount(parseFloat(res.data));
           } else {
@@ -36,7 +37,24 @@ const Transfer = ({ handleGetTransferHistory }) => {
           setIsLoading(false);
         }),
       );
-      // }
+    } catch (error) {
+      setIsLoading(false);
+      addError(error, null);
+    }
+  };
+  const handleGetWalletAmount = () => {
+    try {
+      setIsLoading(true);
+      dispatch(
+        getWalletAmountAction({ source: 'WALLET' }, (res) => {
+          if (res) {
+            setTradingAmount(parseFloat(res.data));
+          } else {
+            setTradingAmount(0);
+          }
+          setIsLoading(false);
+        }),
+      );
     } catch (error) {
       setIsLoading(false);
       addError(error, null);
@@ -110,7 +128,20 @@ const Transfer = ({ handleGetTransferHistory }) => {
                   thousandSeparator={true}
                   displayType="text"
                   decimalScale={2}
-                  value={availableAmount}
+                  value={isSwitchReal ? tradingAmount : availableAmount}
+                />{' '}
+                USD
+              </p>
+            </div>
+            <div className="available-wrapper">
+              <p className="available">Available : </p>
+              <p className="number">
+                <NumberFormat
+                  disabled={loading}
+                  thousandSeparator={true}
+                  displayType="text"
+                  decimalScale={2}
+                  value={!isSwitchReal ? tradingAmount : availableAmount}
                 />{' '}
                 USD
               </p>

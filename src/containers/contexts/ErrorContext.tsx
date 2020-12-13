@@ -18,7 +18,7 @@ export const ErrorContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (!!errMess) {
-      const timeout = setTimeout(() => setErrMess(''), [5000]);
+      const timeout = setTimeout(() => setErrMess(''), [3000]);
       return () => clearTimeout(timeout);
     }
   }, [errMess]);
