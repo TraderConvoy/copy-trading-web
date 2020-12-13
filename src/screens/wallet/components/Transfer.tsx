@@ -80,6 +80,7 @@ const Transfer = ({ handleGetTransferHistory }) => {
             addError(err, null);
           } else {
             handleGetAmount();
+            handleGetWalletAmount();
             handleGetTransferHistory();
             addToast('Transfer success!');
           }
