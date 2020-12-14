@@ -38,17 +38,17 @@ const Overview = ({ data }) => {
       },
     ],
   };
-  // const fillChartByTime = (date) => {
-  //   console.log(date);
-  // };
+  const fillChartByTime = (date) => {
+    console.log(date);
+  };
 
   return (
     <div className="overview">
       <div className="name-wrapper">
-        <p>Yearly Gain</p>
+        <p>Monthly Gain</p>
         <p>Data as of {dataChart && moment(dataChart[0].updatedAt).format('DD MMM YYYY HH:mm:ss')}</p>
       </div>
-      {/* <div className="tab-wrapper">
+      <div className="tab-wrapper">
         <button className="tab" onClick={() => fillChartByTime(0)}>
           7 days
         </button>
@@ -67,7 +67,7 @@ const Overview = ({ data }) => {
         <button className="tab" onClick={() => fillChartByTime(24)}>
           All
         </button>
-      </div> */}
+      </div>
       <Bar width={1300} height={230} data={chart} options={options} />
     </div>
   );

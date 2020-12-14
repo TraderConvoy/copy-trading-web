@@ -51,6 +51,10 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
           if (message.indexOf('Account does not have enough money!') !== -1) {
             setIsNotHaveAmount(true);
             clearModal();
+            setTimeout(() => {
+              closeModal();
+              setShowModalTf(true);
+            }, 300);
             return;
           }
           addError(err, message ? message : null);

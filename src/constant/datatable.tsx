@@ -36,9 +36,9 @@ export const TABLE_YOUR_HISTORY = () => [
     center: true,
   },
   {
-    name: 'Investment',
+    name: 'Amount of investment',
     selector: 'investment_amount',
-    minWidth: '80px',
+    minWidth: '180px',
     right: true,
     cell: (row: any) => {
       return (
@@ -57,7 +57,7 @@ export const TABLE_YOUR_HISTORY = () => [
     },
   },
   {
-    name: 'Profit',
+    name: 'Investment',
     selector: 'profit',
     minWidth: '80px',
     right: true,

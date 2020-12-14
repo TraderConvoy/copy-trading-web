@@ -15,9 +15,31 @@ const YourHistory = () => {
   const listHistory = useSelector((state: any) => state.screen.userHistory.historyList);
   const [page, setPage] = useState(1);
   const [fromDate, setFromDate] = useState(new Date());
+  const [toDate, setTodate] = useState(new Date());
   const [profit, setProfit] = useState(0);
   const [loadingPage, setloadingPage] = useState(false);
+
   useEffect(() => {
+    handleFilter();
+  }, [page]);
+
+  useEffect(() => {
+    if (listHistory?.profit.length !== 0) {
+      setProfit(listHistory?.profit[0].profit);
+    } else {
+      setProfit(0);
+    }
+  }, [listHistory]);
+
+  const onChange = (e) => {
+    setFromDate(e);
+  };
+
+  const onChangeTo = (e) => {
+    setTodate(e);
+  };
+
+  const handleFilter = () => {
     try {
       if (moment().diff(fromDate, 'days') > 90) {
         addToast('Please choose a date picker within 3 months');
@@ -33,17 +55,6 @@ const YourHistory = () => {
     } catch (error) {
       setloadingPage(false);
     }
-  }, [page, fromDate]);
-
-  useEffect(() => {
-    if (listHistory?.profit.length !== 0) {
-      setProfit(listHistory?.profit[0].profit);
-    } else {
-      setProfit(0);
-    }
-  }, [listHistory]);
-  const onChange = (e) => {
-    setFromDate(e);
   };
 
   return (
@@ -70,13 +81,17 @@ const YourHistory = () => {
                 )}
               </h5>
             </div>
+
             <div className="from-date">
               <b>To:</b>
-              <DatePicker disabled value={new Date()} />{' '}
+              <DatePicker onChange={onChangeTo} minDate={fromDate} maxDate={new Date()} value={toDate} />{' '}
             </div>
             <div className="to-date">
+              <button className="filter-button" onClick={() => handleFilter()} disabled={loadingPage}>
+                Select
+              </button>
               <b>From: </b>
-              <DatePicker onChange={onChange} value={fromDate} />{' '}
+              <DatePicker onChange={onChange} maxDate={toDate} value={fromDate} />{' '}
             </div>
           </Col>
         </Row>

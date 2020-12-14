@@ -140,6 +140,8 @@
         font-size: 14px;
         line-height: 14px;
         color: $lightBlueColor-2;
+        margin-bottom: 6px;
+        margin-top: 6px;
       }
       .loss {
         font-size: 14px;
@@ -252,6 +254,7 @@
             flex-direction: column;
             justify-content: center;
             margin-left: 18px;
+            line-height: 25px;
             .name {
               color: $lightBlueColor-2;
               font-weight: 700;
@@ -692,6 +695,7 @@
               }
             }
             .name-wrapper {
+              line-height: 25px;
               .name {
               }
               .sub {

@@ -10,7 +10,7 @@ const TableProfitSharingHistory = ({ data }) => {
   return (
     <div className="table-profit-sharing-history">
       <Datatable
-        className="copy-trade-table"
+        className={data.length > 0 ? 'copy-trade-table' : 'rdt_Table_none'}
         columns={TABLE_PROFIT_SHARING_HISTORY()}
         data={pageData}
         noHeader={true}

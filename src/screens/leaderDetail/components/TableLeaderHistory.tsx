@@ -7,7 +7,12 @@ const TableTradingHistory = ({ data, setPage, page }) => {
   const pageData = itemWithPage(page, 50, data.data);
   return (
     <div className="table-trading-history">
-      <Datatable className="copy-trade-table" columns={TABLE_LEADER_HISTORY()} data={pageData} noHeader={true} />
+      <Datatable
+        className={data.length > 0 ? 'copy-trade-table' : 'rdt_Table_none'}
+        columns={TABLE_LEADER_HISTORY()}
+        data={pageData}
+        noHeader={true}
+      />
       <Pagination page={page} perPage={50} count={data.length} pageChange={(page: number) => setPage(page)} />
     </div>
   );
