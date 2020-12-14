@@ -55,8 +55,8 @@ const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) =
                   displayType="text"
                   decimalScale={2}
                   value={
-                    item.trading_histories[0].profit > 0
-                      ? (item.trading_histories[0].profit / item.investment_amount) * 100
+                    item.trading_histories[0]?.profit > 0
+                      ? (item.trading_histories[0]?.profit / item.investment_amount) * 100
                       : '0'
                   }
                 />{' '}
