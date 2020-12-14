@@ -9,6 +9,7 @@ const actions = createActions<any>({
   SET_AMOUNT_ACTION: (data) => data,
   TRANSFER_AMOUNT_ACTION: (body, callback) => ({ body, callback }),
   GET_USER_AMOUNT_ACTION: (body) => ({ body }),
+  GET_USER_INFOR_ACTION: (data) => data,
 });
 export const {
   getListTradingCopiesAction,
@@ -19,4 +20,5 @@ export const {
   transferAmountAction,
   setAmountAction,
   getUserAmountAction,
+  getUserInforAction,
 } = actions;

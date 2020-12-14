@@ -5,7 +5,7 @@ export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Time',
     selector: 'opening_time',
-    minWidth: '180px',
+    minWidth: '200px',
     cell: (row: any) => {
       return <p>{moment(row.opening_time).format('YYYY-MM-DD HH:mm')}</p>;
     },
@@ -13,6 +13,7 @@ export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Type',
     selector: 'type_of_money',
+    minWidth: '80px',
   },
   {
     name: 'Order',
@@ -25,14 +26,19 @@ export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Open',
     selector: 'opening_price',
+    minWidth: '80px',
+    center: true,
   },
   {
     name: 'Close',
     selector: 'closing_price',
+    minWidth: '80px',
+    center: true,
   },
   {
     name: 'Investment',
     selector: 'investment_amount',
+    minWidth: '80px',
     right: true,
     cell: (row: any) => {
       return (
@@ -54,6 +60,7 @@ export const TABLE_YOUR_HISTORY = () => [
     name: 'Profit',
     selector: 'profit',
     minWidth: '80px',
+    right: true,
     cell: (row: any) => {
       return row.profit > 0 ? (
         <p className="profit">
@@ -86,6 +93,7 @@ export const TABLE_YOUR_HISTORY = () => [
     name: '5% Profit sharing',
     selector: 'fee_to_expert',
     minWidth: '150px',
+    right: true,
     cell: (row: any) => {
       return <p className="profit-sharing">{row.fee_to_expert}</p>;
     },
@@ -93,6 +101,7 @@ export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Leader',
     selector: 'leader',
+    minWidth: '150px',
     cell: (record: any) => {
       return (
         <div className="">

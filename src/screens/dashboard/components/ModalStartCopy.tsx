@@ -133,7 +133,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
     }
   };
   return (
-    <Modal show={isOpen} onHide={() => closeModal()} className="start-copy-modal" size="lg">
+    <Modal show={isOpen} onHide={() => closeModal()} className="start-copy-modal" size="sm">
       <Modal.Header>
         <div className="wrapper-left">
           <div className="info-wrapper">

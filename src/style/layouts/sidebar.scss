@@ -112,6 +112,7 @@
           border-radius: 10px;
           padding-top: 8px;
           padding-bottom: 10px;
+          opacity: 0.6;
           p {
             font-size: 18px;
             line-height: 22px;
@@ -133,6 +134,7 @@
             font-size: 14px;
             color: $lightBlueColor-0 !important;
             text-align: center;
+            margin-bottom: 25px;
             &.active {
               font-weight: 700;
               color: $lightBlueColor-3 !important;

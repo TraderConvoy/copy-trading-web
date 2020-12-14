@@ -1,5 +1,8 @@
+import system from 'constant/localstore';
 import { loadingOffAction, loadingOnAction } from 'containers/redux/common/actions';
 import { call, put, takeLatest } from 'redux-saga/effects';
+import { setUserInforAction } from 'screens/login/redux/actions';
+import { getUserById } from 'screens/login/services';
 import { getAmountAvailable } from 'screens/wallet/services';
 import {
   createTradingCopy,
@@ -14,6 +17,7 @@ import {
   getListExpertsByNameAction,
   getListTradingCopiesAction,
   getUserAmountAction,
+  getUserInforAction,
   setAmountAction,
   setListExpertsAction,
   transferAmountAction,
@@ -112,7 +116,23 @@ function* getDataExpertsByNameWatcher() {
     }
   });
 }
-
+function* getUserInforWatcher() {
+  yield takeLatest(getUserInforAction, function* ({ payload }) {
+    try {
+      yield put(loadingOnAction());
+      localStorage.getItem(system.TOKEN);
+      const userInfor = yield call(getUserById);
+      if (userInfor.data) {
+        yield put(setUserInforAction(userInfor.data));
+        localStorage.setItem(system.USER_INFO, JSON.stringify(userInfor.data));
+      }
+    } catch (error) {
+      if (payload.callback) payload.callback(error, {});
+    } finally {
+      yield put(loadingOffAction());
+    }
+  });
+}
 export default {
   getDataExpertsWatcher,
   getListTradingCopiesWatcher,
@@ -120,4 +140,5 @@ export default {
   transferAmountWatcher,
   getAmountWatcher,
   getDataExpertsByNameWatcher,
+  getUserInforWatcher,
 };

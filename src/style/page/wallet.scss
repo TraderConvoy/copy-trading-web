@@ -196,6 +196,14 @@
       margin-top: 30px;
     }
   }
+  .from-wrapper,
+  .to-wrapper {
+    .name,
+    .account {
+      margin-top: 8px !important;
+      margin-bottom: 8px !important;
+    }
+  }
 }
 .table-transfer-history {
   .amount {

@@ -21,11 +21,12 @@ const RouterConfig = () => {
   const isHaveToken = localStorage.getItem(system.TOKEN);
   return (
     <Switch>
-      {/* {!isHaveToken ? (
+      {!isHaveToken ? (
         <Route exact={true} render={() => <Redirect to="/copy-trading/login" />} component={Login} />
-      ) : null} */}
+      ) : null}
       <Redirect exact={true} from="/copy-trading" to="/copy-trading/top-leaders" />
-      <Route path="/copy-trading/login" component={Login} />
+      <CustomerLayoutRoute path="/copy-trading/login" activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER} component={Dashboard} />
+      {/*<CustomerLayoutRoute path="/copy-trading" activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER} component={Dashboard} />*/}
       <CustomerLayoutRoute
         path="/copy-trading/top-leaders"
         activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER}

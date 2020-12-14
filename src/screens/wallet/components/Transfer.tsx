@@ -99,7 +99,7 @@ const Transfer = ({ handleGetTransferHistory }) => {
         <div className="modal-header">
           <div className="modal-name">
             <p className="title">Transfer</p>
-            <p className="sub">500 USD is minimum required deposit to start copy trade</p>
+            <p className="sub">10 USD is minimum required deposit to start copy trade</p>
           </div>
         </div>
         <div className="modal-body">
@@ -108,11 +108,27 @@ const Transfer = ({ handleGetTransferHistory }) => {
               <p className="name">From</p>
               {isSwitchReal && <p className="account">Real account</p>}
               {!isSwitchReal && <p className="account">Copy trade account</p>}
+              <NumberFormat
+                disabled={loading}
+                thousandSeparator={true}
+                displayType="text"
+                decimalScale={2}
+                value={isSwitchReal ? tradingAmount : availableAmount}
+              />{' '}
+              USD
             </div>
             <div className="to-wrapper">
               <p className="name">To</p>
               {!isSwitchReal && <p className="account">Real account</p>}
               {isSwitchReal && <p className="account">Copy trade account</p>}
+              <NumberFormat
+                disabled={loading}
+                thousandSeparator={true}
+                displayType="text"
+                decimalScale={2}
+                value={!isSwitchReal ? tradingAmount : availableAmount}
+              />{' '}
+              USD
             </div>
           </div>
           <div className="icon-wrapper" style={{ cursor: 'pointer' }} onClick={() => setIsSwitchReal(!isSwitchReal)}>
@@ -121,7 +137,7 @@ const Transfer = ({ handleGetTransferHistory }) => {
         </div>
         <div className="modal-footer">
           <div className="detail-wrapper">
-            <div className="available-wrapper">
+            {/*<div className="available-wrapper">
               <p className="available">Available : </p>
               <p className="number">
                 <NumberFormat
@@ -146,7 +162,7 @@ const Transfer = ({ handleGetTransferHistory }) => {
                 />{' '}
                 USD
               </p>
-            </div>
+            </div>*/}
           </div>
           <div className="button-wrapper">
             <div className="input">
@@ -157,7 +173,7 @@ const Transfer = ({ handleGetTransferHistory }) => {
                 decimalScale={2}
                 value={transferValue}
                 prefix={'$'}
-                placeholder="500 USD is minimum"
+                placeholder="10 USD is minimum"
               />
             </div>
             <div className="button">

@@ -147,7 +147,14 @@ const Dashboard = () => {
             {data?.result &&
               data?.result.map((item: any) => {
                 return (
-                  <Col sm={true} md={true} lg={6} xl={documentWidth < 1360 ? 6 : 4} key={item.expert._id}>
+                  <Col
+                    className="mb-20"
+                    sm={true}
+                    md={true}
+                    lg={6}
+                    xl={documentWidth < 1360 ? 6 : 4}
+                    key={item.expert._id}
+                  >
                     <Leader detail={item} startCopy={handleStartCopy} />
                   </Col>
                 );

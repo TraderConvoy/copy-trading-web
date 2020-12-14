@@ -5,6 +5,9 @@
     color: white;
   }
 }
+.mb-20 {
+  margin-bottom: 20px;
+}
 .dashboard {
   width: 100%;
   .dashboard__header {
@@ -207,7 +210,7 @@
 
 .start-copy-modal {
   .modal-dialog {
-    max-width: 900px;
+    max-width: 700px;
   }
   p {
     margin-bottom: 0;

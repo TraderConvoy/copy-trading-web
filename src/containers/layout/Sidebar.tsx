@@ -5,7 +5,7 @@ import React, { useContext, useEffect, useMemo, useState } from 'react';
 import NumberFormat from 'react-number-format';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getUserAmountAction } from 'screens/dashboard/ducks/actions';
+import { getUserAmountAction, getUserInforAction } from 'screens/dashboard/ducks/actions';
 
 const Sidebar = ({ activeSidebar = '' }) => {
   const [active, setActive] = useState(false);
@@ -63,6 +63,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
   const amount = useSelector((state: any) => state.screen.dashBoard.userAmount?.data);
   useEffect(() => {
     handleGetAmount();
+    handleGetUserInfo();
   }, []);
 
   const handleGetAmount = () => {
@@ -70,6 +71,13 @@ const Sidebar = ({ activeSidebar = '' }) => {
       dispatch(getUserAmountAction({ source: 'COPY_TRADE' }, () => {}));
     } catch (error) {}
   };
+
+  const handleGetUserInfo = () => {
+    try {
+      dispatch(getUserInforAction());
+    } catch (error) {}
+  };
+
   const closeModalConfirm = () => {
     setModalCf({ ...initializeModal });
   };
