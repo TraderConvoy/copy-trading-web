@@ -1,5 +1,5 @@
 import Loading from 'containers/components/Loading';
-import useToastContext from 'containers/hooks/useToastContext';
+import useError from 'containers/hooks/useErrorContext';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
@@ -10,7 +10,7 @@ import TableYourHistory from './components/TableYourHistory';
 import { getUserHistoryAction } from './ducks/actions';
 const YourHistory = () => {
   const dispatch = useDispatch();
-  const { addToast } = useToastContext();
+  const { addError } = useError();
   const userInfo = useSelector((state: any) => state.screen.userInfo.userInfor);
   const listHistory = useSelector((state: any) => state.screen.userHistory.historyList);
   const [page, setPage] = useState(1);
@@ -42,7 +42,15 @@ const YourHistory = () => {
   const handleFilter = () => {
     try {
       if (moment().diff(fromDate, 'days') > 90) {
-        addToast('Please choose a date picker within 3 months');
+        addError((null as unknown) as Response, 'Please choose a date picker within 3 months');
+        return;
+      }
+      if (!fromDate) {
+        addError((null as unknown) as Response, 'Please select from date');
+        return;
+      }
+      if (!toDate) {
+        addError((null as unknown) as Response, 'Please select to date');
         return;
       }
       setloadingPage(true);
@@ -84,14 +92,20 @@ const YourHistory = () => {
 
             <div className="from-date">
               <b>To:</b>
-              <DatePicker onChange={onChangeTo} minDate={fromDate} maxDate={new Date()} value={toDate} />{' '}
+              <DatePicker
+                required={true}
+                onChange={onChangeTo}
+                minDate={fromDate}
+                maxDate={new Date()}
+                value={toDate}
+              />{' '}
             </div>
             <div className="to-date">
               <button className="filter-button" onClick={() => handleFilter()} disabled={loadingPage}>
-                Select
+                Search
               </button>
               <b>From: </b>
-              <DatePicker onChange={onChange} maxDate={toDate} value={fromDate} />{' '}
+              <DatePicker required={true} onChange={onChange} maxDate={toDate} value={fromDate} />{' '}
             </div>
           </Col>
         </Row>
