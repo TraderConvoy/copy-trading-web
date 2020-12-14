@@ -18,6 +18,8 @@ const initializeData = {
 const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
   const dispatch = useDispatch();
   const loading = useSelector((state: any) => state.common.loading);
+  const amount = useSelector((state: any) => state.screen.dashBoard.userAmount?.data);
+  const userInfor = useSelector((state: any) => state.screen.userInfo.userInfor);
   const { addError } = useError();
   const [haveMaximum, setHaveHaximum] = useState(false);
   const [haveStopLoss, setHaveStopLoss] = useState(false);
@@ -196,7 +198,17 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
 
               <div className="wallet-wrapper">
                 <p className="total-wallet">
-                  Total wallet: <span>500 USD</span>
+                  Total wallet:{' '}
+                  <span>
+                    <NumberFormat
+                      thousandSeparator={true}
+                      displayType="text"
+                      prefix={'$'}
+                      decimalScale={2}
+                      value={amount ? amount : userInfor.total_amount}
+                    />{' '}
+                    USD
+                  </span>
                 </p>
                 <p className="sub">500 USD is mininum required deposit for this trader</p>
               </div>
