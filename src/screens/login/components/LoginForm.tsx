@@ -60,7 +60,8 @@ const LoginForm = () => {
       <div className="login-form__header">
         <div className="logo-wrapper">
           <p className="logo">
-            Fast <span>Money</span> <span>Copy Trade</span>
+            <img src={`${process.env.PUBLIC_URL}/logo.png`} style={{ width: '100%', marginLeft: '8%' }} />
+            <p>Copy Trade</p>
           </p>
         </div>
         <p className="title">Login to your Account</p>
