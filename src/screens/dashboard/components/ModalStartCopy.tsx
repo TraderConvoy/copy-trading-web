@@ -205,7 +205,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                       displayType="text"
                       prefix={'$'}
                       decimalScale={2}
-                      value={amount ? amount : userInfor.total_amount}
+                      value={amount ? amount : userInfor?.total_amount}
                     />{' '}
                     USD
                   </span>
