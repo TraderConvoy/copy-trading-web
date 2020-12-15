@@ -305,9 +305,8 @@ export const TABLE_LEADER_HISTORY = () => [
     right: true,
     cell: (record: any) => {
       return (
-        <p className="profit">
-          {' '}
-          {record.profit > 0 && `+`}{' '}
+        <p className={`profit ${record.profit === 0 && 'loss'}`}>
+          {record.profit > 0 && `+`}
           {
             <NumberFormat
               thousandSeparator={true}
@@ -356,7 +355,22 @@ export const ORDER_USER_HISTORY = () => [
     name: 'Percentage gain',
     selector: 'status',
     cell: (row: any) => {
-      return <p className="status">+8%</p>;
+      return (
+        <p className="status">
+          {' '}
+          <NumberFormat
+            thousandSeparator={true}
+            displayType="text"
+            decimalScale={2}
+            value={
+              row.trading_histories[0]?.profit > 0
+                ? (row.trading_histories[0]?.profit / row.investment_amount) * 100
+                : '0'
+            }
+          />{' '}
+          %
+        </p>
+      );
     },
   },
   {
