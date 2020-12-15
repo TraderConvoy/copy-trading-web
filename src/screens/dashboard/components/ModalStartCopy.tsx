@@ -46,31 +46,35 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
       taken_profit: haveTakeProfit ? data.taken_profit : 0,
       has_taken_profit: haveTakeProfit,
     };
-    dispatch(
-      createTradingCopyAction(body, async (err, res: any) => {
-        if (err) {
-          const message = await getErrMessage(err, null);
-          if (message.indexOf('Account does not have enough money!') !== -1) {
-            setIsNotHaveAmount(true);
-            clearModal();
-            if (amount < 500) {
-              setTimeout(() => {
-                closeModal();
-                setShowModalTf(true);
-              }, 300);
+    try {
+      dispatch(
+        createTradingCopyAction(body, async (err, res: any) => {
+          if (err) {
+            const message = await getErrMessage(err, null);
+            if (message && message.indexOf('Account does not have enough money!') !== -1) {
+              setIsNotHaveAmount(true);
+              clearModal();
+              if (amount < 500) {
+                setTimeout(() => {
+                  closeModal();
+                  setShowModalTf(true);
+                }, 300);
+              }
+              return;
             }
-            return;
+            addError(err, message ? message : null);
+          } else {
+            dispatch(getUserAmountAction({ source: 'COPY_TRADE' }, () => {}));
+            dispatch(getUserInforAction());
+            addToast('Copy traded successfully!');
+            closeModal();
+            clearModal();
           }
-          addError(err, message ? message : null);
-        } else {
-          dispatch(getUserAmountAction({ source: 'COPY_TRADE' }, () => {}));
-          dispatch(getUserInforAction());
-          addToast('Copy traded successfully!');
-          closeModal();
-          clearModal();
-        }
-      }),
-    );
+        }),
+      );
+    } catch (error) {
+      addError(error, null);
+    }
   };
 
   const handleInputChange = (name, value) => {
