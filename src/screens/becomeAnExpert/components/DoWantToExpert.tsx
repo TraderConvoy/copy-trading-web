@@ -19,13 +19,13 @@ const DoWantToExpert = (props: DoWantToExpert) => {
         <p className="title">Required</p>
         <div className="checkbox-wrapper">
           {/* <div className="checkbox-content active"> */}
-          <div className="checkbox-content active">
+          <div className="checkbox-content">
             <div className="checkbox">
               <img src={`${urlImg}icons/checkbox-check.svg`} />
             </div>
             <p>$10000 is mininum</p>
           </div>
-          <div className="checkbox-content active">
+          <div className="checkbox-content">
             <div className="checkbox">
               <img src={`${urlImg}icons/checkbox-check.svg`} />
             </div>

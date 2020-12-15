@@ -115,9 +115,8 @@ const Sidebar = ({ activeSidebar = '' }) => {
         <div className="sidebar-wrapper">
           <div className="sidebar-list">
             <div className="logo">
-              <p>
-                FAST <span>MONEY</span> <span>Copy Trade</span>
-              </p>
+              <img src={`${process.env.PUBLIC_URL}/logo.png`} style={{ width: '100%', marginLeft: '8%' }} />
+              <p>Copy Trade</p>
             </div>
             <div className="user-wrapper">
               <div className="avatar-wrapper">

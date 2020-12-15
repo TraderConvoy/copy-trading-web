@@ -35,23 +35,19 @@
     padding: 3vh 2vh;
     .sidebar-list {
       .logo {
-        padding-bottom: 10px;
+        padding-bottom: 3vh;
         border-bottom: 1px solid #2a2f55;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         p {
           text-align: center;
           font-style: normal;
           font-weight: 700;
-          font-size: 30px;
-          line-height: 38px;
-          color: white;
+          font-size: 20px;
+          line-height: 24px;
+          color: #e9a522;
           cursor: pointer;
-          span:nth-child(1) {
-            color: #e9a522;
-          }
-          span:nth-child(2) {
-            font-size: 18px;
-            color: #ffffff;
-          }
         }
       }
       .user-wrapper {
