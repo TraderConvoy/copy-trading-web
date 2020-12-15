@@ -4,7 +4,7 @@ import Pagination from 'containers/components/Pagination';
 import useError from 'containers/hooks/useErrorContext';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getUserAmountAction } from 'screens/dashboard/ducks/actions';
+import { getUserAmountAction, getUserInforAction } from 'screens/dashboard/ducks/actions';
 import InvestmentHistoryItem from './components/InvestmentHistoryItem';
 import OrderUserHistory from './components/orderUserHistory';
 import {
@@ -98,6 +98,7 @@ const InvestmentHistory = () => {
           stopTradingCopyAction(body, (err, res) => {
             if (err) addError(err, null);
             dispatch(getUserAmountAction({ source: 'COPY_TRADE' }, () => {}));
+            dispatch(getUserInforAction());
             closeModalConfirm();
             handlePageChange(1);
           }),

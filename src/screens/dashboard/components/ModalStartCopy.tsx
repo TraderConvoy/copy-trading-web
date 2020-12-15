@@ -7,7 +7,7 @@ import NumberFormat from 'react-number-format';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getErrMessage } from 'utils/utilities';
-import { createTradingCopyAction, getUserAmountAction } from '../ducks/actions';
+import { createTradingCopyAction, getUserAmountAction, getUserInforAction } from '../ducks/actions';
 const initializeData = {
   investment_amount: '',
   maximum_rate: '',
@@ -62,6 +62,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
           addError(err, message ? message : null);
         } else {
           dispatch(getUserAmountAction({ source: 'COPY_TRADE' }, () => {}));
+          dispatch(getUserInforAction());
           addToast('Copy traded successfully!');
           closeModal();
           clearModal();
