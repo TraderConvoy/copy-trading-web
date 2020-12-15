@@ -31,7 +31,7 @@ function* getLeaderHistoryWatcher() {
       yield put(loadingOnAction());
       const result = yield call(getLeaderHistory, payload.body);
       if (result) {
-        yield put(setLeaderHistoryAction(result.data));
+        yield put(setLeaderHistoryAction(result));
         if (payload.callback) payload.callback(null, result);
       }
     } catch (error) {

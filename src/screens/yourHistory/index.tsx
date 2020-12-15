@@ -91,6 +91,9 @@ const YourHistory = () => {
             </div>
 
             <div className="from-date">
+              <button className="filter-button" onClick={() => handleFilter()} disabled={loadingPage}>
+                Search
+              </button>
               <b>To:</b>
               <DatePicker
                 required={true}
@@ -101,9 +104,6 @@ const YourHistory = () => {
               />{' '}
             </div>
             <div className="to-date">
-              <button className="filter-button" onClick={() => handleFilter()} disabled={loadingPage}>
-                Search
-              </button>
               <b>From: </b>
               <DatePicker required={true} onChange={onChange} maxDate={toDate} value={fromDate} />{' '}
             </div>

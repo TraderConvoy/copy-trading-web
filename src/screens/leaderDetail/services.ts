@@ -15,3 +15,10 @@ export const getLeaderHistory = async (body) => {
     throw error;
   }
 };
+export const getProfitService = async (body) => {
+  try {
+    return await api.postService(`experts/get_profit_for_expert`, body, true);
+  } catch (error) {
+    throw error;
+  }
+};
