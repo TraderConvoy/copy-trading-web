@@ -64,7 +64,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
   useEffect(() => {
     handleGetAmount();
     handleGetUserInfo();
-  }, []);
+  }, [sidebars]);
 
   const handleGetAmount = () => {
     try {
@@ -121,7 +121,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
             </div>
             <div className="user-wrapper">
               <div className="avatar-wrapper">
-                {userInfor?.avatar ? userInfor?.avatar : userInfor.username.split('')[0]}
+                {userInfor?.avatar ? userInfor?.avatar : userInfor?.username?.split('')[0]}
               </div>
               <p className="username">{userInfor?.username}</p>
             </div>

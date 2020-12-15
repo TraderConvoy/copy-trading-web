@@ -57,7 +57,7 @@ const Leader = ({ startCopy, detail }) => {
             {detail.expert.avatar ? (
               <img src={detail.expert.avatar} alt="avatar" />
             ) : (
-              <p>{detail.expert.username.split('')[0]}</p>
+              <p>{detail.expert?.username.split('')[0]}</p>
             )}
           </div>
         </div>

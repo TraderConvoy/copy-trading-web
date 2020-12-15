@@ -12,7 +12,7 @@ import { useHistory } from 'react-router-dom';
 import Leader from './components/Leader';
 import ModalStartCopy from './components/ModalStartCopy';
 import ModalTransfer from './components/ModalTransfer';
-import { getListExpertsAction, getListExpertsByNameAction } from './ducks/actions';
+import { getListExpertsAction, getListExpertsByNameAction, getUserInforAction } from './ducks/actions';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -31,7 +31,14 @@ const Dashboard = () => {
   const [isSearch, setisSearch] = useState(false);
   useEffect(() => {
     handleGetListExpert(page);
+    handleGetUserInfo();
   }, []);
+
+  const handleGetUserInfo = () => {
+    try {
+      dispatch(getUserInforAction());
+    } catch (error) {}
+  };
 
   const handleGetListExpert = (page) => {
     setPageLoading(true);

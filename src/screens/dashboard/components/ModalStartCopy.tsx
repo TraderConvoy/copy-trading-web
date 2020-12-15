@@ -148,7 +148,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                 {detail.expert?.avatar ? (
                   <img src={detail.expert.avatar} alt="avatar" />
                 ) : detail.expert?.username ? (
-                  <p>{detail.expert.username.split('')[0]}</p>
+                  <p>{detail.expert?.username.split('')[0]}</p>
                 ) : null}
               </div>
             </div>
