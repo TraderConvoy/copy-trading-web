@@ -28,7 +28,7 @@ const LoginForm = () => {
     dispatch(
       loginAction(
         {
-          username: state.username,
+          username: state.username.toLowerCase(),
           password: state.password,
           type: 'USER',
           grant_type: 'password',

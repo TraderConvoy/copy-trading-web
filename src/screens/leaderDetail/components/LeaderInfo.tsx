@@ -27,16 +27,16 @@ const LeaderInfo = ({ setShowModalStart, expertInfo }) => {
       <div className="wrapper-bottom">
         <div className="wrapper-left">
           <p className="value">
-            {expertInfo.info.gain_rate_last_month >= 0
-              ? ` + ${expertInfo.info.gain_rate_last_month}`
-              : ` - ${expertInfo.info.gain_rate_last_month}`}{' '}
+            {expertInfo.info.gain_rate_months >= 0
+              ? ` + ${expertInfo.info.gain_rate_months}`
+              : ` - ${expertInfo.info.gain_rate_months}`}{' '}
             %
           </p>
           <p className="sub">Gain last 30days</p>
           {expertInfo.info.gain_rate_last_month >= 0 ? (
-            <p className="sub-green">+{expertInfo.info.gain_rate_last_month} % in 10.7 months</p>
+            <p className="sub-green">+{expertInfo.info.gain_rate_last_month} % in month</p>
           ) : (
-            <p className="sub-red">-94 % in 10.7 months</p>
+            <p className="sub-red">-{expertInfo.info.gain_rate_last_month} % in month</p>
           )}
         </div>
         <div className="wrapper-right">
