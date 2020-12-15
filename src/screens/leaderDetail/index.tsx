@@ -187,7 +187,7 @@ const LeaderDetail = (props) => {
                             required={true}
                             onChange={onChangeTo}
                             minDate={fromDate}
-                            maxDate={new Date()}
+                            // maxDate={new Date()}
                             value={toDate}
                           />{' '}
                         </div>

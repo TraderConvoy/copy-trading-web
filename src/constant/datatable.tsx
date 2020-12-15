@@ -122,7 +122,7 @@ export const TABLE_YOUR_HISTORY = () => [
               thousandSeparator={true}
               displayType="text"
               decimalScale={2}
-              value={record.profit - record.fee_to_trading - record.fee_to_trading}
+              value={record.profit - record.fee_to_expert - record.fee_to_trading}
             />
           }
         </div>
@@ -312,7 +312,7 @@ export const TABLE_LEADER_HISTORY = () => [
               thousandSeparator={true}
               displayType="text"
               decimalScale={2}
-              value={record.profit - record.fee_to_trading - record.fee_to_trading}
+              value={record.profit - record.fee_to_expert - record.fee_to_trading}
             />
           }
         </p>
