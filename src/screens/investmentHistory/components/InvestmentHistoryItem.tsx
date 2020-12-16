@@ -49,18 +49,8 @@ const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) =
           <div className="detail-wrapper">
             <div className="detail-item">
               <p className="name">Percentage gain</p>
-              <p className="value">
-                <NumberFormat
-                  thousandSeparator={true}
-                  displayType="text"
-                  decimalScale={2}
-                  value={
-                    item.trading_histories[0]?.profit > 0
-                      ? (item.trading_histories[0]?.profit / item.investment_amount) * 100
-                      : '0'
-                  }
-                />{' '}
-                %
+              <p className={`value ${item.gain < 0 && 'invest-loss'}`}>
+                <NumberFormat thousandSeparator={true} displayType="text" decimalScale={2} value={item.gain} /> %
               </p>
             </div>
             <div className="detail-item">
