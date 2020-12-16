@@ -266,7 +266,7 @@ export const TABLE_LEADER_HISTORY = () => [
     selector: 'time',
     minWidth: '190px',
     cell: (row: any) => {
-      return <p>{moment(row.time).format('YYYY-MM-DD HH:mm')}</p>;
+      return <p>{moment(row.opening_time).format('YYYY-MM-DD HH:mm')}</p>;
     },
   },
   {

@@ -43,7 +43,7 @@ const LeaderDetail = (props) => {
     expert: expertInfo?.result,
   };
   const [showModalSC, setShowModalStartSC] = useState(false);
-  const [fromDate, setFromDate] = useState(new Date());
+  const [fromDate, setFromDate] = useState(new Date(new Date().setDate(new Date().getDate() - 30)));
   const [toDate, setTodate] = useState(new Date());
   const [profit, setProfit] = useState(0);
 
