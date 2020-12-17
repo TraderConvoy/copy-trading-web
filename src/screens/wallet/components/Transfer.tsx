@@ -5,6 +5,7 @@ import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import NumberFormat from 'react-number-format';
 import { useDispatch } from 'react-redux';
+import { getUserInforAction } from 'screens/dashboard/ducks/actions';
 import { getAmountAction, getWalletAmountAction, transferHistoryAction } from '../redux/actions';
 const Transfer = ({ handleGetTransferHistory }) => {
   const dispatch = useDispatch();
@@ -79,6 +80,7 @@ const Transfer = ({ handleGetTransferHistory }) => {
           if (err) {
             addError(err, null);
           } else {
+            dispatch(getUserInforAction());
             handleGetAmount();
             handleGetWalletAmount();
             handleGetTransferHistory();
