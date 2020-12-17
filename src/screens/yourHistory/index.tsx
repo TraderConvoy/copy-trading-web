@@ -59,7 +59,6 @@ const YourHistory = () => {
       dispatch(
         getUserHistoryAction({ id_user: userInfo._id, page: page, size: 50, fromDate, toDate: new Date() }, (res) => {
           setloadingPage(false);
-          console.log(res);
         }),
       );
     } catch (error) {

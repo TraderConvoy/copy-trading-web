@@ -76,7 +76,6 @@ const LeaderDetail = (props) => {
       getLeaderDetailAction(body, (err, res) => {
         if (err) addError(err, null);
         else {
-          console.log(res);
           setLoadingPage(false);
         }
       }),

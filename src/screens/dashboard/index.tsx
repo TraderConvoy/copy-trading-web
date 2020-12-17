@@ -49,7 +49,6 @@ const Dashboard = () => {
         getListExpertsAction({ page, size: 9 }, (err, res: any) => {
           if (err) addError(err, null);
           else {
-            console.log(res);
             setData(res.data);
           }
           setPageLoading(false);
@@ -84,7 +83,6 @@ const Dashboard = () => {
   };
 
   const _handleKeyDown = (e) => {
-    console.log(e.target.value);
     if (e.key === 'Enter') {
       handleSearchBar();
     }
