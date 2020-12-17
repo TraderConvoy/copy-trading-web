@@ -5,7 +5,7 @@ export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Time',
     selector: 'opening_time',
-    minWidth: '200px',
+    minWidth: '140px',
     cell: (row: any) => {
       return <p>{moment(row.opening_time).format('YYYY-MM-DD HH:mm')}</p>;
     },
@@ -18,7 +18,7 @@ export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Order',
     selector: 'type_of_order',
-    minWidth: '80px',
+    minWidth: '50px',
     cell: (row: any) => {
       return <p className={`order ${row.type_of_order}`}>{row.type_of_order}</p>;
     },
@@ -28,12 +28,22 @@ export const TABLE_YOUR_HISTORY = () => [
     selector: 'opening_price',
     minWidth: '80px',
     center: true,
+    cell: (row: any) => {
+      return (
+        <>{<NumberFormat thousandSeparator={true} displayType="text" value={row.opening_price} decimalScale={0} />}</>
+      );
+    },
   },
   {
     name: 'Close',
     selector: 'closing_price',
     minWidth: '80px',
     center: true,
+    cell: (row: any) => {
+      return (
+        <>{<NumberFormat thousandSeparator={true} displayType="text" value={row.closing_price} decimalScale={0} />}</>
+      );
+    },
   },
   {
     name: 'Amount of investment',
@@ -82,7 +92,7 @@ export const TABLE_YOUR_HISTORY = () => [
               displayType="text"
               // prefix={'$'}
               decimalScale={2}
-              value={row.profit}
+              value={row.order_amount}
             />
           }
         </p>
@@ -92,7 +102,7 @@ export const TABLE_YOUR_HISTORY = () => [
   {
     name: '5% Profit sharing',
     selector: 'fee_to_expert',
-    minWidth: '150px',
+    minWidth: '140px',
     right: true,
     cell: (row: any) => {
       return <p className="profit-sharing">{row.fee_to_expert}</p>;
@@ -101,7 +111,7 @@ export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Leader',
     selector: 'leader',
-    minWidth: '150px',
+    minWidth: '100px',
     cell: (record: any) => {
       return (
         <div className="">
@@ -151,10 +161,16 @@ export const TABLE_TRADING_HISTORY = () => [
   {
     name: 'Open',
     selector: 'open',
+    cell: (row: any) => {
+      return <>{<NumberFormat thousandSeparator={true} displayType="text" value={row.open} decimalScale={0} />}</>;
+    },
   },
   {
     name: 'Close',
     selector: 'close',
+    cell: (row: any) => {
+      return <>{<NumberFormat thousandSeparator={true} displayType="text" value={row.close} decimalScale={0} />}</>;
+    },
   },
   {
     name: 'Investment',
@@ -190,10 +206,16 @@ export const TABLE_PROFIT_SHARING_HISTORY = () => [
   {
     name: 'Open',
     selector: 'open',
+    cell: (row: any) => {
+      return <>{<NumberFormat thousandSeparator={true} displayType="text" value={row.open} decimalScale={0} />}</>;
+    },
   },
   {
     name: 'Close',
     selector: 'close',
+    cell: (row: any) => {
+      return <>{<NumberFormat thousandSeparator={true} displayType="text" value={row.close} decimalScale={0} />}</>;
+    },
   },
   {
     name: 'Investment',
@@ -283,10 +305,20 @@ export const TABLE_LEADER_HISTORY = () => [
   {
     name: 'Open',
     selector: 'opening_price',
+    cell: (row: any) => {
+      return (
+        <>{<NumberFormat thousandSeparator={true} displayType="text" value={row.opening_price} decimalScale={0} />}</>
+      );
+    },
   },
   {
     name: 'Close',
     selector: 'closing_price',
+    cell: (row: any) => {
+      return (
+        <>{<NumberFormat thousandSeparator={true} displayType="text" value={row.closing_price} decimalScale={0} />}</>
+      );
+    },
   },
   {
     name: 'Investment',

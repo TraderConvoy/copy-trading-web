@@ -25,7 +25,9 @@ const YourHistory = () => {
 
   useEffect(() => {
     if (listHistory?.profit.length !== 0) {
-      setProfit(listHistory?.profit[0].profit);
+      setProfit(
+        listHistory?.profit[0].profit - listHistory?.profit[0].fee_to_expert - listHistory?.profit[0].fee_to_trading,
+      );
     } else {
       setProfit(0);
     }

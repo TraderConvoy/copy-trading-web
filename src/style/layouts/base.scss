@@ -137,6 +137,9 @@ button {
         background-color: #20284f;
         padding: 15px 25px;
         min-height: unset;
+        div{
+          font-size: 13px !important;
+        }
         .rdt_TableCol {
           padding-right: 25px;
           &:last-child {
@@ -160,6 +163,10 @@ button {
       padding: 0 25px;
       div {
         background-color: unset;
+        font-size: 13px !important;
+        p{
+          font-size: 13px !important;
+        }
       }
       .rdt_TableRow {
         min-height: unset;
