@@ -7,7 +7,7 @@ export const TABLE_YOUR_HISTORY = () => [
     selector: 'opening_time',
     minWidth: '140px',
     cell: (row: any) => {
-      return <p>{moment.utc(row.opening_time).local().format('YYYY-MM-DD HH:mm')}</p>;
+      return <p>{moment.utc(row.opening_time).local().format('YYYY-MM-DD HH:mm:ss')}</p>;
     },
   },
   {
@@ -147,7 +147,7 @@ export const TABLE_TRADING_HISTORY = () => [
     selector: 'time',
     minWidth: '190px',
     cell: (row: any) => {
-      return <p className="">{moment.utc(row.time).local().format('YYYY-MM-DD HH:mm')}</p>;
+      return <p className="">{moment.utc(row.time).local().format('YYYY-MM-DD HH:mm:ss')}</p>;
     },
   },
   {
@@ -195,7 +195,7 @@ export const TABLE_PROFIT_SHARING_HISTORY = () => [
     selector: 'time',
     minWidth: '190px',
     cell: (row: any) => {
-      return <p className="">{moment.utc(row.time).local().format('YYYY-MM-DD HH:mm')}</p>;
+      return <p className="">{moment.utc(row.time).local().format('YYYY-MM-DD HH:mm:ss')}</p>;
     },
   },
   {
@@ -246,7 +246,7 @@ export const TABLE_TRANSFER_HISTORY = () => [
     name: 'Time',
     selector: 'paidAt',
     cell: (row: any) => {
-      return <p className="">{moment.utc(row.paidAt).local().format('YYYY-MM-DD HH:mm')}</p>;
+      return <p className="">{moment.utc(row.paidAt).local().format('YYYY-MM-DD HH:mm:ss')}</p>;
     },
   },
   {
@@ -294,7 +294,7 @@ export const TABLE_LEADER_HISTORY = () => [
     selector: 'time',
     minWidth: '190px',
     cell: (row: any) => {
-      return <p>{moment.utc(row.opening_time).local().format('YYYY-MM-DD HH:mm')}</p>;
+      return <p>{moment.utc(row.opening_time).local().format('YYYY-MM-DD HH:mm:ss')}</p>;
     },
   },
   {
@@ -365,7 +365,7 @@ export const ORDER_USER_HISTORY = () => [
     selector: 'createAt',
     minWidth: '190px',
     cell: (row: any) => {
-      return <p>{moment.utc(row.createAt).local().format('YYYY-MM-DD HH:mm')}</p>;
+      return <p>{moment.utc(row.createAt).local().format('YYYY-MM-DD HH:mm:ss')}</p>;
     },
   },
   {
