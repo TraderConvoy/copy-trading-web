@@ -23,7 +23,6 @@ const Overview = ({ id_expert }) => {
         id_expert,
       };
       const res = await getProfitService(body);
-      console.log('res', res);
       if (res && res.data) {
         setdata(res.data);
       }
@@ -72,7 +71,6 @@ const Overview = ({ id_expert }) => {
   const fillChartByTime = async (date) => {
     let today = new Date();
     settoDate(today);
-    console.log(date);
     switch (date) {
       case 0:
         setfilterTitle('7 Days');

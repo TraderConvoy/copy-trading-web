@@ -68,7 +68,9 @@ const Leader = ({ startCopy, detail }) => {
             </a>
             <p className="sub">
               <span className="expert">Expert</span>
-              <span className="percent">5%</span>
+              <span className="percent" style={{ paddingRight: 5 }}>
+                5%{' '}
+              </span>{' '}
               Profit sharing
             </p>
           </div>
@@ -86,7 +88,7 @@ const Leader = ({ startCopy, detail }) => {
           {/* <p className="last"># -{detail.info.removed_copier} in month</p> */}
         </div>
         <div className="wrapper-right">
-          <p className="last-30days">Last 30days</p>
+          <p className="last-30days">Last 30 days</p>
           <div className="chart-wrapper">
             <Line data={data} width={177} height={122} options={options} />
           </div>

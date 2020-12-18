@@ -13,8 +13,6 @@ const Wallet = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const walletHistory = useSelector((state: any) => state.screen.wallet.walletHistory.data);
-  console.log('walletHistory', walletHistory);
-
   useEffect(() => {
     handleGetTransferHistory();
   }, [page]);

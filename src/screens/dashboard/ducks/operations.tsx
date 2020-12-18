@@ -95,7 +95,6 @@ function* getAmountWatcher() {
         yield put(setAmountAction(result));
       }
     } catch (error) {
-      console.log(error);
     } finally {
     }
   });

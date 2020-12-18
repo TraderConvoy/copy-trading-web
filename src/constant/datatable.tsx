@@ -400,11 +400,7 @@ export const ORDER_USER_HISTORY = () => [
             thousandSeparator={true}
             displayType="text"
             decimalScale={2}
-            value={
-              row.trading_histories[0]?.profit > 0
-                ? (row.trading_histories[0]?.profit / row.investment_amount) * 100
-                : '0'
-            }
+            value={((row.investment_amount - row.base_amount) * 100) / row.base_amount}
           />{' '}
           %
         </p>
