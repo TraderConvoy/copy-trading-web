@@ -79,7 +79,7 @@ export const TABLE_YOUR_HISTORY = () => [
               thousandSeparator={true}
               displayType="text"
               // prefix={'$'}
-              decimalScale={2}
+              decimalScale={0}
               value={row.profit}
             />
           }
@@ -91,7 +91,7 @@ export const TABLE_YOUR_HISTORY = () => [
               thousandSeparator={true}
               displayType="text"
               // prefix={'$'}
-              decimalScale={2}
+              decimalScale={0}
               value={row.order_amount}
             />
           }
