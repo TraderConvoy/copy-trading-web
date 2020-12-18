@@ -61,9 +61,18 @@ const LeaderDetail = (props) => {
   const handleGetExpertHistory = () => {
     setTransferHistoryLoading(true);
     dispatch(
-      getLeaderHistoryAction({ id_expert: leaderID, page: page, size: 50, fromDate, toDate: new Date() }, () => {
-        setTransferHistoryLoading(false);
-      }),
+      getLeaderHistoryAction(
+        {
+          id_expert: leaderID,
+          page,
+          size: 50,
+          fromDate: moment(fromDate).utc().format('YYYY-MM-DD HH:mm:ss'),
+          toDate: moment(toDate).utc().format('YYYY-MM-DD HH:mm:ss'),
+        },
+        () => {
+          setTransferHistoryLoading(false);
+        },
+      ),
     );
   };
 

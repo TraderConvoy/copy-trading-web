@@ -18,8 +18,8 @@ const Overview = ({ id_expert }) => {
     try {
       let body = {
         type,
-        fromDate,
-        toDate,
+        fromDate: moment.utc(fromDate).format('YYYY-MM-DD HH:mm:ss'),
+        toDate: moment.utc(toDate).format('YYYY-MM-DD HH:mm:ss'),
         id_expert,
       };
       const res = await getProfitService(body);
@@ -51,11 +51,11 @@ const Overview = ({ id_expert }) => {
     },
   };
   let dataChart = data.reverse();
-  const map1 = dataChart.map((x) => x['total_gain']);
+  let map1 = dataChart.map((x) => x['total_gain']);
   const map2 =
     type === 'MONTH'
-      ? dataChart.map((x) => moment(x['updatedAt']).format('MMM'))
-      : dataChart.map((x) => moment(x['updatedAt']).format('DD-MMM'));
+      ? dataChart.map((x) => moment.utc(x['updatedAt']).local().format('MMM'))
+      : dataChart.map((x) => moment.utc(x['updatedAt']).local().format('DD-MMM'));
   const bg = dataChart.map((x) => {
     return x['total_gain'] > 0 ? '#3FC66D' : '#c72826';
   });

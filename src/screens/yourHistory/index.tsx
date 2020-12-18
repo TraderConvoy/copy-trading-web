@@ -57,10 +57,19 @@ const YourHistory = () => {
       }
       setloadingPage(true);
       dispatch(
-        getUserHistoryAction({ id_user: userInfo._id, page: page, size: 50, fromDate, toDate: new Date() }, (res) => {
-          setloadingPage(false);
-          console.log(res);
-        }),
+        getUserHistoryAction(
+          {
+            id_user: userInfo._id,
+            page,
+            size: 50,
+            fromDate: moment(fromDate).utc().format('YYYY-MM-DD HH:mm:ss'),
+            toDate: moment(toDate).utc().format('YYYY-MM-DD HH:mm:ss'),
+          },
+          (res) => {
+            setloadingPage(false);
+            console.log(res);
+          },
+        ),
       );
     } catch (error) {
       setloadingPage(false);

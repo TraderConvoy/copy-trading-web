@@ -96,7 +96,7 @@ const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) =
               )} */}
             </div>
             <div className="button-wrapper__sub">
-              <p>{moment(item.createdAt).format('MM/DD/YYYY - HH:mm:ss')}</p>
+              <p>{moment.utc(item.createdAt).local().format('MM/DD/YYYY - HH:mm:ss')}</p>
             </div>
           </div>
         </Col>
