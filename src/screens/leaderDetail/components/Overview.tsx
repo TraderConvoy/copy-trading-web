@@ -53,8 +53,8 @@ const Overview = ({ id_expert }) => {
   let map1 = dataChart.map((x) => x['total_gain']);
   const map2 =
     type === 'MONTH'
-      ? dataChart.map((x) => moment.utc(x['updatedAt']).local().format('MMM'))
-      : dataChart.map((x) => moment.utc(x['updatedAt']).local().format('DD-MMM'));
+      ? dataChart.map((x) => moment.utc(x['updatedAt']).format('MMM'))
+      : dataChart.map((x) => moment.utc(x['updatedAt']).format('DD-MMM'));
   const bg = dataChart.map((x) => {
     return x['total_gain'] > 0 ? '#3FC66D' : '#c72826';
   });

@@ -294,7 +294,7 @@ export const TABLE_LEADER_HISTORY = () => [
     selector: 'time',
     minWidth: '190px',
     cell: (row: any) => {
-      return <p>{moment.utc(row.opening_time).local().format('YYYY-MM-DD HH:mm:ss')}</p>;
+      return <p>{moment.utc(row.opening_time).format('YYYY-MM-DD HH:mm:ss')}</p>;
     },
   },
   {
