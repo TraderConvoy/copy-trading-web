@@ -8,3 +8,5 @@ export const getErrMessage = async (err: Response, message: null) => {
     return error.error_description || message || '';
   }
 };
+
+export const formatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 });

@@ -61,7 +61,7 @@ const YourHistory = () => {
           {
             id_user: userInfo._id,
             page,
-            size: 5,
+            size: 50,
             fromDate: moment(fromDate).utc().format('YYYY-MM-DD HH:mm:ss'),
             toDate: moment(toDate).utc().format('YYYY-MM-DD HH:mm:ss'),
           },

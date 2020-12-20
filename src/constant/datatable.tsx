@@ -1,24 +1,29 @@
 import moment from 'moment';
 import React from 'react';
 import NumberFormat from 'react-number-format';
+import { formatter } from 'utils/utilities';
+
 export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Time',
     selector: 'opening_time',
-    minWidth: '140px',
+    maxWidth: '120px',
+    center: true,
     cell: (row: any) => {
-      return <p>{moment.utc(row.opening_time).local().format('YYYY-MM-DD HH:mm:ss')}</p>;
+      return <p>{moment(row.opening_time).format('YYYY-MM-DD HH:mm:ss')}</p>;
     },
   },
   {
     name: 'Type',
     selector: 'type_of_money',
-    minWidth: '80px',
+    maxWidth: '100px',
+    center: true,
   },
   {
     name: 'Order',
     selector: 'type_of_order',
-    minWidth: '50px',
+    maxWidth: '50px',
+    center: true,
     cell: (row: any) => {
       return <p className={`order ${row.type_of_order}`}>{row.type_of_order}</p>;
     },
@@ -26,7 +31,7 @@ export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Open',
     selector: 'opening_price',
-    minWidth: '80px',
+    maxWidth: '80px',
     center: true,
     cell: (row: any) => {
       return (
@@ -37,7 +42,7 @@ export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Close',
     selector: 'closing_price',
-    minWidth: '80px',
+    maxWidth: '80px',
     center: true,
     cell: (row: any) => {
       return (
@@ -48,8 +53,8 @@ export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Amount of investment',
     selector: 'investment_amount',
-    minWidth: '180px',
-    right: true,
+    maxWidth: '180px',
+    center: true,
     cell: (row: any) => {
       return (
         <p>
@@ -57,8 +62,8 @@ export const TABLE_YOUR_HISTORY = () => [
             <NumberFormat
               thousandSeparator={true}
               displayType="text"
-              prefix={'$'}
-              decimalScale={2}
+              prefix={'$ '}
+              decimalScale={0}
               value={row.investment_amount}
             />
           }
@@ -69,8 +74,8 @@ export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Investment',
     selector: 'profit',
-    minWidth: '80px',
-    right: true,
+    maxWidth: '80px',
+    center: true,
     cell: (row: any) => {
       return row.profit > 0 ? (
         <p className="profit">
@@ -102,8 +107,8 @@ export const TABLE_YOUR_HISTORY = () => [
   {
     name: '5% Profit sharing',
     selector: 'fee_to_expert',
-    minWidth: '140px',
-    right: true,
+    maxWidth: '140px',
+    center: true,
     cell: (row: any) => {
       return <p className="profit-sharing">{row.fee_to_expert}</p>;
     },
@@ -111,7 +116,8 @@ export const TABLE_YOUR_HISTORY = () => [
   {
     name: 'Leader',
     selector: 'leader',
-    minWidth: '100px',
+    maxWidth: '100px',
+    center: true,
     cell: (record: any) => {
       return (
         <div className="">
@@ -122,19 +128,15 @@ export const TABLE_YOUR_HISTORY = () => [
   },
   {
     name: 'Total Profit',
-    right: true,
+    center: true,
     cell: (record: any) => {
       return (
         <div className="total-profit">
-          {record.profit > 0 && `+`}{' '}
-          {
-            <NumberFormat
-              thousandSeparator={true}
-              displayType="text"
-              decimalScale={2}
-              value={record.profit - record.fee_to_expert - record.fee_to_trading}
-            />
-          }
+          {record.status
+            ? record.status && record.profit > 0
+              ? `+ ${formatter.format(record.profit - record.fee_to_expert - record.fee_to_trading)}`
+              : 0
+            : 'Updating'}
         </div>
       );
     },
@@ -145,7 +147,7 @@ export const TABLE_TRADING_HISTORY = () => [
   {
     name: 'Time',
     selector: 'time',
-    minWidth: '190px',
+    maxWidth: '190px',
     cell: (row: any) => {
       return <p className="">{moment.utc(row.time).local().format('YYYY-MM-DD HH:mm:ss')}</p>;
     },
@@ -193,7 +195,7 @@ export const TABLE_PROFIT_SHARING_HISTORY = () => [
   {
     name: 'Time',
     selector: 'time',
-    minWidth: '190px',
+    maxWidth: '190px',
     cell: (row: any) => {
       return <p className="">{moment.utc(row.time).local().format('YYYY-MM-DD HH:mm:ss')}</p>;
     },
@@ -292,7 +294,7 @@ export const TABLE_LEADER_HISTORY = () => [
   {
     name: 'Time',
     selector: 'time',
-    minWidth: '190px',
+    maxWidth: '190px',
     cell: (row: any) => {
       return <p>{moment.utc(row.opening_time).format('YYYY-MM-DD HH:mm:ss')}</p>;
     },
@@ -363,7 +365,7 @@ export const ORDER_USER_HISTORY = () => [
   {
     name: 'Time',
     selector: 'createAt',
-    minWidth: '190px',
+    maxWidth: '190px',
     cell: (row: any) => {
       return <p>{moment.utc(row.createAt).local().format('YYYY-MM-DD HH:mm:ss')}</p>;
     },

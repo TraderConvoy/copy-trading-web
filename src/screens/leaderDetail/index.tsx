@@ -65,7 +65,7 @@ const LeaderDetail = (props) => {
         {
           id_expert: leaderID,
           page,
-          size: 50,
+          size: 5,
           fromDate: moment(fromDate).utc().format('YYYY-MM-DD HH:mm:ss'),
           toDate: moment(toDate).utc().format('YYYY-MM-DD HH:mm:ss'),
         },
