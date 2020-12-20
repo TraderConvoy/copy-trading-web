@@ -11,7 +11,7 @@ export default handleActions<any>(
   {
     [setUserHistoryAction.toString()]: (state, { payload }) => ({
       ...state,
-      historyList: payload,
+      historyList: { ...state.historyList, ...payload },
     }),
   },
   initialState,

@@ -61,7 +61,7 @@ const YourHistory = () => {
           {
             id_user: userInfo._id,
             page,
-            size: 50,
+            size: 5,
             fromDate: moment(fromDate).utc().format('YYYY-MM-DD HH:mm:ss'),
             toDate: moment(toDate).utc().format('YYYY-MM-DD HH:mm:ss'),
           },
@@ -121,7 +121,7 @@ const YourHistory = () => {
           </Col>
         </Row>
         <Loading isLoading={loadingPage}>
-          {listHistory?.data && <TableYourHistory data={listHistory?.data} setPage={setPage} page={page} />}
+          {listHistory?.data && <TableYourHistory data={listHistory} setPage={setPage} page={page} />}
         </Loading>
       </div>
     </div>

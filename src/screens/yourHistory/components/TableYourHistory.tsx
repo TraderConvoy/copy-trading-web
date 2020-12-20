@@ -1,17 +1,16 @@
 import { TABLE_YOUR_HISTORY } from 'constant/datatable';
-import Pagination, { itemWithPage } from 'containers/components/Pagination';
+import Pagination from 'containers/components/Pagination';
 import React from 'react';
 import Datatable from 'react-data-table-component';
 
 const TableYourHistory = ({ data, setPage, page }) => {
-  const pageItems = itemWithPage(page, 50, data);
   return (
     <div className="table-your-history">
       <Datatable
         className={data.length > 0 ? 'copy-trade-table' : 'rdt_Table_none'}
         noHeader={true}
         columns={TABLE_YOUR_HISTORY()}
-        data={pageItems}
+        data={data?.data}
         paginationPerPage={50}
         responsive={true}
       />
