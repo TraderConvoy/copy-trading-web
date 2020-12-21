@@ -26,7 +26,6 @@ const RouterConfig = () => {
       ) : null}
       <Redirect exact={true} from="/copy-trading" to="/copy-trading/top-leaders" />
       <CustomerLayoutRoute path="/copy-trading/login" activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER} component={Dashboard} />
-      {/*<CustomerLayoutRoute path="/copy-trading" activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER} component={Dashboard} />*/}
       <CustomerLayoutRoute
         path="/copy-trading/top-leaders"
         activeSidebar={ACTIVE_SIDEBAR.TOP_LEADER}

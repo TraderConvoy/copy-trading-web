@@ -90,18 +90,18 @@ export const TABLE_YOUR_HISTORY = () => [
           }
         </p>
       ) : (
-        <p className="profit-sharing">
-          {
-            <NumberFormat
-              thousandSeparator={true}
-              displayType="text"
-              // prefix={'$'}
-              decimalScale={0}
-              value={row.order_amount}
-            />
-          }
-        </p>
-      );
+          <p className="profit-sharing">
+            {
+              <NumberFormat
+                thousandSeparator={true}
+                displayType="text"
+                // prefix={'$'}
+                decimalScale={0}
+                value={row.order_amount}
+              />
+            }
+          </p>
+        );
     },
   },
   {
@@ -296,7 +296,7 @@ export const TABLE_LEADER_HISTORY = () => [
     selector: 'time',
     maxWidth: '190px',
     cell: (row: any) => {
-      return <p>{moment.utc(row.opening_time).format('YYYY-MM-DD HH:mm:ss')}</p>;
+      return <p>{moment(row.opening_time).format('YYYY-MM-DD HH:mm:ss')}</p>;
     },
   },
   {
