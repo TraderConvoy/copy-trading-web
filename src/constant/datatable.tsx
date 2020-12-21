@@ -90,18 +90,18 @@ export const TABLE_YOUR_HISTORY = () => [
           }
         </p>
       ) : (
-          <p className="profit-sharing">
-            {
-              <NumberFormat
-                thousandSeparator={true}
-                displayType="text"
-                // prefix={'$'}
-                decimalScale={0}
-                value={row.order_amount}
-              />
-            }
-          </p>
-        );
+        <p className="profit-sharing">
+          {
+            <NumberFormat
+              thousandSeparator={true}
+              displayType="text"
+              // prefix={'$'}
+              decimalScale={0}
+              value={row.order_amount}
+            />
+          }
+        </p>
+      );
     },
   },
   {
@@ -132,11 +132,11 @@ export const TABLE_YOUR_HISTORY = () => [
     cell: (record: any) => {
       return (
         <div className="total-profit">
-          {record.status
-            ? record.status && record.profit > 0
-              ? `+ ${formatter.format(record.profit - record.fee_to_expert - record.fee_to_trading)}`
-              : 0
-            : 'Updating'}
+          {record.status && record.profit > 0
+            ? `+ ${formatter.format(record.profit - record.fee_to_expert - record.fee_to_trading)}`
+            : record.profit > 0
+            ? 'Updating'
+            : 0}
         </div>
       );
     },
