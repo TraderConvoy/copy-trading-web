@@ -6,6 +6,7 @@ import { Spinner } from 'react-bootstrap';
 import NumberFormat from 'react-number-format';
 import { useDispatch } from 'react-redux';
 import { getUserInforAction } from 'screens/dashboard/ducks/actions';
+import { formatter } from 'utils/utilities';
 import { getAmountAction, getWalletAmountAction, transferHistoryAction } from '../redux/actions';
 const Transfer = ({ handleGetTransferHistory }) => {
   const dispatch = useDispatch();
@@ -110,27 +111,13 @@ const Transfer = ({ handleGetTransferHistory }) => {
               <p className="name">From</p>
               {isSwitchReal && <p className="account">Real account</p>}
               {!isSwitchReal && <p className="account">Copy trade account</p>}
-              <NumberFormat
-                disabled={loading}
-                thousandSeparator={true}
-                displayType="text"
-                decimalScale={2}
-                value={isSwitchReal ? tradingAmount : availableAmount}
-              />{' '}
-              USD
+              {formatter.format(isSwitchReal ? tradingAmount : availableAmount)} USD
             </div>
             <div className="to-wrapper">
               <p className="name">To</p>
               {!isSwitchReal && <p className="account">Real account</p>}
               {isSwitchReal && <p className="account">Copy trade account</p>}
-              <NumberFormat
-                disabled={loading}
-                thousandSeparator={true}
-                displayType="text"
-                decimalScale={2}
-                value={!isSwitchReal ? tradingAmount : availableAmount}
-              />{' '}
-              USD
+              {formatter.format(!isSwitchReal ? tradingAmount : availableAmount)} USD
             </div>
           </div>
           <div className="icon-wrapper" style={{ cursor: 'pointer' }} onClick={() => setIsSwitchReal(!isSwitchReal)}>
@@ -138,34 +125,7 @@ const Transfer = ({ handleGetTransferHistory }) => {
           </div>
         </div>
         <div className="modal-footer">
-          <div className="detail-wrapper">
-            {/*<div className="available-wrapper">
-              <p className="available">Available : </p>
-              <p className="number">
-                <NumberFormat
-                  disabled={loading}
-                  thousandSeparator={true}
-                  displayType="text"
-                  decimalScale={2}
-                  value={isSwitchReal ? tradingAmount : availableAmount}
-                />{' '}
-                USD
-              </p>
-            </div>
-            <div className="available-wrapper">
-              <p className="available">Available : </p>
-              <p className="number">
-                <NumberFormat
-                  disabled={loading}
-                  thousandSeparator={true}
-                  displayType="text"
-                  decimalScale={2}
-                  value={!isSwitchReal ? tradingAmount : availableAmount}
-                />{' '}
-                USD
-              </p>
-            </div>*/}
-          </div>
+          <div className="detail-wrapper"></div>
           <div className="button-wrapper">
             <div className="input">
               <p className="currency">USD</p>

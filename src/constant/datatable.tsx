@@ -331,13 +331,7 @@ export const TABLE_LEADER_HISTORY = () => [
   {
     name: 'Investment',
     selector: 'investment_amount',
-    cell: (row: any) => {
-      return (
-        <p>
-          {<NumberFormat thousandSeparator={true} displayType="text" decimalScale={2} value={row.investment_amount} />}
-        </p>
-      );
-    },
+    cell: (row: any) => <p>{formatter.format(row.investment_amount)}</p>,
   },
   {
     name: 'Profit',
@@ -347,14 +341,7 @@ export const TABLE_LEADER_HISTORY = () => [
       return (
         <p className={`profit ${record.profit === 0 && 'loss'}`}>
           {record.profit > 0 && `+`}
-          {
-            <NumberFormat
-              thousandSeparator={true}
-              displayType="text"
-              decimalScale={2}
-              value={record.profit - record.fee_to_expert - record.fee_to_trading}
-            />
-          }
+          {formatter.format(record.profit - record.fee_to_expert - record.fee_to_trading)}
         </p>
       );
     },
@@ -364,54 +351,44 @@ export const TABLE_LEADER_HISTORY = () => [
 export const ORDER_USER_HISTORY = () => [
   {
     name: 'Time',
-    selector: 'createAt',
-    maxWidth: '190px',
+    selector: 'updatedAt',
     cell: (row: any) => {
-      return <p>{moment.utc(row.createAt).local().format('YYYY-MM-DD HH:mm:ss')}</p>;
+      return <p>{moment(row.updatedAt).format('YYYY-MM-DD HH:mm:ss')}</p>;
     },
   },
   {
     name: 'Amount of investment',
     selector: 'base_amount',
-    cell: (row: any) => {
-      return (
-        <p> {<NumberFormat thousandSeparator={true} displayType="text" decimalScale={2} value={row.base_amount} />}</p>
-      );
-    },
+    right: true,
+    cell: (row: any) => <p>{formatter.format(row.base_amount)}</p>,
   },
   {
     name: 'Profit',
     selector: 'investment_amount',
-    cell: (row: any) => {
-      return (
-        <p>
-          {' '}
-          {<NumberFormat thousandSeparator={true} displayType="text" decimalScale={2} value={row.investment_amount} />}
-        </p>
-      );
-    },
+    right: true,
+    cell: (row: any) => <p>{formatter.format(row.investment_amount)}</p>,
   },
   {
     name: 'Percentage gain',
     selector: 'status',
+    right: true,
+    cell: (row: any) => (
+      <p className="status">
+        {formatter.format(((row.investment_amount - row.base_amount) * 100) / row.base_amount)} %
+      </p>
+    ),
+  },
+  {
+    name: 'Leader',
+    selector: 'expert',
     cell: (row: any) => {
-      return (
-        <p className="status">
-          {' '}
-          <NumberFormat
-            thousandSeparator={true}
-            displayType="text"
-            decimalScale={2}
-            value={((row.investment_amount - row.base_amount) * 100) / row.base_amount}
-          />{' '}
-          %
-        </p>
-      );
+      return <p style={{ fontWeight: 500 }}>{row.expert[0].username}</p>;
     },
   },
   {
     name: 'Status',
     selector: 'status',
+    center: true,
     cell: (row: any) => {
       return <p className="tag">{row.status}</p>;
     },

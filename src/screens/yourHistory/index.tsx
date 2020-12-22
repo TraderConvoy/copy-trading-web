@@ -4,8 +4,8 @@ import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import DatePicker from 'react-date-picker';
-import NumberFormat from 'react-number-format';
 import { useDispatch, useSelector } from 'react-redux';
+import { formatter } from 'utils/utilities';
 import TableYourHistory from './components/TableYourHistory';
 import { getUserHistoryAction } from './ducks/actions';
 const YourHistory = () => {
@@ -87,20 +87,8 @@ const YourHistory = () => {
         <Row>
           <Col>
             <div className="profit-count">
-              <h5>
-                Profit:{' '}
-                {listHistory?.profit && (
-                  <NumberFormat
-                    thousandSeparator={true}
-                    displayType="text"
-                    prefix={'$'}
-                    decimalScale={2}
-                    value={profit}
-                  />
-                )}
-              </h5>
+              <h5>Profit : {listHistory?.profit && formatter.format(profit)} USD</h5>
             </div>
-
             <div className="from-date">
               <button className="filter-button" onClick={() => handleFilter()} disabled={loadingPage}>
                 Search
@@ -112,7 +100,7 @@ const YourHistory = () => {
                 minDate={fromDate}
                 // maxDate={new Date()}
                 value={toDate}
-              />{' '}
+              />
             </div>
             <div className="to-date">
               <b>From: </b>

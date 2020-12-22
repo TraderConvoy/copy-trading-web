@@ -2,10 +2,10 @@ import { ACTIVE_SIDEBAR } from 'constant/sidebar';
 import ModalConfirm, { initializeModal } from 'containers/components/ModalConfirm';
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
-import NumberFormat from 'react-number-format';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getUserAmountAction, getUserInforAction } from 'screens/dashboard/ducks/actions';
+import { formatter } from 'utils/utilities';
 
 const Sidebar = ({ activeSidebar = '' }) => {
   const [active, setActive] = useState(false);
@@ -125,15 +125,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
               <p className="username">{userInfor?.username}</p>
             </div>
             <div className="wrapper-left">
-              <p className="wallet">
-                <NumberFormat
-                  thousandSeparator={true}
-                  displayType="text"
-                  prefix={'$'}
-                  decimalScale={2}
-                  value={amount ? amount : userInfor?.total_amount}
-                />
-              </p>
+              <p className="wallet">{formatter.format(amount || userInfor?.total_amount)} USD</p>
             </div>
             <hr />
             <ul className="sidebar-content">

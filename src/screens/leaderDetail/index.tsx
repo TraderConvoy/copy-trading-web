@@ -4,10 +4,10 @@ import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import DatePicker from 'react-date-picker';
-import NumberFormat from 'react-number-format';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import ModalStartCopy from 'screens/dashboard/components/ModalStartCopy';
+import { formatter } from 'utils/utilities';
 import LeaderInfo from './components/LeaderInfo';
 import Overview from './components/Overview';
 import TableLeaderHistory from './components/TableLeaderHistory';
@@ -170,16 +170,7 @@ const LeaderDetail = (props) => {
                       <Col>
                         <div className="profit-count">
                           <h5>
-                            Profit:{' '}
-                            {leaderHistory?.profit && (
-                              <NumberFormat
-                                thousandSeparator={true}
-                                displayType="text"
-                                prefix={'$'}
-                                decimalScale={2}
-                                value={leaderHistory?.profit[0]?.profit}
-                              />
-                            )}
+                            Profit: {leaderHistory?.profit && formatter.format(leaderHistory?.profit[0]?.profit)} USD
                           </h5>
                         </div>
                         <div className="from-date">

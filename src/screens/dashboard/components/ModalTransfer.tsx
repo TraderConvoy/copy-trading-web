@@ -6,6 +6,7 @@ import { Modal, Spinner } from 'react-bootstrap';
 import NumberFormat from 'react-number-format';
 import { useDispatch } from 'react-redux';
 import { getAmountAction, getWalletAmountAction, transferHistoryAction } from 'screens/wallet/redux/actions';
+import { formatter } from 'utils/utilities';
 const ModalTransfer = ({ isOpen, closeModal }) => {
   const [transferValue, setTransferValue] = useState('');
   const { addError } = useError();
@@ -114,31 +115,13 @@ const ModalTransfer = ({ isOpen, closeModal }) => {
             <p className="name">From</p>
             <p className="account">Real account</p>
             <br />
-            <p style={{ position: 'absolute', bottom: 20 }}>
-              <NumberFormat
-                disabled={loading}
-                thousandSeparator={true}
-                displayType="text"
-                decimalScale={2}
-                value={tradingAmount}
-              />{' '}
-              USD
-            </p>
+            <p style={{ position: 'absolute', bottom: 20 }}>{formatter.format(tradingAmount)} USD</p>
           </div>
           <div className="to-wrapper">
             <p className="name">To</p>
             <p className="account">Copy trade account</p>
             <br />
-            <p style={{ position: 'absolute', bottom: 20 }}>
-              <NumberFormat
-                disabled={loading}
-                thousandSeparator={true}
-                displayType="text"
-                decimalScale={2}
-                value={availableAmount}
-              />{' '}
-              USD
-            </p>
+            <p style={{ position: 'absolute', bottom: 20 }}>{formatter.format(availableAmount)} USD</p>
           </div>
         </div>
         <img src={`${urlImg}icons/transfer-icon.svg`} className="transfer-icon" alt="transfer-icon" />

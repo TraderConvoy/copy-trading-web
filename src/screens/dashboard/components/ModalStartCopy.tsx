@@ -6,7 +6,7 @@ import { Col, Container, Modal, Row } from 'react-bootstrap';
 import NumberFormat from 'react-number-format';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getErrMessage } from 'utils/utilities';
+import { formatter, getErrMessage } from 'utils/utilities';
 import { createTradingCopyAction, getUserAmountAction, getUserInforAction } from '../ducks/actions';
 const initializeData = {
   investment_amount: '',
@@ -205,17 +205,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
 
               <div className="wallet-wrapper">
                 <p className="total-wallet">
-                  Total wallet:{' '}
-                  <span>
-                    <NumberFormat
-                      thousandSeparator={true}
-                      displayType="text"
-                      prefix={'$'}
-                      decimalScale={2}
-                      value={amount ? amount : userInfor?.total_amount}
-                    />{' '}
-                    USD
-                  </span>
+                  Total wallet: <span>{formatter.format(amount ? amount : userInfor?.total_amount)} USD</span>
                 </p>
                 <p className="sub">500 USD is mininum required deposit for this trader</p>
               </div>

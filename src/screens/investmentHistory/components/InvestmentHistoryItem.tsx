@@ -3,8 +3,8 @@ import { DocumentWidthContext } from 'containers/contexts/DocumentWidthContext';
 import moment from 'moment/moment';
 import React, { useContext, useMemo } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import NumberFormat from 'react-number-format';
 import { useSelector } from 'react-redux';
+import { formatter } from 'utils/utilities';
 const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) => {
   const loading = useSelector((state: any) => state.common.loading);
   const documentWidth = useContext(DocumentWidthContext);
@@ -50,37 +50,17 @@ const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) =
             <div className="detail-item">
               <p className="name">Percentage gain</p>
               <p className={`value ${item.investment_amount - item.base_amount < 0 && 'invest-loss'}`}>
-                <NumberFormat
-                  thousandSeparator={true}
-                  displayType="text"
-                  decimalScale={2}
-                  value={((item.investment_amount - item.base_amount) * 100) / item.base_amount}
-                />{' '}
-                %
+                {formatter.format(((item.investment_amount - item.base_amount) * 100) / item.base_amount)} %
               </p>
             </div>
             <div className="detail-item">
               <p className="name">Amount of investment</p>
-              <p className="value">
-                {' '}
-                {
-                  <NumberFormat thousandSeparator={true} displayType="text" decimalScale={2} value={item.base_amount} />
-                }{' '}
-                USD
-              </p>
+              <p className="value">{formatter.format(item.base_amount)} USD</p>
             </div>
             <div className="detail-item">
               <p className="name">Profit</p>
               <p className={`value ${item.investment_amount - item.base_amount < 0 && 'invest-loss'}`}>
-                {
-                  <NumberFormat
-                    thousandSeparator={true}
-                    displayType="text"
-                    decimalScale={2}
-                    value={item.investment_amount - item.base_amount}
-                  />
-                }{' '}
-                USD
+                {formatter.format(item.investment_amount - item.base_amount)} USD
               </p>
             </div>
           </div>
