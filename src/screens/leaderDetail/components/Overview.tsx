@@ -35,12 +35,14 @@ const Overview = ({ id_expert }) => {
     title: {
       display: false,
     },
+
     scales: {
       yAxes: [
         {
           ticks: {
             // Include a dollar sign in the ticks
             weight: 100,
+            beginAtZero: true,
             callback: (value, index, values) => {
               return value + '%';
             },
