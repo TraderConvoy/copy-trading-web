@@ -791,6 +791,12 @@
 }
 
 @media only screen and (max-width: 575.98px) {
+  .start-copy-modal {
+    .modal-dialog {
+      max-width: 100%;
+    }
+  }
+
   .transfer-modal {
     p {
     }

@@ -47,22 +47,22 @@ const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) =
         </Col>
         <Col md={true} lg={documentWidth < 1465 ? 9 : 6}>
           <div className="detail-wrapper">
-            <div className="detail-item">
+            <Col className="detail-item">
               <p className="name">Percentage gain</p>
               <p className={`value ${item.investment_amount - item.base_amount < 0 && 'invest-loss'}`}>
                 {formatter.format(((item.investment_amount - item.base_amount) * 100) / item.base_amount)} %
               </p>
-            </div>
-            <div className="detail-item">
+            </Col>
+            <Col className="detail-item">
               <p className="name">Amount of investment</p>
               <p className="value">{formatter.format(item.base_amount)} USD</p>
-            </div>
-            <div className="detail-item">
+            </Col>
+            <Col className="detail-item">
               <p className="name">Profit</p>
               <p className={`value ${item.investment_amount - item.base_amount < 0 && 'invest-loss'}`}>
                 {formatter.format(item.investment_amount - item.base_amount)} USD
               </p>
-            </div>
+            </Col>
           </div>
         </Col>
         <Col md={true} lg={documentWidth < 1465 ? 12 : 3}>
