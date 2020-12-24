@@ -107,6 +107,7 @@ const Sidebar = ({ activeSidebar = '' }) => {
         submitContent={modalCf.submitContent}
         handleCancel={modalCf.handleCancel}
         handleSubmit={modalCf.handleSubmit}
+        subContent=""
       />
       <div id="sidebar" className={`${active ? 'active' : ''}`}>
         <button className="toggle-menu" onClick={() => setActive(!active)}>

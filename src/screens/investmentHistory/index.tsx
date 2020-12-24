@@ -34,6 +34,7 @@ const InvestmentHistory = () => {
   const [page, setPage] = useState({ ...initializePage });
   const [pageOrder, setPageOrder] = useState(1);
   const { addError } = useError();
+  const [subContent, setSubContent] = useState('');
 
   useEffect(() => {
     handleGetListTradingCopy();
@@ -81,7 +82,13 @@ const InvestmentHistory = () => {
     setPage((oldState) => ({ ...oldState, number: page }));
   };
 
+  const handlePageOrderChange = (page: number) => {
+    setPageOrder(page);
+  };
   const handleStop = (id_copy) => {
+    setSubContent(
+      'The system needs time to process and distribute profits to experts, So your profit in today will be updated immediately after 24 hours ',
+    );
     const body = {
       id_copy,
     };
@@ -89,7 +96,7 @@ const InvestmentHistory = () => {
       ...oldState,
       isOpen: true,
       title: 'Confirm',
-      content: 'Are you sure you want to stop copy ?',
+      content: 'Are you sure you want to stop copy?',
       cancelContent: 'Cancel Stop',
       submitContent: 'Stop',
       handleCancel: () => closeModalConfirm(),
@@ -101,12 +108,14 @@ const InvestmentHistory = () => {
             dispatch(getUserInforAction());
             closeModalConfirm();
             handlePageChange(1);
+            handleGetOrderStop();
           }),
         ),
     }));
   };
 
   const handleResume = (id_copy) => {
+    setSubContent('');
     const body = {
       id_copy,
     };
@@ -124,12 +133,14 @@ const InvestmentHistory = () => {
             if (err) addError(err, null);
             closeModalConfirm();
             handlePageChange(1);
+            handlePageOrderChange(1);
           }),
         ),
     }));
   };
 
   const handlePause = (id_copy) => {
+    setSubContent('');
     const body = {
       id_copy,
     };
@@ -162,6 +173,7 @@ const InvestmentHistory = () => {
         submitContent={modalCf.submitContent}
         handleCancel={modalCf.handleCancel}
         handleSubmit={modalCf.handleSubmit}
+        subContent={subContent}
       />
       <div className="investment-history">
         <div className="investment-history__header">

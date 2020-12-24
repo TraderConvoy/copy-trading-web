@@ -384,6 +384,32 @@ export const ORDER_USER_HISTORY = () => [
     cell: (row: any) => {
       return <p style={{ fontWeight: 500 }}>{row.expert[0].username}</p>;
     },
+    minWidth: '80px',
+    right: true,
+  },
+  {
+    name: 'Profit keeping',
+    cell: (row: any) => {
+      return (
+        <p style={{ fontWeight: 500 }}>
+          {row.trading_withdraws && row.trading_withdraws.length !== 0 ? row.trading_withdraws[0].amount : 0}
+        </p>
+      );
+    },
+    right: true,
+    minWidth: '80px',
+  },
+  {
+    name: 'Profit status',
+    cell: (row: any) => {
+      return (
+        <p style={{ fontWeight: 500 }}>
+          {row.trading_withdraws && row.trading_withdraws.length !== 0 ? row.trading_withdraws[0].status : 'FINISH'}
+        </p>
+      );
+    },
+    right: true,
+    minWidth: '80px',
   },
   {
     name: 'Status',

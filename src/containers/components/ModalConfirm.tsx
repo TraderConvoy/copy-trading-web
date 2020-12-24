@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal } from 'react-bootstrap';
+import { Alert, Modal } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 
 export const initializeModal = {
@@ -8,16 +8,33 @@ export const initializeModal = {
   content: 'Are you sure ?',
   cancelContent: '',
   submitContent: '',
+  subContent: '',
   handleCancel: () => {},
   handleSubmit: () => {},
 };
 
-const ModalConfirm = ({ title, content, isOpen, cancelContent, submitContent, handleCancel, handleSubmit }) => {
+const ModalConfirm = ({
+  title,
+  content,
+  isOpen,
+  cancelContent,
+  submitContent,
+  handleCancel,
+  handleSubmit,
+  subContent,
+}) => {
   const loading = useSelector((state: any) => state.common.loading);
   return (
     <Modal show={isOpen} onHide={() => handleCancel()} className="modal-confirm" size="lg">
       <Modal.Header>{title}</Modal.Header>
-      <Modal.Body>{content}</Modal.Body>
+      <Modal.Body>
+        {content}
+        {subContent && (
+          <Alert style={{ marginTop: 20 }} variant="warning">
+            {subContent}
+          </Alert>
+        )}
+      </Modal.Body>
       <Modal.Footer>
         <div className="button-wrapper">
           <button className="cancel-button" onClick={() => handleCancel()} disabled={loading}>
