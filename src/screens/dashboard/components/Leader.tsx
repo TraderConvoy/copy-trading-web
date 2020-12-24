@@ -39,13 +39,15 @@ const Leader = ({ startCopy, detail }) => {
   let dataChart = detail.expert.gain_every_months;
   const map1 = dataChart.map((x) => x.total_gain);
   const data = {
-    labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+    labels: map1,
     datasets: [
       {
-        backgroundColor: 'rgba(30, 96, 121, 1)',
-        borderColor: 'rgb(43 139 192)',
+        backgroundColor: 'rgb(49 98 125 / 86%)',
+        borderColor: '#0f83bb',
+        borderWidth: 1,
         data: map1,
         pointRadius: 0,
+        beginAtZero: true,
       },
     ],
   };
