@@ -114,10 +114,12 @@ const Sidebar = ({ activeSidebar = '' }) => {
         </button>
         <div className="sidebar-wrapper">
           <div className="sidebar-list">
-            <div className="logo">
-              <img src={`${process.env.PUBLIC_URL}/logo.png`} style={{ width: '100%', marginLeft: '8%' }} />
-              <p>Copy Trade</p>
-            </div>
+            <Link to={'/copy-trading/top-leaders'} style={{ textDecorationLine: 'none' }}>
+              <div className="logo">
+                <img src={`${process.env.PUBLIC_URL}/logo.png`} style={{ width: '100%', marginLeft: '8%' }} />
+                <p>Copy Trade</p>
+              </div>
+            </Link>
             <div className="user-wrapper">
               <div className="avatar-wrapper">
                 {userInfor?.avatar ? userInfor?.avatar : userInfor?.username?.split('')[0]}
