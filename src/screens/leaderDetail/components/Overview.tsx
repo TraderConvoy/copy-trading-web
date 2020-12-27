@@ -2,6 +2,7 @@ import 'chartjs-plugin-datalabels';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
+import { formatter } from 'utils/utilities';
 import { getProfitService } from '../services';
 const Overview = ({ id_expert }) => {
   // const [number, setNumber] = useState(0);
@@ -40,6 +41,7 @@ const Overview = ({ id_expert }) => {
         anchor: 'end',
         align: 'top',
         color: 'white',
+        // offset: -25,
         font: {
           // weight: 'bold'
         },
@@ -61,7 +63,7 @@ const Overview = ({ id_expert }) => {
     },
   };
   let dataChart = data.reverse();
-  let map1 = dataChart.map((x) => x['total_gain']);
+  let map1 = dataChart.map((x) => formatter.format(x['total_gain']));
   const map2 =
     type === 'MONTH'
       ? dataChart.map((x) => moment.utc(x['updatedAt']).format('MMM'))
