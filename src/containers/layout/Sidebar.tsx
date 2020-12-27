@@ -66,6 +66,10 @@ const Sidebar = ({ activeSidebar = '' }) => {
     handleGetUserInfo();
   }, [sidebars]);
 
+  useEffect(() => {
+    setActive(false);
+  }, [activeSidebar]);
+
   const handleGetAmount = () => {
     try {
       dispatch(getUserAmountAction({ source: 'COPY_TRADE' }, () => {}));
