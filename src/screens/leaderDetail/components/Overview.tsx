@@ -1,8 +1,8 @@
+import 'chartjs-plugin-datalabels';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { getProfitService } from '../services';
-
 const Overview = ({ id_expert }) => {
   // const [number, setNumber] = useState(0);
   const [fromDate, setfromDate] = useState(moment().subtract(7, 'days'));
@@ -35,7 +35,16 @@ const Overview = ({ id_expert }) => {
     title: {
       display: false,
     },
-
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'top',
+        color: 'white',
+        font: {
+          // weight: 'bold'
+        },
+      },
+    },
     scales: {
       yAxes: [
         {
