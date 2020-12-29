@@ -2,10 +2,12 @@ import 'chartjs-plugin-datalabels';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
+import { useSelector } from 'react-redux';
 import { formatter } from 'utils/utilities';
 import { getProfitService } from '../services';
 const Overview = ({ id_expert }) => {
   // const [number, setNumber] = useState(0);
+  const expertDetail = useSelector((state: any) => state.screen.leaderDetail.expertDetail.data);
   const [fromDate, setfromDate] = useState(moment().subtract(7, 'days'));
   const [toDate, settoDate] = useState(new Date());
   const [type, setType] = useState('DAY');
@@ -72,11 +74,11 @@ const Overview = ({ id_expert }) => {
     return x['total_gain'] > 0 ? '#3FC66D' : '#c72826';
   });
   const chart = {
-    labels: map2,
+    labels: filterTitle !== '1 Months' ? map2 : [moment.utc(new Date()).format('MMM')],
     datasets: [
       {
-        backgroundColor: bg,
-        data: map1,
+        backgroundColor: filterTitle !== '1 Months' ? bg : '#3FC66D',
+        data: filterTitle !== '1 Months' ? map1 : [expertDetail?.info?.gain_rate_months],
         pointRadius: 0,
       },
     ],
@@ -92,7 +94,7 @@ const Overview = ({ id_expert }) => {
         break;
       case 1:
         setfilterTitle('1 Months');
-        setfromDate(moment(today).subtract(1, 'month'));
+        // setfromDate(moment(today).subtract(1, 'month'));
         setType('MONTH');
         break;
       case 3:
