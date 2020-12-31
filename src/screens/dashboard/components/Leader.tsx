@@ -34,7 +34,7 @@ const Leader = ({ startCopy, detail }) => {
     },
   };
   let dataChart = detail?.expert?.trading_gains ? detail?.expert?.trading_gains : [];
-  const map1 = dataChart.map((x) => x.total_gain);
+  const map1 = dataChart.map((x) => formatter.format(x.total_gain));
   const data = {
     labels: map1,
     datasets: [
