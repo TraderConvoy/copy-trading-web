@@ -1,5 +1,6 @@
 import 'chartjs-plugin-datalabels';
 import moment from 'moment';
+import 'moment/locale/en-au';
 import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
@@ -13,6 +14,7 @@ const Overview = ({ id_expert }) => {
   const [type, setType] = useState('DAY');
   const [filterTitle, setfilterTitle] = useState('7 Days');
   const [data, setdata] = useState([]);
+  moment().locale('en-au');
   useEffect(() => {
     handleChartChange();
   }, []);
