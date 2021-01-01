@@ -14,7 +14,7 @@ const YourHistory = () => {
   const userInfo = useSelector((state: any) => state.screen.userInfo.userInfor);
   const listHistory = useSelector((state: any) => state.screen.userHistory.historyList);
   const [page, setPage] = useState(1);
-  const [fromDate, setFromDate] = useState(new Date(new Date().setDate(new Date().getDate() - 30)));
+  const [fromDate, setFromDate] = useState(new Date(new Date().setDate(new Date().getDate() - 31)));
   const [toDate, setTodate] = useState(new Date());
   const [profit, setProfit] = useState(0);
   const [loadingPage, setloadingPage] = useState(false);

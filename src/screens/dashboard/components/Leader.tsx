@@ -10,6 +10,17 @@ const Leader = ({ startCopy, detail }) => {
     title: {
       display: false,
     },
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'top',
+        color: 'transparent',
+        // offset: -25,
+        font: {
+          // weight: 'bold'
+        },
+      },
+    },
     scales: {
       yAxes: [
         {
