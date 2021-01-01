@@ -67,7 +67,7 @@ const Overview = ({ id_expert }) => {
     },
   };
   let dataChart = data.reverse();
-  let map1 = dataChart.map((x) => formatter.format(x['total_gain']));
+  let map1 = dataChart.map((x) => formatter.format(Math.abs(x['total_gain'])));
   const map2 =
     type === 'MONTH'
       ? dataChart.map((x) => moment.utc(x['updatedAt']).format('MMM'))
