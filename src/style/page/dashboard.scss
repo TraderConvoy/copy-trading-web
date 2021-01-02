@@ -380,6 +380,15 @@
             background-color: transparent;
             margin-right: 7px;
           }
+          .active {
+            outline: 0;
+            border: 1px solid #5a6895;
+            height: 16px;
+            width: 16px;
+            border-radius: 2px;
+            background-color: #3fc66d;
+            margin-right: 7px;
+          }
           p {
             font-size: 14px;
             line-height: 14px;
@@ -453,6 +462,12 @@
         }
       }
     }
+  }
+}
+
+.copy-advance {
+  .modal-dialog {
+    max-width: fit-content;
   }
 }
 

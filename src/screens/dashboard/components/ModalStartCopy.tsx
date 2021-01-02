@@ -1,3 +1,4 @@
+import Toggle from 'containers/components/Toggle';
 import { UrlImagesContext } from 'containers/contexts/UrlImagesContext';
 import useError from 'containers/hooks/useErrorContext';
 import useToastContext from 'containers/hooks/useToastContext';
@@ -29,6 +30,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
   const [isStopLoss, setStopLoss] = useState(false);
   const [isTakeProfit, setTakeProfit] = useState(false);
   const [isNotHaveAmount, setIsNotHaveAmount] = useState(false);
+  const [isAdvance, setIsAdvance] = useState(false);
   useEffect(() => {
     if (!isOpen) clearModal();
   }, [isOpen]);
@@ -39,13 +41,15 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
     const body = {
       id_expert: detail.expert._id,
       investment_amount: parseFloat(data.investment_amount) * 100,
-      maximum_rate: haveMaximum ? data.maximum_rate : 0,
-      has_maximum_rate: haveMaximum,
-      stop_loss: haveStopLoss ? data.stop_loss : 0,
-      has_stop_loss: haveStopLoss,
-      taken_profit: haveTakeProfit ? data.taken_profit : 0,
-      has_taken_profit: haveTakeProfit,
+      maximum_rate: haveMaximum && isAdvance ? data.maximum_rate : 0,
+      has_maximum_rate: haveMaximum && isAdvance,
+      stop_loss: haveStopLoss && isAdvance ? data.stop_loss : 0,
+      has_stop_loss: haveStopLoss && isAdvance,
+      taken_profit: haveTakeProfit && isAdvance ? data.taken_profit : 0,
+      has_taken_profit: haveTakeProfit && isAdvance,
     };
+    debugger;
+    return;
     try {
       dispatch(
         createTradingCopyAction(body, async (err, res: any) => {
@@ -93,10 +97,11 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
     if (!data.investment_amount || parseFloat(data.investment_amount) < 5) {
       result = false;
     }
-    return result;
-    if (haveMaximum) {
+    if (haveMaximum && isAdvance) {
       if (!data.maximum_rate || parseFloat(data.maximum_rate) > 50) {
-        setMaxRate(true);
+        if (parseFloat(data.maximum_rate) > 50) {
+          setMaxRate(true);
+        }
         result = false;
       } else {
         setMaxRate(false);
@@ -104,9 +109,11 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
     } else {
       setMaxRate(false);
     }
-    if (haveStopLoss) {
+    if (haveStopLoss && isAdvance) {
       if (!data.stop_loss || parseFloat(data.stop_loss) < 10 || parseFloat(data.stop_loss) > 100) {
-        setStopLoss(true);
+        if (parseFloat(data.stop_loss) < 10 || parseFloat(data.stop_loss) > 100) {
+          setStopLoss(true);
+        }
         result = false;
       } else {
         setStopLoss(false);
@@ -114,9 +121,11 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
     } else {
       setStopLoss(false);
     }
-    if (haveTakeProfit) {
+    if (haveTakeProfit && isAdvance) {
       if (!data.taken_profit || parseFloat(data.taken_profit) < 150) {
-        setTakeProfit(true);
+        if (parseFloat(data.taken_profit) < 150) {
+          setTakeProfit(true);
+        }
         result = false;
       } else {
         setTakeProfit(false);
@@ -125,7 +134,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
       setTakeProfit(false);
     }
     return result;
-  }, [data, haveMaximum, haveStopLoss, haveTakeProfit]);
+  }, [data, haveMaximum, haveStopLoss, haveTakeProfit, isAdvance]);
 
   const handleTypeChange = async (value, type) => {
     switch (type) {
@@ -146,7 +155,12 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
     }
   };
   return (
-    <Modal show={isOpen} onHide={() => closeModal()} className="start-copy-modal" size="sm">
+    <Modal
+      show={isOpen}
+      onHide={() => closeModal()}
+      className={`start-copy-modal ${isAdvance ? 'copy-advance' : ''}`}
+      size="lg"
+    >
       <Modal.Header>
         <div className="wrapper-left">
           <div className="info-wrapper">
@@ -209,76 +223,84 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                 </p>
                 <p className="sub">500 USD is mininum required deposit for this trader</p>
               </div>
-              {/* <div className="advance-wrapper">
-                <button />
-                <p>Advance setting</p>
-              </div> */}
-            </Col>
-            {/* <Col md={true} className="wrapper-right">
               <div className="advance-wrapper">
-                <p>Advance setting</p>
-                <p>1 USD is mininum required to start copy</p>
+                {isAdvance && <button className="active" onClick={() => setIsAdvance(!isAdvance)} />}
+                {!isAdvance && <button onClick={() => setIsAdvance(!isAdvance)} />}
+                <p style={{ cursor: 'pointer' }} onClick={() => setIsAdvance(!isAdvance)}>
+                  Advance setting
+                </p>
               </div>
-              <div className="input-wrapper maxinum">
-                <div className="__header">
-                  <p>Maximum</p>
-                  <Toggle
-                    active={haveMaximum}
-                    onClick={(value: boolean) => handleTypeChange(haveMaximum, 'haveMaximum')}
-                  />
+            </Col>
+            {isAdvance && (
+              <Col md={true} className="wrapper-right">
+                <div className="advance-wrapper">
+                  <p>Advance setting</p>
+                  <p>500 USD is mininum required to start copy</p>
                 </div>
-                <div className="__input">
-                  <NumberFormat
-                    disabled={!haveMaximum}
-                    onValueChange={(values) => handleInputChange('maximum_rate', values.floatValue)}
-                    placeholder="%"
-                    suffix={'%'}
-                    value={data.maximum_rate}
-                  />
-                  {isMaxRate && <div className="invalid-feedback block">Maximum is 50%</div>}
+                <div className="input-wrapper maxinum">
+                  <div className="__header">
+                    <p>Maximum</p>
+                    <Toggle
+                      active={haveMaximum}
+                      onClick={(value: boolean) => handleTypeChange(haveMaximum, 'haveMaximum')}
+                    />
+                  </div>
+                  <div className="__input">
+                    <NumberFormat
+                      disabled={!haveMaximum}
+                      onValueChange={(values) => handleInputChange('maximum_rate', values.floatValue)}
+                      placeholder="%"
+                      suffix={'%'}
+                      value={data.maximum_rate}
+                      decimalScale={0}
+                    />
+                    {isMaxRate && <div className="invalid-feedback block">Maximum is 50%</div>}
+                  </div>
                 </div>
-              </div>
-              <div className="input-wrapper stop-loss">
-                <div className="__header">
-                  <p>Stop loss</p>
-                  <Toggle
-                    active={haveStopLoss}
-                    onClick={(value: boolean) => handleTypeChange(haveStopLoss, 'haveStopLoss')}
-                  />
+                <div className="input-wrapper stop-loss">
+                  <div className="__header">
+                    <p>Stop loss</p>
+                    <Toggle
+                      active={haveStopLoss}
+                      onClick={(value: boolean) => handleTypeChange(haveStopLoss, 'haveStopLoss')}
+                    />
+                  </div>
+                  <div className="__input">
+                    <NumberFormat
+                      disabled={!haveStopLoss}
+                      onValueChange={(values) => handleInputChange('stop_loss', values.floatValue)}
+                      placeholder="%"
+                      suffix={'%'}
+                      value={data.stop_loss}
+                      decimalScale={0}
+                    />
+                    {isStopLoss && (
+                      <div className="invalid-feedback block">Stop loss is more than 10% and less than 100</div>
+                    )}
+                  </div>
                 </div>
-                <div className="__input">
-                  <NumberFormat
-                    disabled={!haveStopLoss}
-                    onValueChange={(values) => handleInputChange('stop_loss', values.floatValue)}
-                    placeholder="%"
-                    suffix={'%'}
-                    value={data.stop_loss}
-                  />
-                  {isStopLoss && (
-                    <div className="invalid-feedback block">Stop loss is more than 10% and less than 100</div>
-                  )}
+                <div className="input-wrapper take-profit">
+                  <div className="__header">
+                    <p>Take profit</p>
+                    <Toggle
+                      active={haveTakeProfit}
+                      onClick={(value: boolean) => handleTypeChange(haveTakeProfit, 'haveTakeProfit')}
+                    />
+                  </div>
+                  <div className="__input">
+                    <NumberFormat
+                      disabled={!haveTakeProfit}
+                      onValueChange={(values) => handleInputChange('taken_profit', values.floatValue)}
+                      placeholder="%"
+                      suffix={'%'}
+                      value={data.taken_profit}
+                      decimalScale={0}
+                    />
+                    {isTakeProfit && <div className="invalid-feedback block">Take profit is more than 150%</div>}
+                  </div>
                 </div>
-              </div>
-              <div className="input-wrapper take-profit">
-                <div className="__header">
-                  <p>Take profit</p>
-                  <Toggle
-                    active={haveTakeProfit}
-                    onClick={(value: boolean) => handleTypeChange(haveTakeProfit, 'haveTakeProfit')}
-                  />
-                </div>
-                <div className="__input">
-                  <NumberFormat
-                    disabled={!haveTakeProfit}
-                    onValueChange={(values) => handleInputChange('taken_profit', values.floatValue)}
-                    placeholder="%"
-                    suffix={'%'}
-                    value={data.taken_profit}
-                  />
-                  {isTakeProfit && <div className="invalid-feedback block">Take profit is more than 150%</div>}
-                </div>
-              </div>
-            </Col> */}
+              </Col>
+            )}
           </Row>
         </Container>
       </Modal.Body>
