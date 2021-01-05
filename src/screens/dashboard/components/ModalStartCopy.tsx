@@ -48,8 +48,6 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
       taken_profit: haveTakeProfit && isAdvance ? data.taken_profit : 0,
       has_taken_profit: haveTakeProfit && isAdvance,
     };
-    debugger;
-    return;
     try {
       dispatch(
         createTradingCopyAction(body, async (err, res: any) => {

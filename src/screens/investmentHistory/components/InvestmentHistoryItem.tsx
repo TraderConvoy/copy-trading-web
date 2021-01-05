@@ -1,4 +1,4 @@
-import { ButtonPause, ButtonStop } from 'containers/components/Buttons';
+import { ButtonStop } from 'containers/components/Buttons';
 import { DocumentWidthContext } from 'containers/contexts/DocumentWidthContext';
 import moment from 'moment/moment';
 import React, { useContext, useMemo } from 'react';
@@ -69,7 +69,7 @@ const InvestmentHistoryItem = ({ item, handleStop, handlePause, handleStart }) =
           <div className="button-wrapper">
             <div className="button-wrapper__button">
               <ButtonStop disabled={loading} onClick={() => handleStop(item._id)} />
-              {item.status === 'PAUSE' && <ButtonPause disabled={true} />}
+              {/* {item.status === 'PAUSE' && <ButtonPause disabled={true} />} */}
               {/* {item.status === 'ACTIVE' ? (
                 <ButtonPause disabled={loading} onClick={() => handlePause(item._id)} />
               ) : (
