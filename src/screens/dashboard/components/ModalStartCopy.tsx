@@ -96,8 +96,8 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
       result = false;
     }
     if (haveMaximum && isAdvance) {
-      if (!data.maximum_rate || parseFloat(data.maximum_rate) > 50) {
-        if (parseFloat(data.maximum_rate) > 50) {
+      if (!data.maximum_rate || parseFloat(data.maximum_rate) < 5 || parseFloat(data.maximum_rate) > 100) {
+        if (parseFloat(data.maximum_rate) < 5 || parseFloat(data.maximum_rate) > 100) {
           setMaxRate(true);
         }
         result = false;
@@ -108,8 +108,8 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
       setMaxRate(false);
     }
     if (haveStopLoss && isAdvance) {
-      if (!data.stop_loss || parseFloat(data.stop_loss) < 10 || parseFloat(data.stop_loss) > 100) {
-        if (parseFloat(data.stop_loss) < 10 || parseFloat(data.stop_loss) > 100) {
+      if (!data.stop_loss || parseFloat(data.stop_loss) < 5 || parseFloat(data.stop_loss) > 100) {
+        if (parseFloat(data.stop_loss) < 5 || parseFloat(data.stop_loss) > 100) {
           setStopLoss(true);
         }
         result = false;
@@ -120,8 +120,8 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
       setStopLoss(false);
     }
     if (haveTakeProfit && isAdvance) {
-      if (!data.taken_profit || parseFloat(data.taken_profit) < 150) {
-        if (parseFloat(data.taken_profit) < 150) {
+      if (!data.taken_profit || parseFloat(data.taken_profit) < 105) {
+        if (parseFloat(data.taken_profit) < 105) {
           setTakeProfit(true);
         }
         result = false;
@@ -252,7 +252,9 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                       value={data.maximum_rate}
                       decimalScale={0}
                     />
-                    {isMaxRate && <div className="invalid-feedback block">Maximum is 50%</div>}
+                    {isMaxRate && (
+                      <div className="invalid-feedback block">Maximum is more than 5% and less than 100%</div>
+                    )}
                   </div>
                 </div>
                 <div className="input-wrapper stop-loss">
@@ -273,7 +275,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                       decimalScale={0}
                     />
                     {isStopLoss && (
-                      <div className="invalid-feedback block">Stop loss is more than 10% and less than 100</div>
+                      <div className="invalid-feedback block">Stop loss is more than 5% and less than 100</div>
                     )}
                   </div>
                 </div>
