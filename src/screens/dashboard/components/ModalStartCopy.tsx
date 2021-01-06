@@ -296,7 +296,7 @@ const ModalStartCopy = ({ isOpen, closeModal, detail, setShowModalTf }) => {
                       value={data.taken_profit}
                       decimalScale={0}
                     />
-                    {isTakeProfit && <div className="invalid-feedback block">Take profit is more than 150%</div>}
+                    {isTakeProfit && <div className="invalid-feedback block">Take profit is more than 105%</div>}
                   </div>
                 </div>
               </Col>
