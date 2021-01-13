@@ -324,13 +324,13 @@
               font-size: 16px;
               line-height: 16px;
               text-transform: uppercase;
-              color: $greenColor;
+              color: #40da6c;
               top: 20px;
               transform: translateY(-50%);
-              left: 80px;
+              left: 45px;
               background-color: #3e446a;
               border-radius: 5px;
-              padding-left: 15px;
+              padding-left: 0px;
               padding-right: 15px;
               height: 40px;
               padding-top: 13px;
@@ -338,7 +338,7 @@
             }
             input {
               height: 40px;
-              width: 75px;
+              width: 55px;
               background-color: #3e446a;
               border-radius: 5px;
               outline: 0;
@@ -346,8 +346,8 @@
               color: #40da6c;
               font-size: 16px;
               font-weight: 500;
-              padding-right: 15px;
-              padding-left: 15px;
+              padding-right: 5px;
+              padding-left: 10px;
               text-align: center;
             }
           }
