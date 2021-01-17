@@ -1,0 +1,365 @@
+.investment-calculator {
+  .investment-calculator__header {
+    margin-bottom: 24px;
+    .title-wrapper {
+      .title {
+        font-size: 36px;
+        font-weight: 300;
+        color: white;
+      }
+    }
+  }
+  .investment-calculator__content {
+  }
+}
+
+.investment-calculator-component {
+  padding: 24px 31px;
+  max-width: 1065px;
+  background-color: $modalBackground;
+  border-radius: 5px;
+  p {
+    margin-bottom: 0;
+  }
+  .__header {
+    color: $lightBlueColor-2;
+    border-bottom: 1px solid #343a63;
+    margin-top: 10px;
+    .title {
+      font-size: 24px;
+      line-height: 24px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    .sub {
+      font-size: 16px;
+      line-height: 16px;
+      font-weight: 400;
+      margin-bottom: 22px;
+    }
+  }
+  .__search {
+    display: flex;
+    padding: 25px 0;
+    border-bottom: 1px solid #343a63;
+    padding-bottom: 36px;
+    .item {
+      margin-right: 20px;
+      &:last-child {
+        margin-right: 0;
+      }
+      &.deposit-wrapper {
+        input {
+          width: 259px;
+        }
+        .search-wrapper {
+          p {
+            right: 22px;
+          }
+          input {
+            padding-right: 63px;
+          }
+        }
+      }
+      &.profitability-wrapper {
+        input {
+          width: 99px;
+        }
+        .search-wrapper {
+          p {
+            right: 17px;
+          }
+          input {
+            padding-right: 39px;
+          }
+        }
+      }
+      &.investment-period-wrapper {
+        flex: 1;
+      }
+      p {
+        font-size: 16px;
+        color: #c2cdf2;
+        line-height: 16px;
+        margin-bottom: 7px;
+      }
+      .search-wrapper {
+        position: relative;
+        p {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          color: #40da6c;
+          font-size: 16px;
+          line-height: 16px;
+          font-weight: 400;
+        }
+        input {
+          height: 40px;
+          background-color: #3e446a;
+          outline: 0;
+          border: 0;
+          border-radius: 5px;
+          color: #40da6c;
+          font-size: 16px;
+          line-height: 16px;
+          font-weight: 500;
+          padding-left: 15px;
+        }
+      }
+      .tab-wrapper {
+        .col {
+          &:first-child {
+            .tab {
+              border-top-left-radius: 4px;
+              border-bottom-left-radius: 4px;
+            }
+          }
+          &:last-child {
+            .tab {
+              border-top-right-radius: 4px;
+              border-bottom-right-radius: 4px;
+            }
+          }
+        }
+        .tab {
+          outline: 0;
+          border: 0;
+          height: 40px;
+          width: 100%;
+          border: 1px solid #4e558a;
+          background-color: unset;
+          font-size: 14px;
+          line-height: 14px;
+          color: $lightBlueColor-2;
+          &.active {
+            background-color: #3e446a;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  .__detail {
+    padding: 26px 0;
+    display: flex;
+    border-bottom: 1px solid #343a63;
+    .item {
+      margin-right: 4vw;
+      &:last-child {
+        margin-right: 0;
+      }
+      p {
+        font-weight: 400;
+        font-size: 16px;
+        color: $lightBlueColor-2;
+        margin-bottom: 2px;
+      }
+      .total {
+        font-weight: 500;
+        font-size: 30px;
+        color: #40da6c;
+        line-height: 30px;
+      }
+    }
+  }
+  .__button {
+    padding-top: 20px;
+    button {
+      border: 0;
+      outline: 0;
+      background-color: #3fc66d;
+      border-radius: 5px;
+      height: 50px;
+      padding: 0 27px;
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .investment-calculator {
+    .investment-calculator__header {
+      .title-wrapper {
+        .title {
+        }
+      }
+    }
+    .investment-calculator__content {
+    }
+  }
+
+  .investment-calculator-component {
+    p {
+    }
+    .__header {
+      .title {
+      }
+      .sub {
+      }
+    }
+    .__search {
+      flex-wrap: wrap;
+      .item {
+        margin-top: 10px;
+        &:last-child {
+        }
+        &.deposit-wrapper {
+          input {
+          }
+          .search-wrapper {
+            p {
+            }
+            input {
+            }
+          }
+        }
+        &.profitability-wrapper {
+          input {
+          }
+          .search-wrapper {
+            p {
+            }
+            input {
+            }
+          }
+        }
+        &.investment-period-wrapper {
+          width: 100%;
+        }
+        p {
+        }
+        .search-wrapper {
+          p {
+          }
+          input {
+          }
+        }
+        .tab-wrapper {
+          .tab {
+            &:first-child {
+            }
+            &:last-child {
+            }
+            &.active {
+            }
+          }
+        }
+      }
+    }
+    .__detail {
+      .item {
+        &:last-child {
+        }
+        p {
+        }
+        .total {
+          font-size: 24px;
+          line-height: 24px;
+        }
+      }
+    }
+    .__button {
+      button {
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .investment-calculator {
+    .investment-calculator__header {
+      .title-wrapper {
+        .title {
+        }
+      }
+    }
+    .investment-calculator__content {
+    }
+  }
+
+  .investment-calculator-component {
+    padding: 20px;
+    p {
+    }
+    .__header {
+      .title {
+        margin-bottom: 5px;
+        font-size: 20px !important;
+      }
+      .sub {
+        font-size: 14px !important;
+      }
+    }
+    .__search {
+      flex-wrap: wrap;
+      .item {
+        margin-top: 10px;
+        &:last-child {
+        }
+        &.deposit-wrapper {
+          input {
+          }
+          .search-wrapper {
+            p {
+            }
+            input {
+            }
+          }
+        }
+        &.profitability-wrapper {
+          input {
+          }
+          .search-wrapper {
+            p {
+            }
+            input {
+            }
+          }
+        }
+        &.investment-period-wrapper {
+          width: 100%;
+        }
+        p {
+        }
+        .search-wrapper {
+          p {
+          }
+          input {
+          }
+        }
+        .tab-wrapper {
+          min-width: 300px;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+          .tab {
+            border: 1px solid #4e558a !important;
+            &:first-child {
+            }
+            &:last-child {
+            }
+            &.active {
+            }
+          }
+        }
+      }
+    }
+    .__detail {
+      .item {
+        &:last-child {
+        }
+        p {
+        }
+        .total {
+        }
+      }
+    }
+    .__button {
+      button {
+      }
+    }
+  }
+}

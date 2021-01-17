@@ -1,4 +1,5 @@
 import { connectRouter, routerMiddleware } from 'connected-react-router';
+import commonReducers from 'containers/redux/common/reducers';
 import { createBrowserHistory, History } from 'history';
 import { applyMiddleware, CombinedState, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -7,11 +8,12 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import createSagaMiddleware from 'redux-saga';
 import { all, fork } from 'redux-saga/effects';
-// import screenReducers from 'screens/screenReducers';
+import screenReducers from 'screens/screenReducers';
 import screenSaga from 'screens/screenSaga';
 
 export const allReducers = {
-  // screen: screenReducers,
+  screen: screenReducers,
+  common: commonReducers,
 };
 
 class ConfigureStore {
@@ -43,7 +45,7 @@ class ConfigureStore {
     const persistConfig = {
       key: 'root',
       storage,
-      whitelist: [''],
+      // whitelist: [''],
       blacklist: ['router'],
     };
     const persistedReducer = persistReducer(persistConfig, resettableAppReducer);

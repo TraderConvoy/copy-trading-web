@@ -1,0 +1,161 @@
+.your-history {
+  min-height: 500px;
+  p {
+    margin-bottom: 0;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .your-history__header {
+    margin-bottom: 32px;
+    .title-wrapper {
+      .title {
+        font-size: 36px;
+        color: white;
+        font-weight: 300;
+      }
+    }
+  }
+  .profit-count {
+    float: left;
+    color: white;
+    margin-top: 5px;
+  }
+  .react-date-picker--disabled {
+    background-color: transparent;
+    color: #6d6d6d;
+    opacity: 0.5;
+  }
+}
+
+.rdt_Table_none {
+  div {
+    background: #13183d;
+    color: white;
+    text-align: center;
+  }
+}
+
+.table-your-history {
+  .pagination {
+    padding-top: 25px;
+  }
+
+  .rdt_TableRow {
+    padding: 17px 0 !important;
+  }
+  .order {
+    text-transform: capitalize;
+    &.buy {
+      color: #32ac5c;
+    }
+    &.cell {
+      color: #e63735;
+    }
+  }
+  .profit,
+  .profit-sharing {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+  }
+  .profit {
+    color: #31a051;
+  }
+  .profit-sharing {
+    color: #e63735;
+  }
+  .total-profit {
+    background-color: #ffe343 !important;
+    border-radius: 3px;
+    color: #3c4e41;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 99px;
+    height: 33px;
+  }
+}
+.react-date-picker {
+  float: right;
+  background: #20284f;
+  padding: 5px 20px;
+  margin-bottom: 10px;
+  color: white;
+  border-radius: 5px;
+  .react-date-picker__wrapper {
+    border: none;
+    color: white;
+  }
+  input {
+    color: white;
+  }
+  svg {
+    stroke: white;
+  }
+}
+.from-date,
+.to-date {
+  text-align: right;
+  display: flow-root;
+  color: white;
+  b {
+    line-height: 35px;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+  .filter-button {
+    border: 0;
+    outline: 0;
+    background-color: #3fc66d;
+    border-radius: 5px;
+    height: 37px;
+    padding: 0 27px;
+    color: white;
+    font-size: 16px;
+    float: right;
+    margin-left: 25px;
+    margin-right: 16px;
+    margin-top: -0;
+  }
+}
+.from-date {
+  float: right;
+}
+
+@media only screen and (max-width: 1385px) {
+  .your-history {
+    p {
+    }
+    .your-history__header {
+      .title-wrapper {
+        .title {
+        }
+      }
+    }
+  }
+
+  .table-your-history {
+    .pagination {
+    }
+    .rdt_TableRow {
+    }
+    .order {
+      &.buy {
+      }
+      &.cell {
+      }
+    }
+    .profit,
+    .profit-sharing {
+    }
+    .profit {
+    }
+    .profit-sharing {
+    }
+    .total-profit {
+    }
+  }
+}

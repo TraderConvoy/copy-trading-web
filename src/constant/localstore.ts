@@ -7,7 +7,7 @@ const RESPONSE_STATUS = {
   FORBIDDEN: 403,
 };
 
-const TOKEN = '@@token';
+const TOKEN = '@@token_user';
 
 const LANG = '@@lang';
 

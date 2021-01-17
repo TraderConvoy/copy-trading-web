@@ -1,0 +1,337 @@
+#header {
+  background-color: $backgroundColor;
+  border-bottom: 1px solid #2a2f55;
+  p {
+    margin-bottom: 0;
+    color: $lightBlueColor-1;
+  }
+  .header-wrapper {
+    .header-desktop {
+      .header-nav {
+        .nav-wrapper {
+          display: flex;
+          justify-content: space-between;
+          padding: 17px 40px;
+          .nav-left {
+            display: flex;
+            align-items: center;
+            .logo {
+              p {
+                font-style: normal;
+                font-weight: 700;
+                font-size: 36px;
+                line-height: 46px;
+                color: white;
+                cursor: pointer;
+                span:nth-child(1) {
+                  color: #e9a522;
+                }
+                span:nth-child(2) {
+                  font-size: 18px;
+                  color: #ffffff;
+                }
+              }
+            }
+          }
+          .nav-right {
+            display: flex;
+            flex-direction: row-reverse;
+            color: white;
+            .user-wrapper {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              margin-left: 26px;
+              .avatar-wrapper {
+                width: 34px;
+                height: 34px;
+                border-radius: 50%;
+                background-color: $blueColor;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+                line-height: 14px;
+              }
+              .username {
+                font-size: 14px;
+                line-height: 18px;
+                margin-top: 5px;
+              }
+            }
+            .notification-wrapper {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              margin-left: 37px;
+              .icon {
+                height: 34px;
+                width: 34px;
+              }
+              p {
+                margin-top: 5px;
+                font-size: 14px;
+                line-height: 18px;
+              }
+            }
+            .practice-account-wrapper {
+              display: flex;
+              margin-left: 28px;
+              .wrapper-left {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-end;
+                p {
+                  font-size: 12px;
+                  line-height: 15.18px;
+                  font-style: normal;
+                  font-weight: 400;
+                }
+                .wallet {
+                  color: $yellowTextColor;
+                  font-size: 30px;
+                  font-weight: 700;
+                  line-height: 37.95px;
+                }
+              }
+              .wrapper-right {
+                margin-left: 7px;
+                .dropdown {
+                  width: 55px;
+                  height: 55px;
+                  border-radius: 10px;
+                  box-sizing: border-box;
+                  border: 1px solid #283458;
+                  outline: 0;
+                  background-color: transparent;
+                }
+              }
+            }
+            .type-wrapper {
+              margin-left: 23px;
+              .type {
+                height: 55px;
+                width: 55px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: $blueColor;
+                border-radius: 10px;
+                p {
+                  font-size: 24px;
+                  font-weight: 700;
+                  color: white;
+                }
+              }
+            }
+            .level-wrapper {
+              margin-left: 23px;
+              .level {
+                height: 55px;
+                width: 55px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background-color: $blueColor;
+                border-radius: 10px;
+                p {
+                  text-transform: uppercase;
+                  font-size: 24px;
+                  font-weight: 700;
+                  color: white;
+                  line-height: 24px;
+                  &:first-child {
+                    font-size: 13px;
+                    line-height: 13px;
+                  }
+                }
+              }
+            }
+            .deposit-wrapper {
+              button {
+                padding: 16px 46px;
+                background-color: $lightGreenColor;
+                color: white;
+                text-transform: capitalize;
+                font-size: 18px;
+                line-height: 22.77px;
+                font-weight: 700;
+                outline: 0;
+                border: 0;
+                border-radius: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #header {
+    p {
+    }
+    .header-wrapper {
+      .header-desktop {
+        .header-nav {
+          .nav-wrapper {
+            padding: 10px 20px;
+            .nav-left {
+              .logo {
+                p {
+                  font-size: 24px;
+                  cursor: pointer;
+                  span {
+                  }
+                }
+              }
+            }
+            .nav-right {
+              .user-wrapper {
+                margin-left: 13px;
+                .avatar-wrapper {
+                }
+                .username {
+                }
+              }
+              .notification-wrapper {
+                margin-left: 13px;
+                .icon {
+                }
+                p {
+                }
+              }
+              .practice-account-wrapper {
+                margin-left: 13px;
+                .wrapper-left {
+                  p {
+                  }
+                  .wallet {
+                  }
+                }
+                .wrapper-right {
+                  .dropdown {
+                  }
+                }
+              }
+              .type-wrapper {
+                margin-left: 13px;
+                display: none;
+                .type {
+                  p {
+                  }
+                }
+              }
+              .level-wrapper {
+                margin-left: 13px;
+                display: none;
+                .level {
+                  p {
+                    &:first-child {
+                    }
+                  }
+                }
+              }
+              .deposit-wrapper {
+                display: none;
+                button {
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  #header {
+    p {
+    }
+    .header-wrapper {
+      .header-desktop {
+        .header-nav {
+          .nav-wrapper {
+            padding: 10px 20px;
+            .nav-left {
+              .logo {
+                p {
+                  font-size: 24px;
+                  cursor: pointer;
+                  span {
+                  }
+                }
+              }
+            }
+            .nav-right {
+              .user-wrapper {
+                margin-left: 13px;
+                .avatar-wrapper {
+                }
+                .username {
+                  display: none;
+                }
+              }
+              .notification-wrapper {
+                margin-left: 13px;
+                .icon {
+                }
+                p {
+                  display: none;
+                }
+              }
+              .practice-account-wrapper {
+                margin-left: 13px;
+                .wrapper-left {
+                  display: none;
+                  p {
+                  }
+                  .wallet {
+                  }
+                }
+                .wrapper-right {
+                  display: flex;
+                  align-items: center;
+                  .dropdown {
+                    height: 34px;
+                    width: 34px;
+                    margin: 0;
+                  }
+                }
+              }
+              .type-wrapper {
+                margin-left: 13px;
+                display: none;
+                .type {
+                  p {
+                  }
+                }
+              }
+              .level-wrapper {
+                margin-left: 13px;
+                display: none;
+                .level {
+                  p {
+                    &:first-child {
+                    }
+                  }
+                }
+              }
+              .deposit-wrapper {
+                display: none;
+                button {
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
