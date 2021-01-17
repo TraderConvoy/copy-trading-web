@@ -1,7 +1,8 @@
 export interface IUser {
-  id: string;
+  _id: string;
   username: string;
   email: string;
   full_name: string;
-  amount: Number;
+  total_amount: Number;
+  id_user_trading: string;
 }

@@ -5,6 +5,7 @@ import leaderDetailSaga from 'screens/leaderDetail/redux/operations';
 import walletSaga from 'screens/wallet/redux/operations';
 import userHistorySaga from '../screens/yourHistory/ducks/operations';
 import loginSaga from './login/redux/operations';
+import userCommissionSaga from './yourCommission/ducks/operations';
 
 export default {
   // ...commonSaga,
@@ -14,4 +15,5 @@ export default {
   ...leaderDetailSaga,
   ...loginSaga,
   ...walletSaga,
+  ...userCommissionSaga
 };

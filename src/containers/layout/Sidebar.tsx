@@ -33,6 +33,12 @@ const Sidebar = ({ activeSidebar = '' }) => {
         active: ACTIVE_SIDEBAR.YOUR_HISTORY,
       },
       {
+        name: 'Your Commission',
+        href: '/copy-trading/your-commission',
+        icon: 'history.svg',
+        active: ACTIVE_SIDEBAR.YOUR_COMMISSION,
+      },
+      {
         name: 'Investment History',
         href: '/copy-trading/investment-history',
         icon: 'graph.svg',
@@ -72,14 +78,14 @@ const Sidebar = ({ activeSidebar = '' }) => {
 
   const handleGetAmount = () => {
     try {
-      dispatch(getUserAmountAction({ source: 'COPY_TRADE' }, () => {}));
-    } catch (error) {}
+      dispatch(getUserAmountAction({ source: 'COPY_TRADE' }, () => { }));
+    } catch (error) { }
   };
 
   const handleGetUserInfo = () => {
     try {
       dispatch(getUserInforAction());
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const closeModalConfirm = () => {

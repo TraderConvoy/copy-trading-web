@@ -1,6 +1,7 @@
 export const ACTIVE_SIDEBAR = {
   TOP_LEADER: 'top-leader',
   YOUR_HISTORY: 'your-history',
+  YOUR_COMMISSION: 'your-commission',
   INVESTMENT_HISTORY: 'investment-history',
   INVESTMENT_CALCULATOR: 'investment-calculator',
   BECOME_AN_EXPERT: 'become-an-expert',

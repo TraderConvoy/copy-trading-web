@@ -90,18 +90,18 @@ export const TABLE_YOUR_HISTORY = () => [
           }
         </p>
       ) : (
-        <p className="profit-sharing">
-          {
-            <NumberFormat
-              thousandSeparator={true}
-              displayType="text"
-              // prefix={'$'}
-              decimalScale={0}
-              value={row.order_amount}
-            />
-          }
-        </p>
-      );
+          <p className="profit-sharing">
+            {
+              <NumberFormat
+                thousandSeparator={true}
+                displayType="text"
+                // prefix={'$'}
+                decimalScale={0}
+                value={row.order_amount}
+              />
+            }
+          </p>
+        );
     },
   },
   {
@@ -135,8 +135,8 @@ export const TABLE_YOUR_HISTORY = () => [
           {record.status && record.profit > 0
             ? `+ ${formatter.format(record.profit - record.fee_to_expert - record.fee_to_trading)}`
             : record.profit > 0
-            ? 'Updating'
-            : 0}
+              ? 'Updating'
+              : 0}
         </div>
       );
     },
@@ -419,4 +419,40 @@ export const ORDER_USER_HISTORY = () => [
       return <p className="tag">{row.status}</p>;
     },
   },
+];
+
+export const TABLE_YOUR_COMMISSION = () => [
+  {
+    name: 'Time',
+    selector: 'createdAt',
+    center: true,
+    cell: (row: any) => {
+      return <p>{moment(row.createdAt).format('YYYY-MM-DD HH:mm:ss')}</p>;
+    },
+  },
+  {
+    name: 'Username',
+    selector: 'username',
+  },
+  {
+    name: 'F1-F10',
+    selector: 'level',
+    center: true
+  },
+  {
+    name: 'Amount',
+    selector: 'amount',
+    center: true,
+    cell: (row: any) => {
+      return <p>{parseFloat(row.amount["$numberDecimal"])}</p>
+    },
+  },
+  {
+    name: 'Commission',
+    selector: 'amount_withdraw',
+    center: true,
+    cell: (row: any) => {
+      return <p>{parseFloat(row.amount_withdraw["$numberDecimal"])}</p>;
+    },
+  }
 ];
