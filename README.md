@@ -51,5 +51,7 @@ https://app.asana.com/0/1186125307792483/1186125307792403/f
 - N/A
 
 ### 4. Note
-
+-Package.json  
+>"start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider build"
 - N/A
